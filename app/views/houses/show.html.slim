@@ -1,26 +1,66 @@
 .container
   .row
-    h2.col-lg.my-3 = @house.name
-    .col-lg-4
-    	.card.mb-0.box-shadow
-      	- if @house.image.present?	      	
-      		img.card-img-top alt=("Card image cap") src=@house.image /
-      	- else	      		
-        	img.card-img-top alt=("Card image cap") src="https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg"/
-        .card-body.pb-2.p-1.mb-5.bg-light 
-          - if @house.address.present?
-          	small.text-info = @house.address
-          - else
-          	small.text-info 住所
-          - if @house.name.present?
-          	p.card-text.mb-0 = @house.name
-          - else
-          	p.card-text.mb-0 物件の名前
-          - if @house.age.present?
-          	small 築#{@house.age}年
-          - else
-          	small 築年数
-          - if @house.price.present?
-          	small.ml-1 #{@house.price}万円
-          - else
-          	small.ml-1 価格
+    h1.display-5.my-3 = @house.name
+  .row
+    .col-lg-7
+.container
+  .row
+    #carouselExampleIndicators.carousel.slide data-ride="carousel" 
+      ol.carousel-indicators
+        li.active data-slide-to="0" data-target="#carouselExampleIndicators" 
+        li data-slide-to="1" data-target="#carouselExampleIndicators" 
+        li data-slide-to="2" data-target="#carouselExampleIndicators"
+      .carousel-inner
+        .carousel-item.active
+          img.d-block alt=("First slide") src=@house.image /
+          .carousel-caption.d-none.d-md-block
+            p なはは
+        .carousel-item
+          img.d-block alt=("Second slide") src=("https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg") /
+          .carousel-caption.d-none.d-md-block
+            p ..          
+        .carousel-item
+          img.d-block.w-100 alt=("Third slide") src=("https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg") /
+          .carousel-caption.d-none.d-md-block
+            p ..          
+      a.carousel-control-prev data-slide="prev" href="#carouselExampleIndicators" role="button" 
+        span.carousel-control-prev-icon aria-hidden="true" 
+        span.sr-only Previous
+      a.carousel-control-next data-slide="next" href="#carouselExampleIndicators" role="button" 
+        span.carousel-control-next-icon aria-hidden="true" 
+        span.sr-only Next
+.container
+  .row
+		.col-md-7
+			p = @house.strong_point
+
+			h2.my-2 基本情報
+			table.table.table-bordered
+			  tbody
+			    tr
+			      th scope="row"  物件名
+			      td = @house.name
+			    tr
+			      th scope="row"  価格
+			      td #{@house.price}万円
+			    tr
+			      th scope="row"  間取り
+			      td = @house.madori		     
+			    tr
+			      th scope="row"  土地面積
+			      td = @house.land_area
+			    tr
+			      th scope="row"  建物面積
+			      td = @house.house_area 		     
+			    tr
+			      th scope="row"  所在地
+			      td = @house.address		     		      
+			    tr
+			      th scope="row"  交通
+			      td = @house.access		     
+			    tr
+			      th scope="row"  完成時期
+			      td = @house.built_time	     
+			    tr
+			      th scope="row"  築年数
+			      td #{@house.age}年		     		      		      		      		      		      
