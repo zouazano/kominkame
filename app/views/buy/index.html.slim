@@ -1,17 +1,7 @@
 .container
 	.row
-		h3.col-lg.my-3
-			| kominkaで探す
-	.row.justify-content-start
-	  a.col-3 href=stay_index_path
-	    | 泊まる
-	  a.col-3 href=rent_index_path
-	    | 借りる
-	  a.col-3 href=buy_index_path
-	    | 買う
-	.row
-		h3.col-lg.mt-5.mb-3
-			|注目の古民家
+		=render 'buy-navbar'
+		h4 おすすめ物件
 
 .container
    .row
@@ -41,4 +31,4 @@
 	          	small.ml-1 価格
 	          .d-flex.justify-content-between.align-items-center
 	            .btn-group
-	            	a.btn.btn-sm.btn-outline-secondary href=house_path(house.id) target="_blank" role="button"  詳細	
+	            	a.btn.btn-sm.btn-outline-secondary href=house_path(house.id) target="_blank" role="button"  詳細	           

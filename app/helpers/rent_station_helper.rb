@@ -1,0 +1,2 @@
+module RentStationHelper
+end
