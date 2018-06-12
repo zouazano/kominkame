@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :houses
   
   get 'rent_condition/index'
