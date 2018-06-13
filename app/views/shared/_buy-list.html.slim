@@ -1,0 +1,31 @@
+.container
+   .row
+   	- House.all.each do |house|
+	    .col-lg-4
+	    	.card.mb-0.box-shadow
+	      	- if house.image.present?	      	
+	      		a href=house_path(house.id)
+	      			img.card-img-top alt=("Card image cap") src=house.image /
+	      	- else
+	      		a href=house_path(house.id) 		
+	    	    	img.card-img-top alt=("Card image cap") src="https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg"/
+	        .card-body.pb-2.p-1.mb-5.bg-light 
+	          - if house.address.present?
+	          	small.text-info = house.address
+	          - else
+	          	small.text-info 住所
+	          - if house.name.present?
+	          	p.card-text.mb-0 = house.name
+	          - else
+	          	p.card-text.mb-0 物件の名前
+	          - if house.age.present?
+	          	small 築#{house.age}年
+	          - else
+	          	small 築年数
+	          - if house.price.present?
+	          	small.ml-1 #{house.price}万円
+	          - else
+	          	small.ml-1 価格
+	          .d-flex.justify-content-between.align-items-center
+	            .btn-group
+	            	a.btn.btn-sm.btn-outline-secondary href=house_path(house.id) target="_blank" role="button"  詳細
