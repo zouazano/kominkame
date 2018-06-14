@@ -1,7 +1,7 @@
 .container
   .row
     h1.display-5.my-3 = @house.name
-.container
+.container-fluid
   .row
   	.col-lg-7
 	    #carouselExampleIndicators.carousel.slide 
@@ -28,7 +28,7 @@
 	      a.carousel-control-next data-slide="next" href="#carouselExampleIndicators" role="button" 
 	        span.carousel-control-next-icon aria-hidden="true" 
 	        span.sr-only Next
-.container
+.container-fluid
   .row
 		.col-lg-7
 			p = @house.strong_point

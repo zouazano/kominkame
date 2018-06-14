@@ -1,7 +1,7 @@
-.container
+.container-fluid
    .row
    	- House.all.each do |house|
-	    .col-lg-4
+	    .col-sm-12.col-lg-4
 	    	.card.mb-0.box-shadow
 	      	- if house.image.present?	      	
 	      		a href=house_path(house.id)
