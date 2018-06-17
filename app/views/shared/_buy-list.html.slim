@@ -3,7 +3,7 @@
    	- House.all.each do |house|
 	    .col-sm-12.col-lg-4
 	    	.card.mb-0.box-shadow
-	      	- if house.image.present?	      	
+	      	- if house.image.present?    	
 	      		a href=house_path(house.id)
 	      			img.card-img-top alt=("Card image cap") src=house.image /
 	      	- else
