@@ -1,15 +1,19 @@
+=render 'rent-navbar'
+
 .container-fluid
   .row
-    .col-sm-12     
+    .col-sm-12
       #accordionExample.accordion
         .card
           #headingOne.card-header
             h5.mb-0
-              button.btn.btn-link aria-controls="collapseOne" aria-expanded="true" data-target="#collapseOne" data-toggle="collapse" type="button" 
+              button.btn.btn-link.collapsed aria-controls="collapseOne" aria-expanded="false" data-target="#collapseOne" data-toggle="collapse" type="button" 
                 p.display-3 北海道・東北
-          #collapseOne.collapse.show aria-labelledby="headingOne" data-parent="#accordionExample" 
+          #collapseOne.collapse aria-labelledby="headingOne" data-parent="#accordionExample" 
             .card-body
-              p.display-2 
+            -Prefecture.where(id: [1,2,3,4,5,6,7]).each do |prefecture|
+              a href=prefecture_path(prefecture.id)
+                p.display-4.ml-5 =prefecture.name
         .card
           #headingTwo.card-header
             h5.mb-0
@@ -17,7 +21,9 @@
                 p.display-3 関東
           #collapseTwo.collapse aria-labelledby="headingTwo" data-parent="#accordionExample" 
             .card-body
-              | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            -Prefecture.where(id: [8,9,10,11,12,13,14]).each do |prefecture|
+              a href=prefecture_path(prefecture.id)
+                p.display-4.ml-5 =prefecture.name              
         .card
           #headingThree.card-header
             h5.mb-0
@@ -25,4 +31,56 @@
                 p.display-3 甲信越・北陸
           #collapseThree.collapse aria-labelledby="headingThree" data-parent="#accordionExample" 
             .card-body
-              | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            -Prefecture.where(id: [15,16,17,18,19,20]).each do |prefecture|
+              a href=prefecture_path(prefecture.id)
+                p.display-4.ml-5 =prefecture.name               
+        .card
+          #headingFour.card-header
+            h5.mb-0
+              button.btn.btn-link.collapsed aria-controls="collapseFour" aria-expanded="false" data-target="#collapseFour" data-toggle="collapse" type="button" 
+                p.display-3 東海
+          #collapseFour.collapse aria-labelledby="headingFour" data-parent="#accordionExample" 
+            .card-body
+            -Prefecture.where(id: [21..24]).each do |prefecture|
+              a href=prefecture_path(prefecture.id)
+                p.display-4.ml-5 =prefecture.name                             
+        .card
+          #headingFive.card-header
+            h5.mb-0
+              button.btn.btn-link.collapsed aria-controls="collapseFive" aria-expanded="false" data-target="#collapseFive" data-toggle="collapse" type="button" 
+                p.display-3 関西
+          #collapseFive.collapse aria-labelledby="headingFive" data-parent="#accordionExample" 
+            .card-body
+            -Prefecture.where(id: [25..30]).each do |prefecture|
+              a href=prefecture_path(prefecture.id)
+                p.display-4.ml-5 =prefecture.name                             
+        .card
+          #headingSix.card-header
+            h5.mb-0
+              button.btn.btn-link.collapsed aria-controls="collapseSix" aria-expanded="false" data-target="#collapseSix" data-toggle="collapse" type="button" 
+                p.display-3 四国
+          #collapseSix.collapse aria-labelledby="headingSix" data-parent="#accordionExample" 
+            .card-body
+            -Prefecture.where(id: [31..34]).each do |prefecture|
+              a href=prefecture_path(prefecture.id)
+                p.display-4.ml-5 =prefecture.name                             
+        .card
+          #headingSeven.card-header
+            h5.mb-0
+              button.btn.btn-link.collapsed aria-controls="collapseSeven" aria-expanded="false" data-target="#collapseSeven" data-toggle="collapse" type="button" 
+                p.display-3 中国
+          #collapseSeven.collapse aria-labelledby="headingSeven" data-parent="#accordionExample" 
+            .card-body
+            -Prefecture.where(id: [35..39]).each do |prefecture|
+              a href=prefecture_path(prefecture.id)
+                p.display-4.ml-5 =prefecture.name                             
+        .card
+          #headingEight.card-header
+            h5.mb-0
+              button.btn.btn-link.collapsed aria-controls="collapseEight" aria-expanded="false" data-target="#collapseEight" data-toggle="collapse" type="button" 
+                p.display-3 九州・沖縄
+          #collapseEight.collapse aria-labelledby="headingEight" data-parent="#accordionExample" 
+            .card-body
+            -Prefecture.where(id: [40..47]).each do |prefecture|
+              a href=prefecture_path(prefecture.id)
+                p.display-4.ml-5 =prefecture.name                             

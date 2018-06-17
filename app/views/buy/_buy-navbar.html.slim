@@ -1,12 +1,9 @@
 .container-fluid
-  .row
-    h1.col-lg-12.col-sm-12.my-3
+  .row.justify-content-center
+    h1.display-3.col-sm-6.my-3
       | 古民家を買う
-  .row.justify-content-start
-    .col-lg-12.col-sm-12.mb-5  
-      a.col-sm-4 href=rent_area_index_path
-        h2.bg-light 地域から探す
-      a.col-sm-4 href=rent_station_index_path
-        h2.bg-light 最寄り駅から探す
-      a.col-sm-4 href=rent_condition_index_path
-        h2.bg-light こだわり条件から探す
+  .row.justify-content-center
+    a href=rent_area_index_path
+        h2.display-4.col-xs-6.m-3 地域から探す
+    a href=rent_station_index_path
+        h2.display-4.col-xs-6.m-3 全国から探す

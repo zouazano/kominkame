@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :houses
   
+  get 'prefectures/:id', to: 'prefectures#show', as: :prefecture
   get 'rent_condition/index'
   get 'rent_condition/show'
   get 'rent_station/index'

@@ -1,15 +1,25 @@
-.container
-	.row
-		h3.col-lg.my-3
-			| kominkaで探す
-	.row.justify-content-start
-	  a.col-3 href=stay_index_path
-	    | 泊まる
-	  a.col-3 href=rent_index_path
-	    | 借りる
-	  a.col-3 href=buy_index_path
-	    | 買う
-	.row
-		h3.col-lg.mt-5.mb-3
-			|注目の古民家
+.container-fluid
+  .row
+    h1.display-3.col-sm-6.m-3
+      | 古民家を探す
+  .row
+		.card style=("width: 18rem;") 
+			a href=stay_index_path
+				img.card-img-top alt=("Card image cap") src=("https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg") /
+			.card-body
+				a href=stay_index_path
+					h2.col-xs-4 泊まる
+		.card style=("width: 18rem;") 
+			a href=rent_index_path
+				img.card-img-top alt=("Card image cap") src=("http://gahag.net/img/201511/21s/gahag-0027844492-1.jpg") /
+			.card-body
+				a href=rent_index_path
+					h2.col-xs-4 借りる		    
+		.card style=("width: 18rem;") 
+			a href=buy_index_path
+				img.card-img-top alt=("Card image cap") src=("https://d1f5hsy4d47upe.cloudfront.net/c2/c23d015b0fd7051c6587380f7caa7f46_t.jpeg") /
+			.card-body
+				a href=buy_index_path
+					h2.col-xs-4 買う					
+
 =render 'shared/buy-list'
