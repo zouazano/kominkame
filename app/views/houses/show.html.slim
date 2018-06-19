@@ -1,6 +1,6 @@
 .container
   .row
-    h1.display-5.my-3 = @house.name
+    h1.my-3 = @house.name
 .container-fluid
   .row
   	.col-lg-7
@@ -11,7 +11,7 @@
 	        li data-slide-to="2" data-target="#carouselExampleIndicators"
 	      .carousel-inner
 	        .carousel-item.active
-	          img.d-block.w-100 alt=("First slide") src=@house.image /
+	          img.d-block.w-100 alt=("First slide") src=@house.image.thumb /
 	          .carousel-caption.d-none.d-md-block
 	            p ..
 	        .carousel-item

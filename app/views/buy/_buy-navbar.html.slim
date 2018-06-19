@@ -1,9 +1,17 @@
 .container-fluid
-  .row.justify-content-center
-    h1.display-3.col-sm-6.my-3
+  .row
+    h1.col-sm-6.m-3
       | 古民家を買う
-  .row.justify-content-center
-    a href=rent_area_index_path
-        h2.display-4.col-xs-6.m-3 地域から探す
-    a href=rent_station_index_path
-        h2.display-4.col-xs-6.m-3 全国から探す
+  .row
+		.card.m-3 style=("width: 18rem;") 
+			a href=stay_index_path
+				img.card-img-top alt=("Card image cap") src=("https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg") /
+			.card-body
+				a href=stay_index_path
+					h2.col-xs-4.text-body 地域から探す
+		.card.m-3 style=("width: 18rem;") 
+			a href=rent_index_path
+				img.card-img-top alt=("Card image cap") src=("http://gahag.net/img/201511/21s/gahag-0027844492-1.jpg") /
+			.card-body
+				a href=rent_index_path
+					h2.col-xs-4.text-body 全国から探す	    
