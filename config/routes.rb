@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :houses
+  resources :headers
   
   get 'prefectures/:id', to: 'prefectures#show', as: :prefecture
   get 'rent_condition/index'
