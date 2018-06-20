@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'buy_area/index'
+  get 'buy_area/show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :houses
   resources :headers

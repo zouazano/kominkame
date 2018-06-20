@@ -1,11 +1,11 @@
 .container-fluid
    .row
-   	- House.all.each do |house|
-	    .col-sm-12.col-lg-4
+   	- House.where(dealtype: 0).each do |house|
+	    .col-sm-6.col-lg-4
 	    	.card.mb-0.box-shadow
-	      	- if house.image.present?	      	
+	      	- if house.image1.present?	      	
 	      		a href=house_path(house.id)
-	      			img.card-img-top alt=("Card image cap") src=house.image.thumb /
+	      			img.card-img-top alt=("Card image cap") src=house.image1.thumb /
 	      	- else
 	      		a href=house_path(house.id) 		
 	    	    	img.card-img-top alt=("Card image cap") src="https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg"/

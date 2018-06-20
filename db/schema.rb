@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_19_162212) do
+ActiveRecord::Schema.define(version: 2018_06_20_114147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,13 +54,18 @@ ActiveRecord::Schema.define(version: 2018_06_19_162212) do
     t.string "hours"
     t.integer "shop_id"
     t.integer "price"
-    t.string "image"
-    t.integer "type"
+    t.string "image1"
+    t.integer "dealtype"
     t.integer "age"
     t.string "madori"
     t.float "land_area"
     t.float "house_area"
     t.string "built_time"
+    t.string "image2"
+    t.string "image3"
+    t.string "image4"
+    t.string "image5"
+    t.string "image6"
   end
 
   create_table "prefectures", force: :cascade do |t|

@@ -1,0 +1,2 @@
+module BuyAreaHelper
+end

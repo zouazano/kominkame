@@ -20,5 +20,5 @@ end
 
 private
 	def house_params
-		params[:house].permit(:name, :strong_point, :prefecture_id, :zip_code, :address, :access, :hours, :shop_id, :price, :image, :type, :age, :madori, :land_area, :house_area, :built_time)
+		params[:house].permit(:name, :strong_point, :prefecture_id, :zip_code, :address, :access, :hours, :shop_id, :price, :image1, :image2, :image3, :image4, :image5, :image6, :type, :age, :madori, :land_area, :house_area, :built_time)
 	end
