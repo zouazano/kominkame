@@ -1,0 +1,2 @@
+module RentPrefecturesHelper
+end

@@ -6,7 +6,7 @@
 
 .container-fluid
    .row
-   	- House.where(prefecture_id: @prefecture.id).each do |house|
+   	- House.where(prefecture_id: @prefecture.id).where(dealtype: 1).each do |house|
 	    .col-sm-6.col-lg-4
 	    	.card.mb-0.box-shadow
 	      	- if house.image1.present?	      	

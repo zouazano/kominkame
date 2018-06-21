@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'rent_prefectures/index'
+  get 'rent_prefectures/show'
   get 'rent_prefecture/index'
   get 'rent_prefecture/show'
   get 'buy_area/index'
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   resources :headers
   
   get 'prefectures/:id', to: 'prefectures#show', as: :prefecture
+  get 'rent_prefectures/:id', to: 'rent_prefectures#show', as: :rent_prefecture
   get 'rent_condition/index'
   get 'rent_condition/show'
   get 'rent_station/index'
