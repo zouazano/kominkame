@@ -1,0 +1,2 @@
+class RentPrefecture < ApplicationRecord
+end
