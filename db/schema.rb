@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_21_042302) do
+ActiveRecord::Schema.define(version: 2018_06_24_073943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,23 @@ ActiveRecord::Schema.define(version: 2018_06_21_042302) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "buy_prefectures", force: :cascade do |t|
+    t.string "name"
+    t.integer "buy_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "headers", force: :cascade do |t|
     t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "house_images", force: :cascade do |t|
+    t.string "image"
+    t.string "caption"
+    t.integer "house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,6 +100,13 @@ ActiveRecord::Schema.define(version: 2018_06_21_042302) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rent_count"
+  end
+
+  create_table "stay_prefectures", force: :cascade do |t|
+    t.string "name"
+    t.integer "stay_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
