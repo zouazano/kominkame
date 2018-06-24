@@ -1,12 +1,12 @@
 .container-fluid
 	.row
 		.col-sm-12
-			h1.m-3.text-body #{@rent_prefecture.name}の古民家
+			h1.m-3.text-body #{@buy_prefecture.name}の古民家
 
 
 .container-fluid
    .row
-   	- House.where(rent_prefecture_id: @rent_prefecture.id).each do |house|
+   	- House.where(buy_prefecture_id: @buy_prefecture.id).where(dealtype: 0).each do |house|
 	    .col-sm-6.col-lg-4
 	    	.card.mb-0.box-shadow
 	      	- if house.image1.present?	      	

@@ -1,0 +1,2 @@
+class BuyPrefecture < ApplicationRecord
+end

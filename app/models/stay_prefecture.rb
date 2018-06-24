@@ -1,0 +1,2 @@
+class StayPrefecture < ApplicationRecord
+end

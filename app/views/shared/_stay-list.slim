@@ -1,16 +1,10 @@
 .container-fluid
-	.row
-		.col-sm-12
-			h1.m-3.text-body #{@rent_prefecture.name}の古民家
-
-
-.container-fluid
    .row
-   	- House.where(rent_prefecture_id: @rent_prefecture.id).where(dealtype: 1).each do |house|
+   	- House.where(dealtype: 3).each do |house|
 	    .col-sm-6.col-lg-4
 	    	.card.mb-0.box-shadow
 	      	- if house.image1.present?	      	
-	      		a href=house_path(house.id) target="_blank"
+	      		a href=house_path(house.id)
 	      			img.card-img-top alt=("Card image cap") src=house.image1.thumb /
 	      	- else
 	      		a href=house_path(house.id) 		
@@ -34,4 +28,4 @@
 	          	p 価格
 	          .d-flex.justify-content-between.align-items-center
 	            .btn-group
-	            	a.btn.btn-sm.btn-outline-secondary href=house_path(house.id) target="_blank" role="button"  詳細			
+	            	a.btn.btn-sm.btn-outline-secondary href=house_path(house.id) target="_blank" role="button"  詳細
