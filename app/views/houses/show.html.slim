@@ -4,30 +4,20 @@
 .container-fluid
   .row
   	.col-lg-7
-	    #carouselExampleIndicators.carousel.slide 
-	      ol.carousel-indicators
-	        li.active data-slide-to="0" data-target="#carouselExampleIndicators" 
-	        li data-slide-to="1" data-target="#carouselExampleIndicators" 
-	        li data-slide-to="2" data-target="#carouselExampleIndicators"
-	      .carousel-inner
-	        .carousel-item.active
-	          img.d-block.w-100 alt=("First slide") src=@house.image1.thumb /
-	          .carousel-caption.d-none.d-md-block
-	            p ..
-	        .carousel-item
-	          img.d-block.w-100.h-100 alt=("Second slide") src=("https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg") /
-	          .carousel-caption.d-none.d-md-block
-	            p ..          
-	        .carousel-item
-	          img.d-block.w-100.h-100 alt=("Third slide") src=("https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg") /
-	          .carousel-caption.d-none.d-md-block
-	            p ..          
-	      a.carousel-control-prev data-slide="prev" href="#carouselExampleIndicators" role="button" 
-	        span.carousel-control-prev-icon aria-hidden="true" 
-	        span.sr-only Previous
-	      a.carousel-control-next data-slide="next" href="#carouselExampleIndicators" role="button" 
-	        span.carousel-control-next-icon aria-hidden="true" 
-	        span.sr-only Next
+			#carouselExampleControls.carousel.slide data-ride="carousel" 
+			  .carousel-inner
+			    .carousel-item.active
+			      img.d-block.w-100 alt=("First slide") src=@house.house_images.first.image /
+				  - @house.house_images.each do |house_image|
+				    .carousel-item
+				      img.d-block.w-100 alt=("Second slide") src=house_image.image /
+			  a.carousel-control-prev data-slide="prev" href="#carouselExampleControls" role="button" 
+			    span.carousel-control-prev-icon aria-hidden="true" 
+			    span.sr-only Previous
+			  a.carousel-control-next data-slide="next" href="#carouselExampleControls" role="button" 
+			    span.carousel-control-next-icon aria-hidden="true" 
+			    span.sr-only Next
+
 .container-fluid
   .row
 		.col-lg-7

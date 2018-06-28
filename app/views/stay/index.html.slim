@@ -3,4 +3,9 @@
 	.row
 		h2.col-sm-12 おすすめ物件
 
-=render 'shared/stay-list'
+.container-fluid
+   .row		
+   	- House.where(dealtype: 2).where(recommendation: 3).each do |house|  
+	    .col-sm-6.col-lg-4
+	    	.card.mb-0.box-shadow
+		   		= render 'shared/house-list', house: house 
