@@ -6,32 +6,7 @@
 
 .container-fluid
    .row
-   	- House.where(stay_prefecture_id: @stay_prefecture.id).where(dealtype: 3).each do |house|
+   	- House.where(stay_prefecture_id: @stay_prefecture.id).where(dealtype: 2).each do |house|
 	    .col-sm-6.col-lg-4
 	    	.card.mb-0.box-shadow
-	      	- if house.image1.present?	      	
-	      		a href=house_path(house.id) target="_blank"
-	      			img.card-img-top alt=("Card image cap") src=house.image1.thumb /
-	      	- else
-	      		a href=house_path(house.id) 		
-	    	    	img.card-img-top alt=("Card image cap") src="https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg"/
-	        .card-body.pb-2.p-1.mb-5.bg-light 
-	          - if house.address.present?
-	          	span.text-info = house.address
-	          - else
-	          	span.text-info 住所
-	          - if house.name.present?
-	          	h3.card-text.mb-0 = house.name
-	          - else
-	          	h3.card-text.mb-0 物件の名前
-	          - if house.age.present?
-	          	p.mb-0 築#{house.age}年
-	          - else
-	          	p.mb-0 築年数
-	          - if house.price.present?
-	          	p #{house.price}万円
-	          - else
-	          	p 価格
-	          .d-flex.justify-content-between.align-items-center
-	            .btn-group
-	            	a.btn.btn-sm.btn-outline-secondary href=house_path(house.id) target="_blank" role="button"  詳細			
+					= render 'shared/house-list', house: house
