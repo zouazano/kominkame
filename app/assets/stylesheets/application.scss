@@ -11,4 +11,16 @@
  * It is generally better to create a new file per style scope.
  */
  // Custom bootstrap variables must be set or imported *before* bootstrap.
+
+
 @import "bootstrap";
+
+h1 {font-size: 40px}
+h2 {font-size: 30px}
+
+p,a,span {font-size: 20px}
+
+
+body {
+    -webkit-text-size-adjust: 100%;
+}

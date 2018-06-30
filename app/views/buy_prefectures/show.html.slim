@@ -6,6 +6,4 @@
 .container-fluid
    .row
    	- House.where(buy_prefecture_id: @buy_prefecture.id).where(dealtype: 0).each do |house|
-	    .col-sm-6.col-lg-4
-	    	.card.mb-0.box-shadow
-					= render 'shared/house-list', house: house	
+			= render 'shared/house-list', house: house	
