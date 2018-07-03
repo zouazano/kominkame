@@ -20,9 +20,16 @@
 
 .container-fluid
   .row
-		.col-lg-7
+		.col-sm-12
 			p = @house.strong_point
 
+  .row.justify-content-center
+		.col-sm-10
+			a href = new_inquiry_path
+				button.btn.btn-primary.btn-lg.btn-block type="button" この物件について問い合わせる
+
+  .row
+		.col-sm-12
 			h2.my-2 基本情報
 			table.table.table-bordered
 			  tbody
@@ -52,4 +59,7 @@
 			      td = @house.built_time	     
 			    tr
 			      th scope="row"  築年数
-			      td #{@house.age}年		     		      		      		      		      		      
+			      td #{@house.age}年		     
+
+
+

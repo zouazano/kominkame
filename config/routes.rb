@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'inquiries/show'
+  get 'inquiries/new'
+  get 'inquiries/create'
+  get 'inquiries/confrim'
   get 'stay_prefectures/index'
   get 'stay_prefectures/show'
   get 'buy_prefectures/index'
@@ -11,9 +15,11 @@ Rails.application.routes.draw do
   get 'buy_area/index'
   get 'buy_area/show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   resources :houses
   resources :headers
-  
+  resources :inquiries, only: [:new, :create, :show, :update]
+
   get 'prefectures/:id', to: 'prefectures#show', as: :prefecture
   get 'rent_prefectures/:id', to: 'rent_prefectures#show', as: :rent_prefecture
   get 'buy_prefectures/:id', to: 'buy_prefectures#show', as: :buy_prefecture

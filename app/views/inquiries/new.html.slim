@@ -1,0 +1,12 @@
+.container-fluid
+	.row
+		.col-sm-12.mt-5
+			= form_for @inquiry do |f|
+				= f.label :name, '名前'
+				= f.text_field :name, class:"form-control", placeholder:'（例：田中 太郎）'
+				= f.label :email, 'メールアドレス'
+				= f.text_field :email, class:"form-control", placeholder:'（例：kominka@xxxx.com ）'				
+				= f.label :phonenumber, '電話番号'
+				= f.text_field :phonenumber, class:"form-control", placeholder:'（例：09012345678）'
+				= f.label :address, '住所'
+				= f.text_field :address, class:"form-control", placeholder:'（例：）'								

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_015347) do
+ActiveRecord::Schema.define(version: 2018_06_30_063033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,20 @@ ActiveRecord::Schema.define(version: 2018_06_28_015347) do
     t.integer "recommendation"
   end
 
+  create_table "inquiries", force: :cascade do |t|
+    t.integer "house_id"
+    t.integer "user_id"
+    t.integer "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "address"
+    t.string "email"
+    t.string "phonenumber"
+    t.integer "demand"
+    t.text "message"
+  end
+
   create_table "prefectures", force: :cascade do |t|
     t.string "name"
     t.integer "rent_cout"
@@ -95,6 +109,15 @@ ActiveRecord::Schema.define(version: 2018_06_28_015347) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rent_count"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string "name"
+    t.string "owner"
+    t.integer "house_id"
+    t.integer "inquiry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stay_prefectures", force: :cascade do |t|
