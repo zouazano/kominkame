@@ -1,9 +1,11 @@
 =render 'stay-navbar'
-.container-fluid
+.container
 	.row
 		h2.col-sm-12 おすすめ物件
 
-.container-fluid
-   .row		
-   	- House.where(dealtype: 2).where(recommendation: 3).each do |house|  
-			= render 'shared/house-list', house: house 
+.container
+	.row
+   	.col-md-12
+	   	.col-xs-4
+		   	- House.where(dealtype: 2).where(recommendation: 3).each do |house|  
+					= render 'shared/house-list', house: house 
