@@ -1,11 +1,7 @@
 .col-sm-6.col-lg-4
 	.card.mb-0.box-shadow
-		- if house.house_images.present?	      	
-			a href=house_path(house.id) target="_blank"
+		a href=house_path(house.id) target="_blank"
 				img.card-img-top alt=("Card image cap") src=house.house_images&.first&.image&.thumb /
-		- else
-			a href=house_path(house.id) 		
-		  	img.card-img-top alt=("Card image cap") src="https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg"/
 		.card-body.pb-2.p-1.mb-5.bg-light 
 		  - if house.address.present?
 		  	p.text-info.mb-0 = house.address

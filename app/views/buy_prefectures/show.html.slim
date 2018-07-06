@@ -1,9 +1,9 @@
-.container-fluid
+.container
 	.row
 		.col-sm-12
 			h1.m-3.text-body #{@buy_prefecture.name}の古民家
 
-.container-fluid
+.container
    .row
    	- House.where(buy_prefecture_id: @buy_prefecture.id).where(dealtype: 0).each do |house|
 			= render 'shared/house-list', house: house	

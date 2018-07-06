@@ -1,23 +1,23 @@
-.container-fluid
+.container
   .row
     h1.col-sm-6.m-3
       | 古民家を探す
   .row
-		.card.m-3 style=("width: 18rem;") 
+		.card.ml-2.mb-3 style=("width: 7rem;") 
 			a href=stay_index_path
 				img.card-img-top alt=("Card image cap") src=("https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg") /
 			.card-body
 				a href=stay_index_path
 					h2.col-xs-4.text-body 泊まる
-		.card.m-3 style=("width: 18rem;") 
+		.card.ml-2.mb-3 style=("width: 7rem;") 
 			a href=rent_index_path
 				img.card-img-top alt=("Card image cap") src=("http://gahag.net/img/201511/21s/gahag-0027844492-1.jpg") /
 			.card-body
 				a href=rent_index_path
 					h2.col-xs-4.text-body 借りる		    
-		.card.m-3 style=("width: 18rem;") 
+		.card.ml-2.mb-3 style=("width: 7rem;") 
 			a href=buy_index_path
-				img.card-img-top alt=("Card image cap") src=("https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg") /
+				img.card-img-top alt=("Card image cap") src=("https://www.pakutaso.com/shared/img/thumb/004Yamasha17103_TP_V.jpg") /
 			.card-body
 				a href=buy_index_path
 					h2.col-xs-4.text-body 買う					
@@ -27,7 +27,7 @@
     h2.col-sm-6.m-3
       | おすすめ物件
 
-.container-fluid
+.container
 	.row
 		- House.where(recommendation: 3).each do |house|  
 			= render 'shared/house-list', house: house 
