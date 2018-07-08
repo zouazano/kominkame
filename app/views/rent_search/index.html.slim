@@ -1,0 +1,17 @@
+.container
+	.row
+		.col-sm-12.mt-5
+		  = form_tag(houses_path, method: "get") do
+		    = label_tag :price, "価格"
+		    = text_field_tag :price, params[:price]
+
+		    = label_tag :name, "性別"
+		    = select_tag :dealtype, options_for_select(House.dealtypes), include_blank: true
+		    = submit_tag "検索"
+.container
+	.row
+		- House.where(dealtype: 1).each do |house|  
+			= render 'shared/house-list', house: house 
+
+
+

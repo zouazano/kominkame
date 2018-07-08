@@ -6,10 +6,9 @@
   	.col-lg-7
 			#carouselExampleControls.carousel.slide data-ride="carousel" 
 			  .carousel-inner
-			    .carousel-item.active
-			      img.d-block.w-100 alt=("First slide") src=@house.house_images.first.image /
+			    
 				  - @house.house_images.each do |house_image|
-				    .carousel-item
+				    .carousel-item.active
 				      img.d-block.w-100 alt=("Second slide") src=house_image.image /
 			  a.carousel-control-prev data-slide="prev" href="#carouselExampleControls" role="button" 
 			    span.carousel-control-prev-icon aria-hidden="true" 
@@ -25,7 +24,7 @@
 
   .row.justify-content-center
 		.col-sm-10
-			a href = new_inquiry_path
+			a href = new_house_inquiry_path(@house.id)
 				button.btn.btn-primary.btn-lg.btn-block type="button" この物件について問い合わせる
 
   .row
@@ -44,10 +43,10 @@
 			      td = @house.madori		     
 			    tr
 			      th scope="row"  土地面積
-			      td = @house.land_area
+			      td #{@house.land_area}㎡
 			    tr
 			      th scope="row"  建物面積
-			      td = @house.house_area 		     
+			      td #{@house.house_area}㎡ 		     
 			    tr
 			      th scope="row"  所在地
 			      td = @house.address		     		      
