@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveImage1FromHouses < ActiveRecord::Migration[5.2]
   def change
     remove_column :houses, :image1, :string

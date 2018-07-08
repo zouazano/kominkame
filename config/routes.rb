@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   get 'rent_search/index'
   get 'stay_prefectures/index'
   get 'stay_prefectures/show'
@@ -12,9 +13,9 @@ Rails.application.routes.draw do
   get 'buy_area/index'
   get 'buy_area/show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
-  resources :houses do  
-    resources :inquiries, only: [:new, :create, :show, :update]
+
+  resources :houses do
+    resources :inquiries, only: %i[new create show update]
   end
   resources :headers
 
@@ -34,8 +35,8 @@ Rails.application.routes.draw do
   get 'buy/show'
   get 'stay/index'
   get 'stay/show'
-	root 'top#index'
-  
+  root 'top#index'
+
   get 'top/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

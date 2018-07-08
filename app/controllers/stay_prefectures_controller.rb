@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class StayPrefecturesController < ApplicationController
-  def index
-  end
+  def index; end
 
   def show
-  	@stay_prefecture = StayPrefecture.find(params[:id])
+    @stay_prefecture = StayPrefecture.find(params[:id])
   end
 end

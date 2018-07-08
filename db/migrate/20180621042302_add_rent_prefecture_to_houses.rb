@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddRentPrefectureToHouses < ActiveRecord::Migration[5.2]
   def change
     add_column :houses, :rent_prefecture_id, :integer

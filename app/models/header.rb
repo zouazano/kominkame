@@ -1,5 +1,5 @@
-class Header < ApplicationRecord
+# frozen_string_literal: true
 
-	mount_uploader :image, ImageUploader
-	
+class Header < ApplicationRecord
+  mount_uploader :image, ImageUploader
 end

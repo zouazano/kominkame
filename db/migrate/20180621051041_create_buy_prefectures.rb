@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBuyPrefectures < ActiveRecord::Migration[5.2]
   def change
     create_table :buy_prefectures do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddImagesToHouses < ActiveRecord::Migration[5.2]
   def change
     add_column :houses, :image2, :string
