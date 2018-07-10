@@ -1,26 +1,30 @@
 .container
-	.row
-		.col-sm-12.mt-5
-			= form_for [@house, @inquiry] do |f|
-				= f.hidden_field :house_id, value: @house.id
+  .row
+    .col-sm-12.mt-5
+     - if @inquiry.errors.any?
+        ul
+          - @inquiry.errors.full_messages.each do |message|
+            li= message    
+     = form_for [@house, @inquiry] do |f|
+        = f.hidden_field :house_id, value: @house.id
 
-				= f.label :name, '名前'
-				= f.text_field :name, class:"form-control mb-3", placeholder:'（例：田中 太郎）'
+        = f.label :name, '名前'
+        = f.text_field :name, class:"form-control mb-3", placeholder:'（例：田中 太郎）'
 
-				= f.label :email, 'メールアドレス'
-				= f.text_field :email, class:"form-control mb-3", placeholder:'（例：kominka@xxxx.com ）'				
+        = f.label :email, 'メールアドレス'
+        = f.text_field :email, class:"form-control mb-3", placeholder:'（例：kominka@xxxx.com ）'				
 
-				= f.label :phonenumber, '電話番号'
-				= f.text_field :phonenumber, class:"form-control mb-3", placeholder:'（例：09012345678）'
+        = f.label :phonenumber, '電話番号'
+        = f.text_field :phonenumber, class:"form-control mb-3", placeholder:'（例：09012345678）'
 
-				= f.label :address, 'お住まいの都道府県'
-				= f.text_field :address, class:"form-control mb-3", placeholder:'（例： 東京都）'
+        = f.label :address, 'お住まいの都道府県'
+        = f.text_field :address, class:"form-control mb-3", placeholder:'（例： 東京都）'
 
-				= f.label :demand, 'ご要望'
-				= f.select :demand, {"物件の資料を見たい" => "document", "実際に物件を見たい" => "viewing", "その他" => "other"}, {}, {class:"form-control mb-3"}
+        = f.label :demand, 'ご要望'
+        = f.select :demand, {"物件の資料を見たい" => "document", "実際に物件を見たい" => "viewing", "その他" => "other"}, {}, {class:"form-control mb-3"}
 
-				= f.label :message, 'その他ご要望'
-				= f.text_area :message, class:"form-control mb-3"				
+        = f.label :message, 'その他ご要望'
+        = f.text_area :message, class:"form-control mb-3"				
 
 
-				= f.submit "登録する", class:"form-control mb-3"
+        = f.submit "問い合わせる", class:"form-control mb-3"

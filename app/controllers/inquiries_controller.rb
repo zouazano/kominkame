@@ -7,16 +7,17 @@ class InquiriesController < ApplicationController
 
   def new
     @house = House.find(params[:house_id])
-    @inquiry = Inquiry.new
+    @inquiry = @house.inquiries.new
   end
 
   def create
     @house = House.find(params[:house_id])
-    @inquiry = Inquiry.create(inquiry_params)
+    @inquiry = @house.inquiries.create(inquiry_params)
     if @inquiry.save
-      redirect_to house_path(@house_id)
+      redirect_to house_path(@house)
+      flash = '予約を送信しました。メールをご確認ください。'
     else
-      redirect_to top_index_path
+      render :new
     end
   end
 

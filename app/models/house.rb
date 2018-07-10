@@ -3,6 +3,8 @@
 class House < ApplicationRecord
   has_many :house_images, dependent: :destroy
   has_many :inquiries
+  accepts_nested_attributes_for :inquiries
+
 
   mount_uploader :image1, ImageUploader
   mount_uploader :image2, ImageUploader
