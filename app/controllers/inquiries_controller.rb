@@ -1,28 +1,36 @@
 # frozen_string_literal: true
 
 class InquiriesController < ApplicationController
-  def show; end
+  def show
+
+  end
 
   def new
     @house = House.find(params[:house_id])
-    @inquiry = @house.inquiries.new
+    @inquiry = Inquiry.new
   end
 
   def create
     @house = House.find(params[:house_id])
-    @inquiry = @house.inquiries.create(inquiry_params)
+    @inquiry = Inquiry.create(inquiry_params)
     if @inquiry.save
-      redirect_to @inquiry, notice: 'ユーザ登録しました。'
+      redirect_to house_path(@house_id)
     else
-      render 'new'
+      redirect_to top_index_path
+    end
   end
 
-    private
+
+  def confrim
+
+  end
+
+
+  private
 
     def inquiry_params
-      params[:inquiry].permit(:house_id, :name, :email, :phonenumber, :demand, :message)
+      params.require(:inquiry).permit(:house_id, :address, :name, :email, :phonenumber, :demand, :message)
     end
-end
 
-  def confrim; end
+
 end

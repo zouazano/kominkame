@@ -1,7 +1,7 @@
 .container
 	.row
 		.col-sm-12.mt-5
-			= form_for [@house, @house.inquiries.build] do |f|
+			= form_for [@house, @inquiry] do |f|
 				= f.hidden_field :house_id, value: @house.id
 
 				= f.label :name, '名前'

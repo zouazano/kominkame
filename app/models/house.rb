@@ -17,11 +17,4 @@ class House < ApplicationRecord
   enum buy_prefecture_id: { hokkaido_buy: 1, aomori_buy: 2, iwate_buy: 3, miyagi_buy: 4, akita_buy: 5, yamagata_buy: 6, fukushima_buy: 7, tokyo_buy: 8, kanagawa_buy: 9, saitama_buy: 10, chiba_buy: 11, ibaraki_buy: 12, gunnma_buy: 13, tochigi_buy: 14, yamanashi_buy: 15, nigata_buy: 16, nagano_buy: 17, toyama_buy: 18, ishikawa_buy: 19, fukui_buy: 20, aichi_buy: 21, gifu_buy: 22, shizuoka_buy: 23, mie_buy: 24, osaka_buy: 25, hyogo_buy: 26, kyoto_buy: 27, shiga_buy: 28, nara_buy: 29, wakayama_buy: 30, tokushima_buy: 31, kagawa_buy: 32, ehime_buy: 33, kochi_buy: 34, tottori_buy: 35, shimane_buy: 36, okayama_buy: 37, hiroshima_buy: 38, yamaguchi_buy: 39, fukuoka_buy: 40, saga_buy: 41, nagasaki_buy: 42, kumamoto_buy: 43, oita_buy: 44, miyazaki_buy: 45, kagoshima_buy: 46, okinawa_buy: 47 }
   enum stay_prefecture_id: { hokkaido_stay: 1, aomori_stay: 2, iwate_stay: 3, miyagi_stay: 4, akita_stay: 5, yamagata_stay: 6, fukushima_stay: 7, tokyo_stay: 8, kanagawa_stay: 9, saitama_stay: 10, chiba_stay: 11, ibaraki_stay: 12, gunnma_stay: 13, tochigi_stay: 14, yamanashi_stay: 15, nigata_stay: 16, nagano_stay: 17, toyama_stay: 18, ishikawa_stay: 19, fukui_stay: 20, aichi_stay: 21, gifu_stay: 22, shizuoka_stay: 23, mie_stay: 24, osaka_stay: 25, hyogo_stay: 26, kyoto_stay: 27, shiga_stay: 28, nara_stay: 29, wakayama_stay: 30, tokushima_stay: 31, kagawa_stay: 32, ehime_stay: 33, kochi_stay: 34, tottori_stay: 35, shimane_stay: 36, okayama_stay: 37, hiroshima_stay: 38, yamaguchi_stay: 39, fukuoka_stay: 40, saga_stay: 41, nagasaki_stay: 42, kumamoto_stay: 43, oita_stay: 44, miyazaki_stay: 45, kagoshima_stay: 46, okinawa_stay: 47 }
 
-  def self.search(search) # self.でクラスメソッドとしている
-    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
-      House.where(['name LIKE ?', "%#{search}%"])
-    else
-      House.all # 全て表示。
-    end
-  end
 end
