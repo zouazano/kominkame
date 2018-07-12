@@ -31,8 +31,24 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  version :thumb_pc do
+    process resize_to_fill: [1200, 900]
+  end
+
+  version :square_pc do
+    process resize_to_fill: [900, 900]
+  end
+
   version :thumb do
-    process resize_to_fill: [900, 600]
+    process resize_to_fill: [1200, 900]
+  end  
+
+  version :square do
+    process resize_to_fill: [1200, 900]
+  end
+
+  version :thumb do
+    process resize_to_fill: [1200, 900]
   end
 
   version :logo do

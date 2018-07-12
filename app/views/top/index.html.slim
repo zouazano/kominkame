@@ -2,25 +2,30 @@
   .row
     h1.col-sm-6.m-3
       | 古民家を探す
+  
+.container
   .row
-		.card.ml-2.mb-3 style=("width: 7rem;") 
-			a href=stay_index_path
-				img.card-img-top alt=("Card image cap") src=("https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg") /
-			.card-body
-				a href=stay_index_path
-					h2.col-xs-4.text-body 泊まる
-		.card.ml-2.mb-3 style=("width: 7rem;") 
-			a href=rent_index_path
-				img.card-img-top alt=("Card image cap") src=("http://gahag.net/img/201511/21s/gahag-0027844492-1.jpg") /
-			.card-body
-				a href=rent_index_path
-					h2.col-xs-4.text-body 借りる		    
-		.card.ml-2.mb-3 style=("width: 7rem;") 
-			a href=buy_index_path
-				img.card-img-top alt=("Card image cap") src=("https://www.pakutaso.com/shared/img/thumb/004Yamasha17103_TP_V.jpg") /
-			.card-body
-				a href=buy_index_path
-					h2.col-xs-4.text-body 買う					
+    .col-4.col-md-3.px-2
+      .card
+        a href=stay_index_path
+          img.img-fluid alt=("Card image cap") src=("https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg") /
+        .card-body
+          a href=stay_index_path
+            h2.text-body 泊まる          
+    .col-4.col-md-3.px-2
+      .card
+        a href=rent_index_path
+          img.img-fluid alt=("Card image cap") src=("http://gahag.net/img/201511/21s/gahag-0027844492-1.jpg") /
+        .card-body
+          a href=rent_index_path
+            h2.text-body 借りる		  
+    .col-4.col-md-3.px-2
+      .card
+        a href=buy_index_path
+          img.img-fluid alt=("Card image cap") src=("https://www.pakutaso.com/shared/img/thumb/004Yamasha17103_TP_V.jpg") /
+        .card-body
+          a href=buy_index_path
+            h2.text-body 買う					
 
 
   .row  
@@ -28,6 +33,6 @@
       | おすすめ物件
 
 .container
-	.row
-		- House.where(recommendation: 3).each do |house|  
-			= render 'shared/house-list', house: house 
+  .row
+    - House.where(recommendation: 3).each do |house|  
+      = render 'shared/house-list', house: house 

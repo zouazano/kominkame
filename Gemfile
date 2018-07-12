@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'rails-i18n'
+
 gem 'rubocop', require: false
 
 gem 'carrierwave'
