@@ -7,3 +7,7 @@
    .row
    	- House.where(buy_prefecture_id: @buy_prefecture.id).where(dealtype: 0).each do |house|
 			= render 'shared/house-list', house: house	
+
+
+
+   p = link_to prefecture_dealtype_path(@buy_prefecture.id)
