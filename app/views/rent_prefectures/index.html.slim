@@ -14,7 +14,7 @@
                 h2.text-body 北海道・東北
           #collapseOne.collapse aria-labelledby="headingOne" data-parent="#accordionExample" 
             .card-body
-            -RentPrefecture.where(id: [1,2,3,4,5,6,7]).each do |rent_prefecture|
+            -Prefecture.where(id: [1,2,3,4,5,6,7]).each do |rent_prefecture|
               a href=rent_prefecture_path(rent_prefecture.id)
                 h2.text-body.ml-5 =rent_prefecture.name
         .card
@@ -24,7 +24,7 @@
                 h2.text-body 関東
           #collapseTwo.collapse aria-labelledby="headingTwo" data-parent="#accordionExample" 
             .card-body
-            -RentPrefecture.where(id: [8,9,10,11,12,13,14]).each do |rent_prefecture|
+            -Prefecture.where(id: [8,9,10,11,12,13,14]).each do |rent_prefecture|
               a href=rent_prefecture_path(rent_prefecture.id)
                 h2.text-body.ml-5 =rent_prefecture.name              
         .card
@@ -34,7 +34,7 @@
                 h2.text-body 甲信越・北陸
           #collapseThree.collapse aria-labelledby="headingThree" data-parent="#accordionExample" 
             .card-body
-            -RentPrefecture.where(id: [15,16,17,18,19,20]).each do |rent_prefecture|
+            -Prefecture.where(id: [15,16,17,18,19,20]).each do |rent_prefecture|
               a href=rent_prefecture_path(rent_prefecture.id)
                 h2.text-body.ml-5 =rent_prefecture.name               
         .card
@@ -44,7 +44,7 @@
                 h2.text-body 東海
           #collapseFour.collapse aria-labelledby="headingFour" data-parent="#accordionExample" 
             .card-body
-            -RentPrefecture.where(id: [21..24]).each do |rent_prefecture|
+            -Prefecture.where(id: [21..24]).each do |rent_prefecture|
               a href=rent_prefecture_path(rent_prefecture.id)
                 h2.text-body.ml-5 =rent_prefecture.name                             
         .card
@@ -54,7 +54,7 @@
                 h2.text-body 関西
           #collapseFive.collapse aria-labelledby="headingFive" data-parent="#accordionExample" 
             .card-body
-            -RentPrefecture.where(id: [25..30]).each do |rent_prefecture|
+            -Prefecture.where(id: [25..30]).each do |rent_prefecture|
               a href=rent_prefecture_path(rent_prefecture.id)
                 h2.text-body.ml-5 =rent_prefecture.name                             
         .card
@@ -64,7 +64,7 @@
                 h2.text-body 四国
           #collapseSix.collapse aria-labelledby="headingSix" data-parent="#accordionExample" 
             .card-body
-            -RentPrefecture.where(id: [31..34]).each do |rent_prefecture|
+            -Prefecture.where(id: [31..34]).each do |rent_prefecture|
               a href=rent_prefecture_path(rent_prefecture.id)
                 h2.text-body.ml-5 =rent_prefecture.name                             
         .card
@@ -74,7 +74,7 @@
                 h2.text-body 中国
           #collapseSeven.collapse aria-labelledby="headingSeven" data-parent="#accordionExample" 
             .card-body
-            -RentPrefecture.where(id: [35..39]).each do |rent_prefecture|
+            -Prefecture.where(id: [35..39]).each do |rent_prefecture|
               a href=rent_prefecture_path(rent_prefecture.id)
                 h2.text-body.ml-5 =rent_prefecture.name                             
         .card
@@ -84,6 +84,6 @@
                 h2.text-body 九州・沖縄
           #collapseEight.collapse aria-labelledby="headingEight" data-parent="#accordionExample" 
             .card-body
-            -RentPrefecture.where(id: [40..47]).each do |rent_prefecture|
+            -Prefecture.where(id: [40..47]).each do |rent_prefecture|
               a href=rent_prefecture_path(rent_prefecture.id)
                 h2.text-body.ml-5 =rent_prefecture.name                             

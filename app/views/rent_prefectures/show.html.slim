@@ -1,10 +1,10 @@
 .container
   .row
     .col-sm-12
-      h1.m-3.text-body #{@rent_prefecture.name}の古民家
+      h1.m-3.text-body #{@prefecture.name}の古民家
 
 
 .container
    .row
-     - House.where(rent_prefecture_id: @rent_prefecture.id).where(dealtype: 1).each do |house|
-      = render 'shared/house-list', house: house    
+     - House.where(prefecture_id: @prefecture.id).where(dealtype: 1).each do |house|
+      = render 'shared/house-list', house: house 

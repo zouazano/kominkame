@@ -1,13 +1,9 @@
 .container
 	.row
 		.col-sm-12
-			h1.m-3.text-body #{@buy_prefecture.name}の古民家
+			h1.m-3.text-body #{@prefecture.name}の古民家
 
 .container
    .row
-   	- House.where(buy_prefecture_id: @buy_prefecture.id).where(dealtype: 0).each do |house|
-			= render 'shared/house-list', house: house	
-
-
-
-   p = link_to prefecture_dealtype_path(@buy_prefecture.id)
+   	- House.where(prefecture_id: @prefecture.id).where(dealtype: 0).each do |house|
+			= render 'shared/house-list', house: house
