@@ -2,8 +2,6 @@
 
 Rails.application.routes.draw do
   get 'rent_search/index'
-  get 'stay_prefectures/index'
-  get 'stay_prefectures/show'
   get 'buy_prefectures/index'
   get 'buy_prefectures/show'
   get 'rent_prefectures/index'
@@ -25,7 +23,7 @@ Rails.application.routes.draw do
   resources :buy_prefectures, only: [:index, :show]
   resources :rent_prefectures, only: [:index, :show]
   resources :stay_prefectures, only: [:index, :show]
-  
+
   get 'rent_condition/index'
   get 'rent_condition/show'
   get 'rent_station/index'
