@@ -3,7 +3,7 @@
     h1.m-3 = @house.name
 .container
   .row
-    .col-lg-7
+    .col-md-6
       #carouselExampleControls.carousel.slide data-ride="carousel" 
         .carousel-inner
           - @house.house_images.each.with_index(1) do |house_image, counter|
@@ -11,55 +11,55 @@
               .carousel-item.active
                 img.d-block.w-100 alt=("slide #{counter}") src=house_image.image.thumb /
             - else
-			        .carousel-item
-			          img.d-block.w-100 alt=("slide #{counter}") src=house_image.image.thumb /
-			 
+              .carousel-item
+                img.d-block.w-100 alt=("slide #{counter}") src=house_image.image.thumb /
+       
         a.carousel-control-prev data-slide="prev" href="#carouselExampleControls" role="button" 
-			    span.carousel-control-prev-icon aria-hidden="true" 
-			    span.sr-only Previous
+          span.carousel-control-prev-icon aria-hidden="true" 
+          span.sr-only Previous
         a.carousel-control-next data-slide="next" href="#carouselExampleControls" role="button" 
-			    span.carousel-control-next-icon aria-hidden="true" 
-			    span.sr-only Next
+          span.carousel-control-next-icon aria-hidden="true" 
+          span.sr-only Next
+
+    .col-sm-12.col-md-4
+      p = @house.strong_point
+
+  .row
+    .col-sm-12.mb-5
+      h2.mt-5.mb-2 基本情報
+      table.table.table-bordered
+        tbody
+          tr
+            th scope="row"  物件名
+            td = @house.name
+          tr
+            th scope="row"  価格
+            td #{@house.price}万円
+          tr
+            th scope="row"  間取り
+            td = @house.madori         
+          tr
+            th scope="row"  土地面積
+            td #{@house.land_area}㎡
+          tr
+            th scope="row"  建物面積
+            td #{@house.house_area}㎡          
+          tr
+            th scope="row"  所在地
+            td = @house.address                   
+          tr
+            th scope="row"  交通
+            td = @house.access         
+          tr
+            th scope="row"  完成時期
+            td = @house.built_time       
+          tr
+            th scope="row"  築年数
+            td #{@house.age}年  
+
 
 .container
-  .row
-		.col-sm-12
-			p = @house.strong_point
-
-  .row.justify-content-center
-		.col-sm-10
-			a href = new_house_inquiry_path(@house.id)
-				button.btn.btn-primary.btn-lg.btn-block type="button" この物件について問い合わせる
-
-  .row
-		.col-sm-12
-			h2.mt-5.mb-2 基本情報
-			table.table.table-bordered
-			  tbody
-			    tr
-			      th scope="row"  物件名
-			      td = @house.name
-			    tr
-			      th scope="row"  価格
-			      td #{@house.price}万円
-			    tr
-			      th scope="row"  間取り
-			      td = @house.madori		     
-			    tr
-			      th scope="row"  土地面積
-			      td #{@house.land_area}㎡
-			    tr
-			      th scope="row"  建物面積
-			      td #{@house.house_area}㎡ 		     
-			    tr
-			      th scope="row"  所在地
-			      td = @house.address		     		      
-			    tr
-			      th scope="row"  交通
-			      td = @house.access		     
-			    tr
-			      th scope="row"  完成時期
-			      td = @house.built_time	     
-			    tr
-			      th scope="row"  築年数
-			      td #{@house.age}年	
+  .row.justify-content-center.bg-secondary.fixed-bottom.align-items-center style=("height: 60px;")
+    .col-10.col-md-6
+      a href = new_house_inquiry_path(@house.id)
+        button.btn.btn-primary.btn-lg.btn-block type="button" この物件について問い合わせる
