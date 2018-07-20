@@ -12,7 +12,7 @@ gem 'rubocop', require: false
 gem 'carrierwave'
 gem 'rmagick', require: 'RMagick'
 
-gem "browser", require: "browser/browser"
+gem "browser"
 
 gem 'rails_admin', '~> 1.3'
 gem 'rails_admin_import', '~> 2.1'

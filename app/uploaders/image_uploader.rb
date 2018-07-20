@@ -34,6 +34,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb_pc do
     process resize_to_fill: [1200, 750]
   end
+  
+  version :header do
+    process resize_to_fill: [1004, 300]
+  end
 
   version :square_pc do
     process resize_to_fill: [900, 900]
