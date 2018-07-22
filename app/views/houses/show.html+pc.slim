@@ -2,8 +2,8 @@
   .row
     .col-12
       h1.mt-3.p-3.border = @house.name
-.o-contents
-  .o-contents__left
+.container
+  .row
     .col-md-8
       #carouselExampleControls.carousel.slide data-ride="carousel" 
         .carousel-inner
@@ -18,6 +18,7 @@
         a.carousel-control-prev data-slide="prev" href="#carouselExampleControls" role="button" 
           span.carousel-control-prev-icon aria-hidden="true" 
           span.sr-only Previous
+          
         a.carousel-control-next data-slide="next" href="#carouselExampleControls" role="button" 
           span.carousel-control-next-icon aria-hidden="true" 
           span.sr-only Next
@@ -40,7 +41,7 @@
             th scope="row"  所在地
             td = @house.address       
     
-.container    
+
   .row
     .col-sm-12.col-md-8
       p = @house.strong_point
