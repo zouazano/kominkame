@@ -1,8 +1,9 @@
 .container
   .row
-    h1.m-3 = @house.name
-.container
-  .row
+    .col-12
+      h1.mt-3.p-3.border = @house.name
+.o-contents
+  .o-contents__left
     .col-md-8
       #carouselExampleControls.carousel.slide data-ride="carousel" 
         .carousel-inner
@@ -21,19 +22,32 @@
           span.carousel-control-next-icon aria-hidden="true" 
           span.sr-only Next
 
-    .col-sm-12.col-md-4
+    .col-4
+      a href = new_house_inquiry_path(@house.id)
+        button.mb-3.btn.btn-primary.btn-lg.btn-block type="button" この物件について問い合わせる 
+      table.table.table-bordered
+        tbody
+          tr
+            th scope="row"  価格
+            td #{@house.price}万円
+          tr
+            th scope="row"  築年数
+            td #{@house.age}年              
+          tr
+            th scope="row"  間取り
+            td = @house.madori         
+          tr
+            th scope="row"  所在地
+            td = @house.address       
+    
+.container    
+  .row
+    .col-sm-12.col-md-8
       p = @house.strong_point
 
-.container
-  .row.justify-content-center.inquiry_bg.fixed-bottom.align-items-center style=("height: 60px;")
-    .col-10.col-md-6
-      a href = new_house_inquiry_path(@house.id)
-        button.btn.btn-primary.btn-lg.btn-block type="button" この物件について問い合わせる
-
-
   .row
-    .col-sm-8.mb-5
-      h2.mt-5.mb-2 基本情報
+    .col-8.mt-4.mb-4
+      h2 基本情報
       table.table.table-bordered
         tbody
           tr
@@ -63,3 +77,9 @@
           tr
             th scope="row"  築年数
             td #{@house.age}年  
+
+.container.mt-4
+  .row.justify-content-center.inquiry_bg.fixed-bottom.align-items-center style=("height: 60px;")
+    .col-10.col-md-6
+      a href = new_house_inquiry_path(@house.id)
+        button.btn.btn-primary.btn-lg.btn-block type="button" この物件について問い合わせる

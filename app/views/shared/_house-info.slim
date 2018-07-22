@@ -1,0 +1,36 @@
+  .row
+    .col-sm-12.col-md-8
+      p = @house.strong_point
+
+  .row
+    .col-8.mt-4.mb-4
+      h2 基本情報
+      table.table.table-bordered
+        tbody
+          tr
+            th scope="row"  物件名
+            td = @house.name
+          tr
+            th scope="row"  価格
+            td #{@house.price}万円
+          tr
+            th scope="row"  間取り
+            td = @house.madori         
+          tr
+            th scope="row"  土地面積
+            td #{@house.land_area}㎡
+          tr
+            th scope="row"  建物面積
+            td #{@house.house_area}㎡          
+          tr
+            th scope="row"  所在地
+            td = @house.address                   
+          tr
+            th scope="row"  交通
+            td = @house.access         
+          tr
+            th scope="row"  完成時期
+            td = @house.built_time       
+          tr
+            th scope="row"  築年数
+            td #{@house.age}年  

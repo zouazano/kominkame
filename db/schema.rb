@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_19_045332) do
+ActiveRecord::Schema.define(version: 2018_07_20_105537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,22 +34,6 @@ ActiveRecord::Schema.define(version: 2018_07_19_045332) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "admins", force: :cascade do |t|
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "buy_prefectures", force: :cascade do |t|
-    t.string "name"
-    t.integer "buy_count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "headers", force: :cascade do |t|
@@ -84,9 +68,7 @@ ActiveRecord::Schema.define(version: 2018_07_19_045332) do
     t.float "land_area"
     t.float "house_area"
     t.string "built_time"
-    t.integer "rent_prefecture_id"
     t.integer "recommendation"
-    t.integer "buy_prefecture_id"
   end
 
   create_table "inquiries", force: :cascade do |t|
@@ -110,13 +92,6 @@ ActiveRecord::Schema.define(version: 2018_07_19_045332) do
     t.integer "stay_cout"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "rent_prefectures", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "rent_count"
   end
 
   create_table "shops", force: :cascade do |t|

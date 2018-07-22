@@ -1,0 +1,17 @@
+    .col-4
+      a href = new_house_inquiry_path(@house.id)
+        button.mb-3.btn.btn-primary.btn-lg.btn-block type="button" この物件について問い合わせる 
+      table.table.table-bordered
+        tbody
+          tr
+            th scope="row"  価格
+            td #{@house.price}万円
+          tr
+            th scope="row"  築年数
+            td #{@house.age}年              
+          tr
+            th scope="row"  間取り
+            td = @house.madori         
+          tr
+            th scope="row"  所在地
+            td = @house.address       

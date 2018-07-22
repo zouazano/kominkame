@@ -1,0 +1,22 @@
+.o-contents {
+  &__left {
+    width: 700px;
+    float: left;
+    margin-right: 20px;
+  }
+  &__right {
+    width: 400px;
+    float: right;
+    margin: 0;
+    .o-moduleReservation {
+      position: relative;
+      display: block;
+      padding: 10px 20px 60px 20px;
+      z-index: auto;
+      margin: 50px 0 0 10px;
+    }
+  }
+  &__clear {
+    clear: both;
+  }
+}
