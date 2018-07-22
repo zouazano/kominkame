@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: kominka_production
-  username: kominka
-  password: <%= ENV['KOMINKA_DATABASE_PASSWORD'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
