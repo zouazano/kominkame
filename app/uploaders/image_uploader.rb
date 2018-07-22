@@ -36,7 +36,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
   
   version :header do
-    process resize_to_fill: [1004, 300]
+    process resize_to_fill: [1600, 480]
   end
 
   version :square_pc do
