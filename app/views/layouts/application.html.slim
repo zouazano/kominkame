@@ -9,5 +9,11 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = favicon_link_tag
   body
+    - if notice
+      p.notice= notice
+    - elsif alert
+      p.alert= alert
+
+
     = render 'shared/header'
     = yield

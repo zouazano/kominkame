@@ -9,6 +9,8 @@ gem 'rails-i18n'
 
 gem 'rubocop', require: false
 
+gem 'devise'
+
 gem 'carrierwave'
 
 gem "browser"

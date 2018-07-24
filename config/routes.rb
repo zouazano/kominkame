@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :admins
   get 'rent_search/index'
   get 'buy_prefectures/index'
   get 'buy_prefectures/show'
@@ -39,5 +40,7 @@ Rails.application.routes.draw do
   root 'top#index'
 
   get 'top/index'
+
+  root to: "top#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
