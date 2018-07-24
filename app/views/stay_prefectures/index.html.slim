@@ -9,14 +9,13 @@
       #accordionExample.accordion
         .card
           #headingOne.card-header
-            h5.mb-0
-              button.btn.btn-link.collapsed aria-controls="collapseOne" aria-expanded="false" data-target="#collapseOne" data-toggle="collapse" type="button" 
-                h2.text-body 北海道・東北
+            button.btn.btn-link.collapsed aria-controls="collapseOne" aria-expanded="false" data-target="#collapseOne" data-toggle="collapse" type="button"   
+              h2.text-body 北海道・東北
           #collapseOne.collapse aria-labelledby="headingOne" data-parent="#accordionExample" 
             .card-body
-            -Prefecture.where(id: [1,2,3,4,5,6,7]).each do |stay_prefecture|
-              a href=stay_prefecture_path(stay_prefecture.id)
-                h2.text-body.ml-5 =stay_prefecture.name
+              -Prefecture.where(id: [1,2,3,4,5,6,7]).each do |stay_prefecture|
+                a href=stay_prefecture_path(stay_prefecture.id)
+                  h2.text-body.ml-5 =stay_prefecture.name
         .card
           #headingTwo.card-header
             h5.mb-0
