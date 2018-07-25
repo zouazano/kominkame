@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :admins
   get 'rent_search/index'
   get 'buy_prefectures/index'
   get 'buy_prefectures/show'
