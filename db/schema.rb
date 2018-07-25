@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_103813) do
+ActiveRecord::Schema.define(version: 2018_07_25_113014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2018_07_25_103813) do
     t.string "hours"
     t.integer "shop_id"
     t.integer "price"
-    t.integer "dealtype"
     t.integer "age"
     t.string "madori"
     t.float "land_area"
@@ -81,6 +80,9 @@ ActiveRecord::Schema.define(version: 2018_07_25_103813) do
     t.string "built_time"
     t.integer "recommendation"
     t.string "source"
+    t.boolean "stayable"
+    t.boolean "rentable"
+    t.boolean "buyable"
   end
 
   create_table "inquiries", force: :cascade do |t|

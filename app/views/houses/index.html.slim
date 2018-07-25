@@ -1,4 +1,4 @@
 .container
    .row		
-   	- House.where(dealtype: 0).where(recommendation: 3).each do |house|  
+   	- House.where(recommendation: 3).each do |house|  
 			= render 'shared/house-list', house: house 
