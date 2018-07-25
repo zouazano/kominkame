@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_025321) do
+ActiveRecord::Schema.define(version: 2018_07_25_103813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_025321) do
     t.float "house_area"
     t.string "built_time"
     t.integer "recommendation"
+    t.string "source"
   end
 
   create_table "inquiries", force: :cascade do |t|

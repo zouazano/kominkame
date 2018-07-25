@@ -31,9 +31,14 @@
           tr
             th scope="row"  価格
             td #{@house.price}万円
-          tr
-            th scope="row"  築年数
-            td #{@house.age}年              
+          - if @house.age.present?
+            tr
+              th scope="row"  築年数
+              td #{@house.age}年        
+          -else
+            tr
+              th scope="row"  築年数
+              td                    
           tr
             th scope="row"  間取り
             td = @house.madori         
@@ -75,9 +80,14 @@
           tr
             th scope="row"  完成時期
             td = @house.built_time       
-          tr
-            th scope="row"  築年数
-            td #{@house.age}年  
+          - if @house.age.present?
+            tr
+              th scope="row"  築年数
+              td #{@house.age}年        
+          -else
+            tr
+              th scope="row"  築年数
+              td                    
 
 .container.mt-4
   .row.justify-content-center.inquiry_bg.fixed-bottom.align-items-center style=("height: 60px;")
