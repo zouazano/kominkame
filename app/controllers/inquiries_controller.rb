@@ -17,10 +17,9 @@ class InquiriesController < ApplicationController
       redirect_to house_path(@house)
       flash = '予約を送信しました。メールをご確認ください。'
     else
-      render :new
+      render 'new'
     end
   end
-
 
   def confrim
 
