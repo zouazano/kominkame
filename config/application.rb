@@ -18,6 +18,5 @@ module Kominka
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.default_locale = :ja
-    config.i18n.fallbacks = %i[ja en]
   end
 end

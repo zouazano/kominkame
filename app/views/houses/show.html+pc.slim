@@ -46,13 +46,15 @@
             th scope="row"  所在地
             td = @house.address       
     
-
+  .row.m-0
+    .col-8
+      p.text-right.text-light 出典：#{@house.source}  
   .row
     .col-sm-12.col-md-8
       p = @house.strong_point
 
   .row
-    .col-8.mt-4.mb-4
+    .col-8.mb-4
       h2 基本情報
       table.table.table-bordered
         tbody

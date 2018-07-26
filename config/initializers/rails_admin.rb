@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 RailsAdmin.config do |config|
+  require 'i18n'
+  I18n.locale = :en
   ### Popular gems integration
-
   # == Devise ==
   config.authenticate_with do
     warden.authenticate! scope: :admin
