@@ -10,10 +10,10 @@
           - @house.house_images.each.with_index(1) do |house_image, counter|
             - if counter == 1
               .carousel-item.active
-                img.d-block.w-100 alt=("slide #{counter}") src=house_image.image.thumb /
+                img.d-block.w-100 alt=("slide #{counter}") src=house_image.image.thumb_pc /
             - else
               .carousel-item
-                img.d-block.w-100 alt=("slide #{counter}") src=house_image.image.thumb /
+                img.d-block.w-100 alt=("slide #{counter}") src=house_image.image.thumb_pc /
        
         a.carousel-control-prev data-slide="prev" href="#carouselExampleControls" role="button" 
           span.carousel-control-prev-icon aria-hidden="true" 
