@@ -1,0 +1,97 @@
+.container
+  .row
+    .col-12
+      h1.mt-3.p-3.border = @stay_house.name
+.container
+  .row
+    .col-md-8
+      #carouselExampleControls.carousel.slide data-ride="carousel" 
+        .carousel-inner
+          - @stay_house.stay_house_images.each.with_index(1) do |stay_house_image, counter|
+            - if counter == 1
+              .carousel-item.active
+                img.d-block.w-100 alt=("slide #{counter}") src=stay_house_image.image.thumb_pc /
+            - else
+              .carousel-item
+                img.d-block.w-100 alt=("slide #{counter}") src=stay_house_image.image.thumb_pc /
+       
+        a.carousel-control-prev data-slide="prev" href="#carouselExampleControls" role="button" 
+          span.carousel-control-prev-icon aria-hidden="true" 
+          span.sr-only Previous
+          
+        a.carousel-control-next data-slide="next" href="#carouselExampleControls" role="button" 
+          span.carousel-control-next-icon aria-hidden="true" 
+          span.sr-only Next
+
+    .col-4
+      
+      table.table.table-bordered
+        tbody
+          tr
+            th scope="row"  価格
+            td #{@stay_house.accommodation_expenses}万円
+          - if @stay_house.age.present?
+            tr
+              th scope="row"  築年数
+              td #{@stay_house.age}年        
+          -else
+            tr
+              th scope="row"  築年数
+              td                    
+          tr
+            th scope="row"  間取り
+            td = @stay_house.madori         
+          tr
+            th scope="row"  所在地
+            td = @stay_house.address       
+    
+  .row.m-0
+    .col-8
+      p.text-right.text-secondary 出典：#{@stay_house.source}  
+  .row
+    .col-sm-12.col-md-8
+      p = @stay_house.strong_point
+
+  .row
+    .col-8.mb-4
+      h2 基本情報
+      table.table.table-bordered
+        tbody
+          tr
+            th scope="row"  物件名
+            td = @stay_house.name
+          tr
+            th scope="row"  価格
+            td #{@stay_house.accommodation_expenses}万円
+          tr
+            th scope="row"  間取り
+            td = @stay_house.madori         
+          tr
+            th scope="row"  土地面積
+            td #{@stay_house.land_area}㎡
+          tr
+            th scope="row"  建物面積
+            td #{@stay_house.house_area}㎡          
+          tr
+            th scope="row"  所在地
+            td = @stay_house.address                   
+          tr
+            th scope="row"  交通
+            td = @stay_house.access         
+          tr
+            th scope="row"  完成時期
+            td = @stay_house.built_time       
+          - if @stay_house.age.present?
+            tr
+              th scope="row"  築年数
+              td #{@stay_house.age}年        
+          -else
+            tr
+              th scope="row"  築年数
+              td                    
+      br
+      br
+      br
+      br
+ 
+

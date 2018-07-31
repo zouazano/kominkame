@@ -1,7 +1,7 @@
 .col-sm-6.col-lg-4
 	.card.mb-0.box-shadow
 		a href=stay_house_path(stay_house.id) target="_blank"
-				img.card-img-top alt=("Card image cap") src=stay_house.house_images&.first&.image&.thumb /
+				img.card-img-top alt=("Card image cap") src=stay_house.stay_house_images&.first&.image&.thumb /
 		.card-body.pb-2.p-1.mb-5.bg-light 
 		  - if stay_house.address.present?
 		  	p.text-info.mb-0 = stay_house.address

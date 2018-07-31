@@ -1,0 +1,2 @@
+module StayHousesHelper
+end

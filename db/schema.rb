@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_29_085117) do
+ActiveRecord::Schema.define(version: 2018_07_31_073017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(version: 2018_07_29_085117) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "buy_house_images", force: :cascade do |t|
+    t.string "image"
+    t.string "caption"
+    t.integer "buy_house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "buy_houses", force: :cascade do |t|
@@ -139,6 +147,14 @@ ActiveRecord::Schema.define(version: 2018_07_29_085117) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rent_house_images", force: :cascade do |t|
+    t.string "image"
+    t.string "caption"
+    t.integer "rent_house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rent_houses", force: :cascade do |t|
     t.string "name"
     t.text "strong_point"
@@ -171,6 +187,14 @@ ActiveRecord::Schema.define(version: 2018_07_29_085117) do
     t.string "owner"
     t.integer "house_id"
     t.integer "inquiry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stay_house_images", force: :cascade do |t|
+    t.string "image"
+    t.string "caption"
+    t.integer "stay_house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

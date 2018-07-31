@@ -1,0 +1,2 @@
+module BuyHousesHelper
+end
