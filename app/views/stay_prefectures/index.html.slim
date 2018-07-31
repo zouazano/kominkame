@@ -63,7 +63,7 @@
                 h2.text-body 四国
           #collapseSix.collapse aria-labelledby="headingSix" data-parent="#accordionExample" 
             .card-body
-            -Prefecture.where(id: [31..34]).each do |stay_prefecture|
+            -Prefecture.where(id: [36..39]).each do |stay_prefecture|
               a href=stay_prefecture_path(stay_prefecture.id)
                 h2.text-body.ml-5 =stay_prefecture.name                             
         .card
@@ -73,7 +73,7 @@
                 h2.text-body 中国
           #collapseSeven.collapse aria-labelledby="headingSeven" data-parent="#accordionExample" 
             .card-body
-            -Prefecture.where(id: [35..39]).each do |stay_prefecture|
+            -Prefecture.where(id: [31..35]).each do |stay_prefecture|
               a href=stay_prefecture_path(stay_prefecture.id)
                 h2.text-body.ml-5 =stay_prefecture.name                             
         .card
