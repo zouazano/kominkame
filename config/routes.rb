@@ -16,11 +16,15 @@ Rails.application.routes.draw do
   resources :houses do
     resources :inquiries, only: %i[new create show update]
   end
+
   resources :headers
 
+  resources :rent_houses, only: [:show]
+  resources :buy_houses, only: [:show]
+  resources :stay_houses, only: [:show]
+
+
   get 'prefectures/:id', to: 'prefectures#show', as: :prefecture
-
-
   resources :buy_prefectures, only: [:index, :show]
   resources :rent_prefectures, only: [:index, :show]
   resources :stay_prefectures, only: [:index, :show]

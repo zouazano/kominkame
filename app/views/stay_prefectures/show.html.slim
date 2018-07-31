@@ -5,6 +5,6 @@
 
 
 .container
-   .row
-   	- House.where(prefecture_id: @prefecture.id).where(stayable: true).each do |house|
-			= render 'shared/house-list', house: house
+   .row		
+   	- StayHouse.where(stayable: true).where(recommendation: 3).each do |stay_house|  
+			= render 'shared/stay_house-list', stay_house: stay_house 

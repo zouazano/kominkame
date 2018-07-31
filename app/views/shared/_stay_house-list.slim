@@ -1,0 +1,24 @@
+.col-sm-6.col-lg-4
+	.card.mb-0.box-shadow
+		a href=stay_house_path(stay_house.id) target="_blank"
+				img.card-img-top alt=("Card image cap") src=stay_house.house_images&.first&.image&.thumb /
+		.card-body.pb-2.p-1.mb-5.bg-light 
+		  - if stay_house.address.present?
+		  	p.text-info.mb-0 = stay_house.address
+		  - else
+		  	p.text-info.mb-0 住所
+		  - if stay_house.name.present?
+		  	h2.card-text.mb-0 = stay_house.name
+		  - else
+		  	h2.card-text.mb-0 物件の名前
+		  - if stay_house.age.present?
+		  	p.mb-0 築#{stay_house.age}年
+		  - else
+		  	p.mb-0 築年数不詳
+		  - if stay_house.accommodation_expenses.present?
+		  	p #{stay_house.accommodation_expenses}万円
+		  - else
+		  	p 価格
+		  .d-flex.justify-content-between.align-items-center
+		    .btn-group
+		    	a.btn.btn-sm.btn-outline-secondary href=stay_house_path(stay_house.id) target="_blank" role="button"  詳細

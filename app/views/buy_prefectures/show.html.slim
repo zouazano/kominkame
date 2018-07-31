@@ -5,5 +5,5 @@
 
 .container
    .row
-   	- House.where(prefecture_id: @prefecture.id).where(buyable: true).each do |house|
-			= render 'shared/house-list', house: house
+   	- BuyHouse.where(buyable: true).where(recommendation: 3).each do |buy_house|  
+			= render 'shared/buy_house-list', buy_house: buy_house 

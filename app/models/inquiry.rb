@@ -2,6 +2,10 @@
 
 class Inquiry < ApplicationRecord
   belongs_to :house
+  belongs_to :rent_house
+  belongs_to :buy_house
+  belongs_to :stay_house
+
 
   enum demand: { document: 0, viewing: 1, other: 2 }
 

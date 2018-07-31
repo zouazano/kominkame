@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_113014) do
+ActiveRecord::Schema.define(version: 2018_07_29_085117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,12 +53,40 @@ ActiveRecord::Schema.define(version: 2018_07_25_113014) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "buy_houses", force: :cascade do |t|
+    t.string "name"
+    t.text "strong_point"
+    t.integer "prefecture_id"
+    t.integer "price"
+    t.string "zip_code"
+    t.string "address"
+    t.string "access"
+    t.string "hours"
+    t.integer "age"
+    t.string "madori"
+    t.float "land_area"
+    t.float "house_area"
+    t.string "built_time"
+    t.text "notes"
+    t.boolean "stayable"
+    t.boolean "rentable"
+    t.boolean "buyable"
+    t.integer "recommendation"
+    t.integer "shop_id"
+    t.string "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "house_images", force: :cascade do |t|
     t.string "image"
     t.string "caption"
     t.integer "house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rent_house_id"
+    t.integer "buy_house_id"
+    t.integer "stay_house_id"
   end
 
   create_table "houses", force: :cascade do |t|
@@ -97,6 +125,9 @@ ActiveRecord::Schema.define(version: 2018_07_25_113014) do
     t.string "phonenumber"
     t.integer "demand"
     t.text "message"
+    t.integer "rent_house_id"
+    t.integer "buy_house_id"
+    t.integer "stay_house_id"
   end
 
   create_table "prefectures", force: :cascade do |t|
@@ -108,11 +139,63 @@ ActiveRecord::Schema.define(version: 2018_07_25_113014) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rent_houses", force: :cascade do |t|
+    t.string "name"
+    t.text "strong_point"
+    t.integer "prefecture_id"
+    t.integer "rent"
+    t.integer "maintenance_fee"
+    t.integer "deposit"
+    t.integer "gratuity_fee"
+    t.string "zip_code"
+    t.string "address"
+    t.string "access"
+    t.string "hours"
+    t.integer "age"
+    t.string "madori"
+    t.float "land_area"
+    t.float "house_area"
+    t.string "built_time"
+    t.boolean "stayable"
+    t.boolean "rentable"
+    t.boolean "buyable"
+    t.integer "recommendation"
+    t.integer "shop_id"
+    t.string "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shops", force: :cascade do |t|
     t.string "name"
     t.string "owner"
     t.integer "house_id"
     t.integer "inquiry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stay_houses", force: :cascade do |t|
+    t.string "name"
+    t.text "strong_point"
+    t.integer "prefecture_id"
+    t.integer "accommodation_expenses"
+    t.string "zip_code"
+    t.string "address"
+    t.string "access"
+    t.string "hours"
+    t.integer "age"
+    t.string "madori"
+    t.float "land_area"
+    t.float "house_area"
+    t.string "built_time"
+    t.text "notes"
+    t.boolean "stayable"
+    t.boolean "rentable"
+    t.boolean "buyable"
+    t.integer "recommendation"
+    t.integer "shop_id"
+    t.string "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
