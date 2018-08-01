@@ -1,89 +1,81 @@
 .container
   .row
     a href=buy_index_path
-      h1.m-3.text-body 古民家を買う 
+      h1.m-3.text-body.text-left.mt-2 古民家を買う 
 
 .container
   .row
     .col-sm-12.mt-3
       #accordionExample.accordion
         .card
-          #headingOne.card-header
-            h5.mb-0
-              button.btn.btn-link.collapsed aria-controls="collapseOne" aria-expanded="false" data-target="#collapseOne" data-toggle="collapse" type="button" 
-                h2.text-body 北海道・東北
+          #headingOne.card-header.p-0 style=("height: 55px;")
+            button.btn.btn-link.collapsed.d-block.w-100 aria-controls="collapseOne" aria-expanded="false" data-target="#collapseOne" data-toggle="collapse" type="button" 
+              h2.text-body.text-left.mt-2 北海道・東北
           #collapseOne.collapse aria-labelledby="headingOne" data-parent="#accordionExample" 
             .card-body
             -Prefecture.where(id: [1,2,3,4,5,6,7]).each do |buy_prefecture|
               a href=buy_prefecture_path(buy_prefecture.id)
-                h2.text-body.ml-5 =buy_prefecture.name
+                h2.text-body.text-left.ml-3.border-top style=("height: 40px;") =buy_prefecture.name
         .card
-          #headingTwo.card-header
-            h5.mb-0
-              button.btn.btn-link.collapsed aria-controls="collapseTwo" aria-expanded="false" data-target="#collapseTwo" data-toggle="collapse" type="button" 
-                h2.text-body 関東
+          #headingTwo.card-header.p-0 style=("height: 55px;")
+            button.btn.btn-link.collapsed.d-block.w-100 aria-controls="collapseTwo" aria-expanded="false" data-target="#collapseTwo" data-toggle="collapse" type="button" 
+              h2.text-body.text-left.mt-2 関東
           #collapseTwo.collapse aria-labelledby="headingTwo" data-parent="#accordionExample" 
             .card-body
             -Prefecture.where(id: [8,9,10,11,12,13,14]).each do |buy_prefecture|
               a href=buy_prefecture_path(buy_prefecture.id)
-                h2.text-body.ml-5 =buy_prefecture.name              
+                h2.text-body.text-left.ml-3.border-top style=("height: 40px;") =buy_prefecture.name              
         .card
-          #headingThree.card-header
-            h5.mb-0
-              button.btn.btn-link.collapsed aria-controls="collapseThree" aria-expanded="false" data-target="#collapseThree" data-toggle="collapse" type="button" 
-                h2.text-body 甲信越・北陸
+          #headingThree.card-header.p-0 style=("height: 55px;")
+            button.btn.btn-link.collapsed.d-block.w-100 aria-controls="collapseThree" aria-expanded="false" data-target="#collapseThree" data-toggle="collapse" type="button" 
+              h2.text-body.text-left.mt-2 甲信越・北陸
           #collapseThree.collapse aria-labelledby="headingThree" data-parent="#accordionExample" 
             .card-body
             -Prefecture.where(id: [15,16,17,18,19,20]).each do |buy_prefecture|
               a href=buy_prefecture_path(buy_prefecture.id)
-                h2.text-body.ml-5 =buy_prefecture.name               
+                h2.text-body.text-left.ml-3.border-top style=("height: 40px;") =buy_prefecture.name               
         .card
-          #headingFour.card-header
-            h5.mb-0
-              button.btn.btn-link.collapsed aria-controls="collapseFour" aria-expanded="false" data-target="#collapseFour" data-toggle="collapse" type="button" 
-                h2.text-body 東海
+          #headingFour.card-header.p-0 style=("height: 55px;")
+            button.btn.btn-link.collapsed.d-block.w-100 aria-controls="collapseFour" aria-expanded="false" data-target="#collapseFour" data-toggle="collapse" type="button" 
+              h2.text-body.text-left.mt-2 東海
           #collapseFour.collapse aria-labelledby="headingFour" data-parent="#accordionExample" 
             .card-body
             -Prefecture.where(id: [21..24]).each do |buy_prefecture|
               a href=buy_prefecture_path(buy_prefecture.id)
-                h2.text-body.ml-5 =buy_prefecture.name                             
+                h2.text-body.text-left.ml-3.border-top style=("height: 40px;") =buy_prefecture.name                             
         .card
-          #headingFive.card-header
-            h5.mb-0
-              button.btn.btn-link.collapsed aria-controls="collapseFive" aria-expanded="false" data-target="#collapseFive" data-toggle="collapse" type="button" 
-                h2.text-body 関西
+          #headingFive.card-header.p-0 style=("height: 55px;")
+            button.btn.btn-link.collapsed.d-block.w-100 aria-controls="collapseFive" aria-expanded="false" data-target="#collapseFive" data-toggle="collapse" type="button" 
+              h2.text-body.text-left.mt-2 関西
           #collapseFive.collapse aria-labelledby="headingFive" data-parent="#accordionExample" 
             .card-body
             -Prefecture.where(id: [25..30]).each do |buy_prefecture|
               a href=buy_prefecture_path(buy_prefecture.id)
-                h2.text-body.ml-5 =buy_prefecture.name                             
+                h2.text-body.text-left.ml-3.border-top style=("height: 40px;") =buy_prefecture.name                             
         .card
-          #headingSix.card-header
-            h5.mb-0
-              button.btn.btn-link.collapsed aria-controls="collapseSix" aria-expanded="false" data-target="#collapseSix" data-toggle="collapse" type="button" 
-                h2.text-body 四国
+          #headingSix.card-header.p-0 style=("height: 55px;")
+            button.btn.btn-link.collapsed.d-block.w-100 aria-controls="collapseSix" aria-expanded="false" data-target="#collapseSix" data-toggle="collapse" type="button" 
+              h2.text-body.text-left.mt-2 四国
           #collapseSix.collapse aria-labelledby="headingSix" data-parent="#accordionExample" 
             .card-body
             -Prefecture.where(id: [36..39]).each do |buy_prefecture|
               a href=buy_prefecture_path(buy_prefecture.id)
-                h2.text-body.ml-5 =buy_prefecture.name                             
+                h2.text-body.text-left.ml-3.border-top style=("height: 40px;") =buy_prefecture.name                             
         .card
-          #headingSeven.card-header
-            h5.mb-0
-              button.btn.btn-link.collapsed aria-controls="collapseSeven" aria-expanded="false" data-target="#collapseSeven" data-toggle="collapse" type="button" 
-                h2.text-body 中国
+          #headingSeven.card-header.p-0 style=("height: 55px;")
+            button.btn.btn-link.collapsed.d-block.w-100 aria-controls="collapseSeven" aria-expanded="false" data-target="#collapseSeven" data-toggle="collapse" type="button" 
+              h2.text-body.text-left.mt-2 中国
           #collapseSeven.collapse aria-labelledby="headingSeven" data-parent="#accordionExample" 
             .card-body
             -Prefecture.where(id: [31..35]).each do |buy_prefecture|
               a href=buy_prefecture_path(buy_prefecture.id)
-                h2.text-body.ml-5 =buy_prefecture.name                             
+                h2.text-body.text-left.ml-3.border-top style=("height: 40px;") =buy_prefecture.name                             
         .card
-          #headingEight.card-header
-            h5.mb-0
-              button.btn.btn-link.collapsed aria-controls="collapseEight" aria-expanded="false" data-target="#collapseEight" data-toggle="collapse" type="button" 
-                h2.text-body 九州・沖縄
+          #headingEight.card-header.p-0 style=("height: 55px;")
+            button.btn.btn-link.collapsed.d-block.w-100 aria-controls="collapseEight" aria-expanded="false" data-target="#collapseEight" data-toggle="collapse" type="button" 
+              h2.text-body.text-left.mt-2 九州・沖縄
           #collapseEight.collapse aria-labelledby="headingEight" data-parent="#accordionExample" 
             .card-body
             -Prefecture.where(id: [40..47]).each do |buy_prefecture|
               a href=buy_prefecture_path(buy_prefecture.id)
-                h2.text-body.ml-5 =buy_prefecture.name                             
+                h2.text-body.text-left.ml-3.border-top style=("height: 40px;") =buy_prefecture.name                             
