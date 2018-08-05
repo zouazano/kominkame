@@ -1,24 +1,27 @@
 - 
-  name: a
-  strong_point: tokyo
+  name: 湖西 北小松の古民家（昭和初期移築/平屋）
+  strong_point: 琵琶湖湖西エリア物件です。昭和初期に華道家によってお寺から移築された古民家。ＪＲにて京都や大阪まで通勤可能。北小松周辺は比良山系から流れ出る清流によって琵琶湖浜辺も水がとても綺麗で、古い集落が残りとてものんびりした環境です。琵琶湖まで徒歩3分程度、スローな生活を望まれる方にお薦めです。（業務用コンロ有り・プロパンガス）
+  prefecture_id: shiga
+  rent: 5
+  maintenance_fee: 
+  deposit: 
+  gratuity_fee: 
+  zip_code: 
+  address: 滋賀県大津市北小松字村屋敷
+  access: 湖西線 北小松駅 徒歩1分
+  hours: 
+  age: 
+  madori: 
+  land_area: 
+  house_area: 
+  built_time: 
+  stayable: 
+  rentable: 
+  buyable: 
+  recommendation: 
+  shop_id: 
+  source: 
   image_url:
-    - https://pbs.twimg.com/profile_images/650690567773392897/vFIf-L9s_400x400.jpg
-    - https://photo.roomhub.jp/media/2/6077898741870774874.jpeg
-- 
-  name: b
-  strong_point: tokyo
-  image_url:
-    - https://photo.roomhub.jp/media/2/6077898741870775346.jpeg
-    - https://photo.roomhub.jp/media/2/6077898741870771814.jpeg
-- 
-  name: c
-  strong_point: tokyo
-  image_url:
-    - takashi@yahoo.fuga
-    - yoshida@yahoo.hoge
-- 
-  name: d
-  strong_point: tokyo
-  image_url:
-    - takashi@yahoo.fuga
-    - yoshida@yahoo.hoge
+    - http://www.roommarket.jp/wp/wp-content/uploads/2018/05/R0071786.jpg
+    - http://www.roommarket.jp/wp/wp-content/uploads/2018/05/R0071632.jpg
+    - http://www.roommarket.jp/wp/wp-content/uploads/2018/05/R0071696.jpg
