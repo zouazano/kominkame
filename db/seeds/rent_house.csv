@@ -1,0 +1,8 @@
+name,strong_point,prefecture_id,rent,maintenance_fee,deposit,gratuity_fee,zip_code,address,access,hours,age
+テスト
+テスト２
+テスト3
+テスト4
+
+
+    name,strong_point,prefecture_id,rent,maintenance_fee,deposit,gratuity_fee,zip_code,address,access,hours,age,madori,land_area,house_area,built_time,stayable,rentable,buyable,recommendation,shop_id,source

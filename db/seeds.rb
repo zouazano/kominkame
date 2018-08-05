@@ -7,3 +7,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "csv"
+
+CSV.foreach("db/seeds/rent_house.csv", headers: true) do |row|
+  attributes = row.to_h.slice("name")
+  RentHouse.where(name: row["name"]).first_or_create(attributes)
+end
