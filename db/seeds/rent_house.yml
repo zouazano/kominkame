@@ -1,0 +1,24 @@
+- 
+  name: a
+  strong_point: tokyo
+  image_url:
+    - https://pbs.twimg.com/profile_images/650690567773392897/vFIf-L9s_400x400.jpg
+    - https://photo.roomhub.jp/media/2/6077898741870774874.jpeg
+- 
+  name: b
+  strong_point: tokyo
+  image_url:
+    - https://photo.roomhub.jp/media/2/6077898741870775346.jpeg
+    - https://photo.roomhub.jp/media/2/6077898741870771814.jpeg
+- 
+  name: c
+  strong_point: tokyo
+  image_url:
+    - takashi@yahoo.fuga
+    - yoshida@yahoo.hoge
+- 
+  name: d
+  strong_point: tokyo
+  image_url:
+    - takashi@yahoo.fuga
+    - yoshida@yahoo.hoge
