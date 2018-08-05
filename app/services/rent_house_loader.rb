@@ -15,7 +15,7 @@ class RentHouseLoader
     	rent_house = RentHouse.find_or_create_by(name: rent_house_data["name"])
 
     	rent_house_data["image_url"].each do |image_url|
-    		rent_house.rent_house_images.find_or_create_by(remote_image_url: image_url)
+    		rent_house.rent_house_images.create(remote_image_url: image_url)
     	end
     end
   end
