@@ -12,7 +12,7 @@ gem 'rubocop', require: false
 gem 'devise'
 
 gem 'carrierwave'
-gem 'fog'
+gem 'fog-aws'
 gem 'dotenv-rails'
 
 gem "browser"
