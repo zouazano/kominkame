@@ -2,6 +2,6 @@ class StayHouse < ApplicationRecord
   has_many :stay_house_images, dependent: :destroy
 
   enum recommendation: { bad: 0, normal: 1, good: 2, great: 3 }
-  enum prefecture_id: { hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7, tokyo: 8, kanagawa: 9, saitama: 10, chiba: 11, ibaraki: 12, gunnma: 13, tochigi: 14, yamanashi: 15, nigata: 16, nagano: 17, toyama: 18, ishikawa: 19, fukui: 20, aichi: 21, gifu: 22, shizuoka: 23, mie: 24, osaka: 25, hyogo: 26, kyoto: 27, shiga: 28, nara: 29, wakayama: 30, tokushima: 31, kagawa: 32, ehime: 33, kochi: 34, tottori: 35, shimane: 36, okayama: 37, hiroshima: 38, yamaguchi: 39, fukuoka: 40, saga: 41, nagasaki: 42, kumamoto: 43, oita: 44, miyazaki: 45, kagoshima: 46, okinawa: 47 }
+  enum prefecture_id: { hokkaido: 1, aomori: 2, iwate: 3, miyagi: 4, akita: 5, yamagata: 6, fukushima: 7, ibaraki: 8, tochigi: 9, gunnma: 10, saitama: 11, chiba: 12, gunnma: 13, tokyo: 14, nigata: 15, toyama: 16, ishikawa: 17, fukui: 18, yamanashi: 19, nagano: 20, gifu: 21, shizuoka: 22, aichi: 23, mie: 24, shiga: 25, kyoto: 26, osaka: 27, hyogo: 28, nara: 29, wakayama: 30, tottori: 31, shimane: 32, okayama: 33, hiroshima: 34, yamaguchi: 35, tokushima: 36, kagawa: 37, ehime: 38, kochi: 39, fukuoka: 40, saga: 41, nagasaki: 42, kumamoto: 43, oita: 44, miyazaki: 45, kagoshima: 46, okinawa: 47 }
  
 end
