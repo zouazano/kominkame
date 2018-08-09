@@ -12,6 +12,7 @@ gem 'rubocop', require: false
 gem 'devise'
 
 gem 'carrierwave'
+gem 'dotenv-rails'
 
 gem "browser"
 
