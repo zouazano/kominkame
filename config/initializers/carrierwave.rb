@@ -7,5 +7,5 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory  = 'rails-photo-carrierwave'
-  config.cache_storage = :fog
+  config.cache_storage = :file
 end
