@@ -15,6 +15,8 @@ gem 'carrierwave'
 gem 'fog-aws'
 gem 'dotenv-rails'
 
+gem 'dragonfly', '~> 1.1.5'
+
 gem "browser"
 
 gem 'rails_admin', '~> 1.3'
