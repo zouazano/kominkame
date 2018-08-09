@@ -1,5 +1,5 @@
 - 
-  name: 湖西 北小松の古民家（昭和初期移築/平屋）
+  name: てすと
   strong_point: 琵琶湖湖西エリア物件です。昭和初期に華道家によってお寺から移築された古民家。ＪＲにて京都や大阪まで通勤可能。北小松周辺は比良山系から流れ出る清流によって琵琶湖浜辺も水がとても綺麗で、古い集落が残りとてものんびりした環境です。琵琶湖まで徒歩3分程度、スローな生活を望まれる方にお薦めです。（業務用コンロ有り・プロパンガス）
   prefecture_id: shiga
   rent: 5
@@ -20,7 +20,7 @@
   buyable: 
   recommendation: 
   shop_id: 
-  source: 
+  source: http://www.roommarket.jp/?p=67215
   image_url:
     - http://www.roommarket.jp/wp/wp-content/uploads/2018/05/R0071786.jpg
     - http://www.roommarket.jp/wp/wp-content/uploads/2018/05/R0071632.jpg

@@ -10,13 +10,14 @@ class RentHouseLoader
   end
 
   def self.yamload
-  	rh = YAML.load_file("db/seeds/rent_house.yml")
+    rh = YAML.load_file("db/seeds/rent_house.yml")
     rh.each do |rent_house_data|
-    	rent_house = RentHouse.find_or_create_by(name: rent_house_data["name"])
+      attributes = rent_house_data
+      rent_house = RentHouse.where(name: rent_house_data["name"]).first_or_create(attributes)
 
-    	rent_house_data["image_url"].each do |image_url|
-    		rent_house.rent_house_images.create(remote_image_url: image_url)
-    	end
+      rent_house_data["image_url"].each do |image_url|
+        rent_house.rent_house_images.create(remote_image_url: image_url)
+      end
     end
   end
 end
