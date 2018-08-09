@@ -17,6 +17,8 @@ class RentHouseLoader
 
       rent_house_data["image_url"].each do |image_url|
         rent_house.rent_house_images.create(remote_image_url: image_url)
+        
+        sleep 2
       end
     end
   end
