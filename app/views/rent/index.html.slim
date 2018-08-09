@@ -5,5 +5,5 @@
 
 .container
    .row		
-   	- RentHouse.where(rentable: true).where(recommendation: 3).each do |rent_house|  
+   	- RentHouse.where(recommendation: 3).each do |rent_house|  
    		= render 'shared/rent_house-list', rent_house: rent_house 

@@ -6,5 +6,5 @@
 
 .container
    .row
-     - RentHouse.where(prefecture_id: @prefecture.id).where(rentable: true).each do |rent_house|
+     - RentHouse.where(prefecture_id: @prefecture.id).each do |rent_house|
       = render 'shared/rent_house-list', rent_house: rent_house 
