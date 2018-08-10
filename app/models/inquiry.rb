@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Inquiry < ApplicationRecord
-  belongs_to :house
   belongs_to :rent_house
   belongs_to :buy_house
   belongs_to :stay_house
