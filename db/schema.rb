@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_035246) do
+ActiveRecord::Schema.define(version: 2018_08_10_071427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,49 +76,11 @@ ActiveRecord::Schema.define(version: 2018_08_10_035246) do
     t.float "house_area"
     t.string "built_time"
     t.text "notes"
-    t.boolean "stayable"
-    t.boolean "rentable"
-    t.boolean "buyable"
     t.integer "recommendation"
     t.integer "shop_id"
     t.string "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "house_images", force: :cascade do |t|
-    t.string "image"
-    t.string "caption"
-    t.integer "house_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "rent_house_id"
-    t.integer "buy_house_id"
-    t.integer "stay_house_id"
-  end
-
-  create_table "houses", force: :cascade do |t|
-    t.string "name"
-    t.text "strong_point"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "prefecture_id"
-    t.string "zip_code"
-    t.string "address"
-    t.string "access"
-    t.string "hours"
-    t.integer "shop_id"
-    t.integer "price"
-    t.integer "age"
-    t.string "madori"
-    t.float "land_area"
-    t.float "house_area"
-    t.string "built_time"
-    t.integer "recommendation"
-    t.string "source"
-    t.boolean "stayable"
-    t.boolean "rentable"
-    t.boolean "buyable"
   end
 
   create_table "inquiries", force: :cascade do |t|
@@ -173,9 +135,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_035246) do
     t.float "land_area"
     t.float "house_area"
     t.string "built_time"
-    t.boolean "stayable"
-    t.boolean "rentable"
-    t.boolean "buyable"
     t.integer "recommendation"
     t.integer "shop_id"
     t.string "source"
@@ -216,9 +175,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_035246) do
     t.float "house_area"
     t.string "built_time"
     t.text "notes"
-    t.boolean "stayable"
-    t.boolean "rentable"
-    t.boolean "buyable"
     t.integer "recommendation"
     t.integer "shop_id"
     t.string "source"

@@ -5,5 +5,5 @@
 
 .container
    .row
-   	- BuyHouse.where(buyable: true).where(recommendation: 3).each do |buy_house|  
+   	- BuyHouse.where(recommendation: 3).each do |buy_house|  
 			= render 'shared/buy_house-list', buy_house: buy_house 
