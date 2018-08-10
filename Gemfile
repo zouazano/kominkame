@@ -11,7 +11,6 @@ gem 'rubocop', require: false
 
 gem 'devise'
 
-gem 'carrierwave'
 gem 'fog-aws'
 gem 'dotenv-rails'
 

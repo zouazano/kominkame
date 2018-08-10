@@ -1,7 +1,2 @@
-name,strong_point,prefecture_id,rent,maintenance_fee,deposit,gratuity_fee,zip_code,address,access,hours,age,madori,land_area,house_area,built_time,stayable,rentable,buyable,recommendation,shop_id,source
-テスト,いい,hokkaido,3
-テスト２
-テスト3
-テスト4
-テスト5,いいね
-テスト６,いいね,hokkaido,5,3000,3000
+name,strong_point,prefecture_id,rent,maintenance_fee,deposit,gratuity_fee,zip_code,address,access,hours,age,madori,land_area,house_area,built_time,stayable,rentable,buyable,recommendation,shop_id,source,image_url1,image_url2,image_url3,image_url4
+テストdeath,いい,hokkaido,3

@@ -1,5 +1,5 @@
 class RentHouseImage < ApplicationRecord
 	belongs_to :rent_house
 
-	mount_uploader :image, ImageUploader
+	dragonfly_accessor :rent_house_image
 end
