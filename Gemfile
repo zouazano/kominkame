@@ -16,6 +16,7 @@ gem 'dotenv-rails'
 
 gem 'dragonfly', '~> 1.1.5'
 gem 'dragonfly-s3_data_store'
+gem 'mime-types'
 
 gem "browser"
 
