@@ -1,7 +1,7 @@
 .col-sm-6.col-lg-4
 	.card.mb-0.box-shadow
 		a href=buy_house_path(buy_house.id) target="_blank"
-				img.card-img-top alt=("Card image cap") src=buy_house.buy_house_images&.first&.image /
+				img.card-img-top alt=("Card image cap") src=buy_house.buy_house_images.first.buy_house_image.thumb('400x200#').url /
 		.card-body.pb-2.p-1.mb-5.bg-light 
 		  - if buy_house.address.present?
 		  	p.text-info.mb-0 = buy_house.address

@@ -3,7 +3,7 @@ require "yaml"
 
 class RentHouseLoader
   def self.load
-    CSV.foreach("db/seeds/kominka.csv", headers: true) do |row|
+    CSV.foreach("db/seeds/rent_house.csv", headers: true) do |row|
       attributes = row.to_h.slice("name", "strong_point", "prefecture_id", "rent", "maintenance_fee", "deposit", "gratuity_fee", "zip_code", "address", "access", "hours", "age", "madori", "land_area", "house_area", "built_time", "recommendation", "shop_id", "source")
       rent_house = RentHouse.where(name: row["name"]).first_or_create(attributes)
       if row["image_url1"].present?

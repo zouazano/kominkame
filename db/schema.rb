@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_072951) do
+ActiveRecord::Schema.define(version: 2018_08_10_081240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_072951) do
     t.integer "buy_house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "buy_house_image_uid"
   end
 
   create_table "buy_houses", force: :cascade do |t|
@@ -156,6 +157,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_072951) do
     t.integer "stay_house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "stay_house_image_uid"
   end
 
   create_table "stay_houses", force: :cascade do |t|
