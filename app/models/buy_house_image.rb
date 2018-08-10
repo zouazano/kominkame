@@ -1,5 +1,5 @@
 class BuyHouseImage < ApplicationRecord
 	belongs_to :buy_house
 
-	mount_uploader :image, ImageUploader
+	dragonfly_accessor :buy_house_image
 end

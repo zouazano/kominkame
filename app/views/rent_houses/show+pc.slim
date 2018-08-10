@@ -10,10 +10,10 @@
           - @rent_house.rent_house_images.each.with_index(1) do |rent_house_image, counter|
             - if counter == 1
               .carousel-item.active
-                img.d-block.w-100 alt=("slide #{counter}") src=rent_house_image.image.thumb_pc /
+                img.d-block.w-100 alt=("slide #{counter}") src=rent_house_image.rent_house_image.thumb('400x300#').url /
             - else
               .carousel-item
-                img.d-block.w-100 alt=("slide #{counter}") src=rent_house_image.image.thumb_pc /
+                img.d-block.w-100 alt=("slide #{counter}") src=rent_house_image.rent_house_image.thumb('400x300#').url /
        
         a.carousel-control-prev data-slide="prev" href="#carouselExampleControls" role="button" 
           span.carousel-control-prev-icon aria-hidden="true" 
@@ -24,7 +24,6 @@
           span.sr-only Next
 
     .col-4
-      
       table.table.table-bordered
         tbody
           tr
