@@ -1,24 +1,24 @@
 .col-sm-6.col-lg-4
-	.card.mb-0.box-shadow
-		a href=buy_house_path(buy_house.id) target="_blank"
-				img.card-img-top alt=("Card image cap") src=buy_house.buy_house_images.first&.buy_house_image&.thumb('400x200#')&.url /
-		.card-body.pb-2.p-1.mb-5.bg-light 
-		  - if buy_house.address.present?
-		  	p.text-info.mb-0 = buy_house.address
-		  - else
-		  	p.text-info.mb-0 住所
-		  - if buy_house.name.present?
-		  	h2.card-text.mb-0 = buy_house.name
-		  - else
-		  	h2.card-text.mb-0 物件の名前
-		  - if buy_house.age.present?
-		  	p.mb-0 築#{buy_house.age}年
-		  - else
-		  	p.mb-0 築年数不詳
-		  - if buy_house.price.present?
-		  	p #{buy_house.price}万円
-		  - else
-		  	p 価格
-		  .d-flex.justify-content-between.align-items-center
-		    .btn-group
-		    	a.btn.btn-sm.btn-outline-secondary href=buy_house_path(buy_house.id) target="_blank" role="button"  詳細
+  .card.mb-0.box-shadow
+    a href=buy_house_path(buy_house.id) target="_blank"
+      img.card-img-top alt=("Card image cap") src=buy_house.buy_house_images.first&.buy_house_image&.thumb('400x200#')&.url /
+      .card-body.pb-2.p-1.mb-5.bg-light
+        - if buy_house.address.present?
+          p.text-info.mb-0 = buy_house.address
+        - else
+          p.text-info.mb-0 住所
+        - if buy_house.name.present?
+          h2.card-text.mb-0 = buy_house.name
+        - else
+          h2.card-text.mb-0 物件の名前
+        - if buy_house.age.present?
+          p.text-dark.mb-0 築#{buy_house.age}年
+        - else
+          p.text-dark.mb-0 築年数不詳
+        - if buy_house.price.present?
+          p.text-dark #{buy_house.price}万円
+        - else
+          p.text-dark 価格
+        .d-flex.justify-content-between.align-items-center
+          .btn-group
+            a.btn.btn-sm.btn-outline-secondary href=buy_house_path(buy_house.id) target="_blank" role="button"  詳細

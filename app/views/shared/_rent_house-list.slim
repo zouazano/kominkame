@@ -1,24 +1,24 @@
 .col-sm-6.col-lg-4
-	.card.mb-0.box-shadow
-		a href=rent_house_path(rent_house.id) target="_blank"
-				img.card-img-top alt=("Card image cap") src=rent_house.rent_house_images.first&.rent_house_image&.thumb('400x200#')&.url /
-		.card-body.pb-2.p-1.mb-5.bg-light 
-		  - if rent_house.address.present?
-		  	p.text-info.mb-0 = rent_house.address
-		  - else
-		  	p.text-info.mb-0 住所
-		  - if rent_house.name.present?
-		  	h2.card-text.mb-0 = rent_house.name
-		  - else
-		  	h2.card-text.mb-0 物件の名前
-		  - if rent_house.age.present?
-		  	p.mb-0 築#{rent_house.age}年
-		  - else
-		  	p.mb-0 築年数不詳
-		  - if rent_house.rent.present?
-		  	p #{rent_house.rent}万円
-		  - else
-		  	p 価格
-		  .d-flex.justify-content-between.align-items-center
-		    .btn-group
-		    	a.btn.btn-sm.btn-outline-secondary href=rent_house_path(rent_house.id) target="_blank" role="button"  詳細
+  .card.mb-0.box-shadow
+    a href=rent_house_path(rent_house.id) target="_blank"
+      img.card-img-top alt=("Card image cap") src=rent_house.rent_house_images.first&.rent_house_image&.thumb('400x200#')&.url /
+      .card-body.pb-2.p-1.mb-5.bg-light 
+      - if rent_house.address.present?
+        p.text-info.mb-0 = rent_house.address
+      - else
+        p.text-info.mb-0 住所
+      - if rent_house.name.present?
+        h2.card-text.mb-0 = rent_house.name
+      - else
+        h2.card-text.mb-0 物件の名前
+      - if rent_house.age.present?
+        p.text-dark.mb-0 築#{rent_house.age}年
+      - else
+        p.text-dark.mb-0 築年数不詳
+      - if rent_house.rent.present?
+        p.text-dark #{rent_house.rent}万円
+      - else
+        p.text-dark 価格
+      .d-flex.justify-content-between.align-items-center
+        .btn-group
+          a.btn.btn-sm.btn-outline-secondary href=rent_house_path(rent_house.id) target="_blank" role="button"  詳細
