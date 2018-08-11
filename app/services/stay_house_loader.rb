@@ -6,20 +6,20 @@ class StayHouseLoader
     CSV.foreach("db/seeds/stay_house.csv", headers: true) do |row|
       attributes = row.to_h.slice("name", "strong_point", "prefecture_id", "price", "zip_code", "address", "access", "hours", "age", "madori", "land_area", "house_area", "built_time", "notes", "recommendation", "shop_id", "source", "image_url1", "image_url2", "image_url3", "image_url4")
       stay_house = StayHouse.where(name: row["name"]).first_or_create(attributes)
-      if stay_house.image_url1.present?
-        stay_house.stay_house_images.first_or_create(stay_house_image_url: stay_house.image_url1)
+      if row["image_url1"].present?
+        stay_house.stay_house_images.create(stay_house_image_url: row["image_url1"])
       end
       sleep 2
-      if stay_house.image_url2.present?
-        stay_house.stay_house_images.first_or_create(stay_house_image_url: stay_house.image_url2)
+      if row["image_url2"].present?
+        stay_house.stay_house_images.create(stay_house_image_url: row["image_url2"])
       end
       sleep 2
-      if stay_house.image_url3.present?
-        stay_house.stay_house_images.first_or_create(stay_house_image_url: stay_house.image_url3)
+      if row["image_url3"].present?
+        stay_house.stay_house_images.create(stay_house_image_url: row["image_url3"])
       end
       sleep 2
-      if stay_house.image_url4.present?
-        stay_house.stay_house_images.first_or_create(stay_house_image_url: stay_house.image_url4)
+      if row["image_url4"].present?
+        stay_house.stay_house_images.create(stay_house_image_url: row["image_url4"])
       end
       sleep 2
     end  
