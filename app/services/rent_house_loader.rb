@@ -4,22 +4,22 @@ require "yaml"
 class RentHouseLoader
   def self.load
     CSV.foreach("db/seeds/rent_house.csv", headers: true) do |row|
-      attributes = row.to_h.slice("name", "strong_point", "prefecture_id", "rent", "maintenance_fee", "deposit", "gratuity_fee", "zip_code", "address", "access", "hours", "age", "madori", "land_area", "house_area", "built_time", "recommendation", "shop_id", "source")
+      attributes = row.to_h.slice("name", "strong_point", "prefecture_id", "rent", "maintenance_fee", "deposit", "gratuity_fee", "zip_code", "address", "access", "hours", "age", "madori", "land_area", "house_area", "built_time", "recommendation", "shop_id", "source", "image_url1", "image_url2", "image_url3", "image_url4")
       rent_house = RentHouse.where(name: row["name"]).first_or_create(attributes)
-      if row["image_url1"].present?
-        rent_house.rent_house_images.create(rent_house_image_url: row["image_url1"])
+      if rent_house.image_url1.present?
+        rent_house.rent_house_images.first_or_create(rent_house_image_url: rent_house.image_url1)
       end
       sleep 2
-      if row["image_url2"].present?
-        rent_house.rent_house_images.create(rent_house_image_url: row["image_url2"])
+      if rent_house.image_url2.present?
+        rent_house.rent_house_images.first_or_create(rent_house_image_url: rent_house.image_url2)
       end
       sleep 2
-      if row["image_url3"].present?
-        rent_house.rent_house_images.create(rent_house_image_url: row["image_url3"])
+      if rent_house.image_url3.present?
+        rent_house.rent_house_images.first_or_create(rent_house_image_url: rent_house.image_url3)
       end
       sleep 2
-      if row["image_url4"].present?
-        rent_house.rent_house_images.create(rent_house_image_url: row["image_url4"])
+      if rent_house.image_url4.present?
+        rent_house.rent_house_images.first_or_create(rent_house_image_url: rent_house.image_url4)
       end
       sleep 2
     end  
