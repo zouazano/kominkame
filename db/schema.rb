@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_081240) do
+ActiveRecord::Schema.define(version: 2018_08_11_023039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_081240) do
     t.string "name"
     t.text "strong_point"
     t.integer "prefecture_id"
-    t.integer "rent"
+    t.float "rent"
     t.integer "maintenance_fee"
     t.integer "deposit"
     t.integer "gratuity_fee"
@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_081240) do
     t.string "name"
     t.text "strong_point"
     t.integer "prefecture_id"
-    t.integer "accommodation_expenses"
+    t.float "accommodation_expenses"
     t.string "zip_code"
     t.string "address"
     t.string "access"
