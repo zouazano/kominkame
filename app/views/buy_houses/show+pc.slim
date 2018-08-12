@@ -5,7 +5,7 @@
 .container
   .row
     .col-md-8
-      #carouselExampleControls.carousel.slide data-ride="carousel" 
+      #carouselExampleControls.carousel.slide
         .carousel-inner
           - @buy_house.buy_house_images.each.with_index(1) do |buy_house_image, counter|
             - if counter == 1
