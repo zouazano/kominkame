@@ -57,5 +57,8 @@
 
 .container
   .row
-    - BuyHouse.where(recommendation: 3).each do |buy_house|  
+    - @buy_houses.each do |buy_house|  
       = render 'shared/buy_house-list', buy_house: buy_house 
+  .row
+    .col-12.d-flex.justify-content-center.mt-3
+      = paginate @buy_houses

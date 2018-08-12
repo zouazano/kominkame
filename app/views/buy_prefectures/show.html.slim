@@ -1,9 +1,12 @@
 .container
-	.row
-		.col-sm-12
-			h1.m-3.text-body #{@prefecture.name}の古民家
+  .row
+    .col-sm-12
+      h1.m-3.text-body #{@prefecture.name}の古民家
 
 .container
-   .row
-   	- BuyHouse.where(prefecture_id: @prefecture.id).each do |buy_house|  
-			= render 'shared/buy_house-list', buy_house: buy_house 
+  .row
+    - @buy_houses.each do |buy_house|  
+      = render 'shared/buy_house-list', buy_house: buy_house 
+  .row
+    .col-12.d-flex.justify-content-center.mt-3
+      = paginate @buy_houses

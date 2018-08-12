@@ -9,3 +9,11 @@ ja:
         address: 住所
         demand: ご要望
         message: 詳しいご要望
+
+  views:
+    pagination:
+      first: "最初"
+      last: "最後"
+      previous: "前"
+      next: "次"
+      truncate: "..."

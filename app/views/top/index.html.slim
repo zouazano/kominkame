@@ -18,14 +18,14 @@
           img.img-fluid alt=("Card image cap") src=("http://gahag.net/img/201511/21s/gahag-0027844492-1.jpg") /
         .card-body
           a href=rent_index_path
-            h2.text-body 借りる		  
+            h2.text-body 借りる
     .col-4.col-md-2.px-2
       .card
         a href=buy_index_path
           img.img-fluid alt=("Card image cap") src=("https://www.pakutaso.com/shared/img/thumb/004Yamasha17103_TP_V.jpg") /
         .card-body
           a href=buy_index_path
-            h2.text-body 買う					
+            h2.text-body 買う
 
 
   .row  
@@ -34,5 +34,8 @@
 
 .container
   .row
-    - BuyHouse.where(recommendation: 3).each do |buy_house|  
+    - @buy_houses.each do |buy_house|  
       = render 'shared/buy_house-list', buy_house: buy_house 
+  .row
+    .col-12.d-flex.justify-content-center.mt-3
+      = paginate @buy_houses
