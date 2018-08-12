@@ -17,30 +17,3 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-
-$(function(){
-        $('.carousel').carousel();
-        $('.carousel').on('touchstart', touchStart);
-        $('.carousel').on('touchmove' , touchMove);
-
-        function touchStart(e) {
-            var pos = position(e);
-            carousel.attr('data-touchpos',pos.x);
-        }
-        function touchMove(e) {
-            var pos = position(e);
-            if( pos.x < $('.carousel').attr('data-touchpos') ){
-                $('.carousel').carousel('next');
-            }else{
-                $('.carousel').carousel('prev');
-            }
-        }
-        function position(e){
-            var x = e.originalEvent.touches[0].pageX;
-            var y = e.originalEvent.touches[0].pageY;
-            x = Math.floor(x);
-            y = Math.floor(y);
-            var pos = {'x':x , 'y':y};
-            return pos;
-        }
-    });
