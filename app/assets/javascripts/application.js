@@ -17,14 +17,3 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-$('.carousel').carousel({
-	interval: false,
-})
-.swipe({
-	swipeLeft:function(event, direction, distance, duration, fingerCount) {
-		$(this).carousel('next');
-	},
-	swipeRight:function(event, direction, distance, duration, fingerCount) {
-		$(this).carousel('prev');
-	}
-});
