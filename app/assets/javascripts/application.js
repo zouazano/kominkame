@@ -17,10 +17,14 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-$(function()
-{
-    var carousel = $('#carousel');
-    var hammer = new Hammer(carousel[0]);
-    hammer.on('swipeleft', function(){ carousel.carousel('next'); });   //--- 左にスワイプしたら次の画像に切り替え
-    hammer.on('swiperight', function(){ carousel.carousel('prev'); });  //--- 右にスワイプしたら前の画像に切り替え
+$('.carousel').carousel({
+	interval: false,
+})
+.swipe({
+	swipeLeft:function(event, direction, distance, duration, fingerCount) {
+		$(this).carousel('next');
+	},
+	swipeRight:function(event, direction, distance, duration, fingerCount) {
+		$(this).carousel('prev');
+	}
 });
