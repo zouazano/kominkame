@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_19_042733) do
+ActiveRecord::Schema.define(version: 2018_08_19_071362) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,157 @@ ActiveRecord::Schema.define(version: 2018_08_19_042733) do
     t.string "image_url2"
     t.string "image_url3"
     t.string "image_url4"
+  end
+
+  create_table "ebisu_article_tags", force: :cascade do |t|
+    t.integer "article_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_articles", force: :cascade do |t|
+    t.string "title"
+    t.text "abstract"
+    t.string "image"
+    t.integer "category_id"
+    t.datetime "published_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_uid"
+    t.integer "impressions_count", default: 0
+    t.integer "user_id"
+    t.boolean "published", default: false, null: false
+  end
+
+  create_table "ebisu_bodies", force: :cascade do |t|
+    t.integer "paragraph_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "parent_id"
+    t.string "type"
+    t.text "description"
+  end
+
+  create_table "ebisu_ebisu_external_links", force: :cascade do |t|
+    t.integer "paragraph_id"
+    t.string "content"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_external_links", force: :cascade do |t|
+    t.integer "paragraph_id"
+    t.string "content"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_figures", force: :cascade do |t|
+    t.integer "paragraph_id"
+    t.string "content_uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "source"
+    t.string "source_url"
+  end
+
+  create_table "ebisu_headlines", force: :cascade do |t|
+    t.integer "paragraph_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_paragraphs", force: :cascade do |t|
+    t.integer "article_id"
+    t.integer "position"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_preformatted_bodies", force: :cascade do |t|
+    t.integer "paragraph_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_quotations", force: :cascade do |t|
+    t.integer "paragraph_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_subheadlines", force: :cascade do |t|
+    t.integer "paragraph_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_thumbnails", force: :cascade do |t|
+    t.string "signature"
+    t.string "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_tweets", force: :cascade do |t|
+    t.integer "paragraph_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ebisu_youtubes", force: :cascade do |t|
+    t.string "content"
+    t.integer "paragraph_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "impressions", force: :cascade do |t|
+    t.string "impressionable_type"
+    t.integer "impressionable_id"
+    t.integer "user_id"
+    t.string "controller_name"
+    t.string "action_name"
+    t.string "view_name"
+    t.string "request_hash"
+    t.string "ip_address"
+    t.string "session_hash"
+    t.text "message"
+    t.text "referrer"
+    t.text "params"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
+    t.index ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
+    t.index ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"
+    t.index ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index"
+    t.index ["impressionable_type", "impressionable_id", "params"], name: "poly_params_request_index"
+    t.index ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
+    t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
+    t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
+    t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
   create_table "inquiries", force: :cascade do |t|

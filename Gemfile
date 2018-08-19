@@ -18,6 +18,7 @@ gem 'dragonfly', '~> 1.1.5'
 gem 'dragonfly-s3_data_store'
 gem 'mime-types'
 
+gem 'ebisu', github: 'nextship/ebisu', branch: 'master'
 
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
