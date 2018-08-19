@@ -19,7 +19,6 @@
             - else
               .carousel-item
                 img.d-block.w-100 alt=("slide #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
-       
         a.carousel-control-prev data-slide="prev" href="#carouselExampleControls" role="button" 
           span.carousel-control-prev-icon aria-hidden="true" 
           span.sr-only Previous
@@ -41,10 +40,15 @@
           -else
             tr
               th scope="row"  築年数
-              td                    
-          tr
-            th scope="row"  間取り
-            td = @buy_house.madori         
+              td  不詳
+          - if @buy_house.madori.present?
+            tr
+              th scope="row" 間取り
+              td = @buy_house.madori       
+          -else
+            tr
+              th scope="row" 間取り
+              td  不詳                       
           tr
             th scope="row"  所在地
             td = @buy_house.address       
@@ -67,9 +71,14 @@
           tr
             th scope="row"  価格
             td #{@buy_house.price}万円
-          tr
-            th scope="row"  間取り
-            td = @buy_house.madori         
+          - if @buy_house.madori.present?
+            tr
+              th scope="row" 間取り
+              td = @buy_house.madori       
+          -else
+            tr
+              th scope="row" 間取り
+              td  不詳                                   
           tr
             th scope="row"  土地面積
             td #{@buy_house.land_area}㎡
@@ -78,13 +87,22 @@
             td #{@buy_house.house_area}㎡          
           tr
             th scope="row"  所在地
-            td = @buy_house.address                   
+            td = @buy_house.address
+          - if @buy_house.access.present?
+            tr
+              th scope="row" 交通
+              td = @buy_house.access      
+          -else
+            tr
+              th scope="row" 交通
+              td  不詳                                               
           tr
-            th scope="row"  交通
-            td = @buy_house.access         
-          tr
+          - if @buy_house.built_time.present?
             th scope="row"  完成時期
-            td = @buy_house.built_time       
+            td = @buy_house.built_time
+          - else
+            th scope="row"  完成時期
+            td 不詳          
           - if @buy_house.age.present?
             tr
               th scope="row"  築年数
@@ -92,7 +110,7 @@
           -else
             tr
               th scope="row"  築年数
-              td                    
+              td 不詳
       br
       br
       br

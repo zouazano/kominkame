@@ -5,6 +5,11 @@
   .row
     .col-md-8
       #carouselExampleControls.carousel.slide
+        ol.carousel-indicators
+          li.active data-slide-to="0" data-target="#carouselExampleIndicators" 
+          li data-slide-to="1" data-target="#carouselExampleIndicators" 
+          li data-slide-to="2" data-target="#carouselExampleIndicators" 
+          li data-slide-to="3" data-target="#carouselExampleIndicators"         
         .carousel-inner
           - @buy_house.buy_house_images.each.with_index(1) do |buy_house_image, counter|
             - if counter == 1
@@ -35,9 +40,14 @@
           tr
             th scope="row"  価格
             td #{@buy_house.price}万円
-          tr
-            th scope="row"  間取り
-            td = @buy_house.madori         
+          - if @buy_house.madori.present?
+            tr
+              th scope="row" 間取り
+              td = @buy_house.madori       
+          -else
+            tr
+              th scope="row" 間取り
+              td  不詳                                   
           tr
             th scope="row"  土地面積
             td #{@buy_house.land_area}㎡
@@ -46,16 +56,31 @@
             td #{@buy_house.house_area}㎡          
           tr
             th scope="row"  所在地
-            td = @buy_house.address                   
+            td = @buy_house.address
+          - if @buy_house.access.present?
+            tr
+              th scope="row" 交通
+              td = @buy_house.access      
+          -else
+            tr
+              th scope="row" 交通
+              td  不詳                                               
           tr
-            th scope="row"  交通
-            td = @buy_house.access         
-          tr
+          - if @buy_house.built_time.present?
             th scope="row"  完成時期
-            td = @buy_house.built_time       
-          tr
-            th scope="row"  築年数
-            td #{@buy_house.age}年  
+            td = @buy_house.built_time
+          - else
+            th scope="row"  完成時期
+            td 不詳          
+          - if @buy_house.age.present?
+            tr
+              th scope="row"  築年数
+              td #{@buy_house.age}年        
+          -else
+            tr
+              th scope="row"  築年数
+              td 不詳
       br
       br
-
+      br
+      br
