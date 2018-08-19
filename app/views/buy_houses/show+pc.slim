@@ -6,6 +6,11 @@
   .row
     .col-md-8
       #carouselExampleControls.carousel.slide
+        ol.carousel-indicators
+          li.active data-slide-to="0" data-target="#carouselExampleIndicators" 
+          li data-slide-to="1" data-target="#carouselExampleIndicators" 
+          li data-slide-to="2" data-target="#carouselExampleIndicators" 
+          li data-slide-to="3" data-target="#carouselExampleIndicators" 
         .carousel-inner
           - @buy_house.buy_house_images.each.with_index(1) do |buy_house_image, counter|
             - if counter == 1
