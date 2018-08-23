@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
   devise_for :users
+  mount Ebisu::Engine => '/'
+
   devise_for :admins
   get 'rent_search/index'
   get 'buy_prefectures/index'
