@@ -1,6 +1,9 @@
 .container
   .row
-    h1.m-3 = @house.name
+    - if browser.ie?
+      h1.m-3 = @house.name
+    - else 
+      p っ
 .container
   .row
     .col-md-8
