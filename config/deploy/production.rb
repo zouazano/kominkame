@@ -60,4 +60,3 @@ server '54.238.238.50', user: 'deploy', roles: %w[app web]
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
-after :deploy, "sitemap:refresh"
