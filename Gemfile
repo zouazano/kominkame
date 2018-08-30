@@ -24,6 +24,11 @@ gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 
 
+gem 'meta-tags'
+gem 'sitemap_generator'
+gem 'roboto'
+
+
 
 gem "browser"
 
