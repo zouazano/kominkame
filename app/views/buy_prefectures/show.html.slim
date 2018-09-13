@@ -1,14 +1,36 @@
 - set_meta_tags title: @prefecture.name + "の古民家", og: { title: @prefecture.name, type: 'prefecture'}
 
-.container
-  .row
-    .col-sm-12
-      h1.m-3.text-body #{@prefecture.name}の古民家
+- if browser.device.mobile?
+	.container
+	  .row
+	    .col-12.col-md-9
+	      .row
+	        .col-12
+	          h1.m-3.text-body #{@prefecture.name}の古民家
 
-.container
-  .row
-    - @buy_houses.each do |buy_house|  
-      = render 'shared/buy_house-list', buy_house: buy_house 
-  .row
-    .col-12.d-flex.justify-content-center.mt-3
-      = paginate @buy_houses
+	        - @buy_houses.each do |buy_house|  
+	          = render 'shared/buy_house-list', buy_house: buy_house 
+	      .row
+	        .col-12.d-flex.justify-content-center.mt-3
+	          = paginate @buy_houses
+
+
+- else
+	.container
+	  .row
+	    .col-12.col-md-9
+	      .row
+	        .col-12
+	          h1.m-3.text-body #{@prefecture.name}の古民家
+
+
+	        - @buy_houses.each do |buy_house|  
+	          = render 'shared/buy_house-list', buy_house: buy_house 
+	      .row
+	        .col-12.d-flex.justify-content-center.mt-3
+	          = paginate @buy_houses
+
+
+	    .col-3
+	      .row
+	        h2.m-3
