@@ -149,6 +149,8 @@
                   .d-flex.justify-content-between.align-items-center
                     .btn-group
                       a.btn.btn-sm.btn-outline-secondary href=buy_house_path(buy_house.id) target="_blank" role="button"  詳細
+      .row.justify-content-end
+        a href=buy_prefecture_path(@buy_house.prefecture.id)
 
-      a href=buy_prefecture_path(@buy_house.prefecture.id)
-        h2 周辺の古民家をもっと見る     
+          button.btn.btn-primary.mt-3.text-right type="button" 周辺の古民家をもっと見る  
+             
