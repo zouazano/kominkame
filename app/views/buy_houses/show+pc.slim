@@ -57,7 +57,7 @@
             td = @buy_house.address
 
       h2 周辺の古民家
-      - BuyHouse.where(prefecture: @buy_house.prefecture).each do |buy_house|  
+      - BuyHouse.where(prefecture: @buy_house.prefecture).order("RANDOM()").limit(2).each do |buy_house|  
           .col-6.m-0
             .card.mb-0.box-shadow
               a href=buy_house_path(buy_house.id) target="_blank"
@@ -82,6 +82,9 @@
                   .d-flex.justify-content-between.align-items-center
                     .btn-group
                       a.btn.btn-sm.btn-outline-secondary href=buy_house_path(buy_house.id) target="_blank" role="button"  詳細
+
+      a href=buy_prefecture_path(@buy_house.prefecture.id)
+        h2 周辺の古民家をもっと見る     
 
   .row.m-0
     .col-8
