@@ -55,9 +55,10 @@
           tr
             th scope="row"  所在地
             td = @buy_house.address
-
-      h2 周辺の古民家
-      - BuyHouse.where(prefecture: @buy_house.prefecture).order("RANDOM()").limit(2).each do |buy_house|  
+      .row
+        .col-12
+          h2 周辺の古民家
+        - BuyHouse.where(prefecture: @buy_house.prefecture).order("RANDOM()").limit(2).each do |buy_house|  
           .col-6.m-0
             .card.mb-0.box-shadow
               a href=buy_house_path(buy_house.id) target="_blank"

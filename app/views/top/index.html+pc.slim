@@ -23,42 +23,46 @@
 
 .container
   .row
-    h1.col-sm-6.my-3
-      | 古民家を探す
+    .col-9
+      .row
+        h1.my-3
+          | 古民家を探す
   
-.container
-  .row
-    .col-4.col-md-2.px-2
-      .card
-        a href=stay_index_path
-          img.img-fluid alt=("Card image cap") src=("https://d1f5hsy4d47upe.cloudfront.net/e3/e3abb9d479c6405e2149b2494a06d36f_t.jpeg") /
-        .card-body
-          a href=stay_index_path
-            h2.text-body 泊まる
-    .col-4.col-md-2.px-2
-      .card
-        a href=rent_index_path
-          img.img-fluid alt=("Card image cap") src=("http://gahag.net/img/201511/21s/gahag-0027844492-1.jpg") /
-        .card-body
-          a href=rent_index_path
-            h2.text-body 借りる		  
-    .col-4.col-md-2.px-2
-      .card
-        a href=buy_index_path
-          img.img-fluid alt=("Card image cap") src=("https://www.pakutaso.com/shared/img/thumb/004Yamasha17103_TP_V.jpg") /
-        .card-body
-          a href=buy_index_path
-            h2.text-body 買う					
+      .row
+        .col-3.px-2
+          .card
+            a href=stay_index_path
+              img.img-fluid alt=("Card image cap") src=asset_path("e3abb9d479c6405e2149b2494a06d36f_m.jpg") /
+            .card-body
+              a href=stay_index_path
+                h2.text-body 泊まる
+        .col-3.px-2
+          .card
+            a href=rent_index_path
+              img.img-fluid alt=("Card image cap") src=asset_path("gahag-0027844492-1 (1).jpg") /
+            .card-body
+              a href=rent_index_path
+                h2.text-body 借りる		  
+        .col-3.px-2
+          .card
+            a href=buy_index_path
+              img.img-fluid alt=("Card image cap") src=asset_path("004Yamasha17103_TP_V (1).jpg") /
+            .card-body
+              a href=buy_index_path
+                h2.text-body 買う					
 
 
-  .row  
-    h2.col-sm-6.my-3
-      | おすすめ物件
+      .row  
+        h2.col-sm-6.my-3
+          | おすすめ物件
 
-.container
-  .row
-    - @buy_houses.each do |buy_house|  
-      = render 'shared/buy_house-list', buy_house: buy_house 
-  .row
-    .col-12.d-flex.justify-content-center.mt-3
-      = paginate @buy_houses
+      .row
+        - @buy_houses.each do |buy_house|  
+          = render 'shared/buy_house-list', buy_house: buy_house 
+      .row
+        .col-12.d-flex.justify-content-center.mt-3
+          = paginate @buy_houses
+
+    .col-3
+      .row
+        .col-12
