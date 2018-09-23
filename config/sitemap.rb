@@ -22,13 +22,18 @@ SitemapGenerator::Sitemap.create do
   # Add all articles:
   #
   
-  add buy_house_path, :priority => 0.7, :changefreq => 'daily'
+  add root_path, :priority => 0.7, :changefreq => 'daily'
+  add buy__index_path
+  add buy_prefectures_path
+  Prefecture.find_each do |buy_prefecture|
+    add buy_prefecture_path(buy_prefecture.id)
+  end
+
+
+  
   BuyHouse.find_each do |buy_house|
     add buy_house_path(buy_house), :lastmod => buy_house.updated_at
   end
 
-  add prefecture_path, :priority => 0.7, :changefreq => 'daily'
-  Prefecture.find_each do |prefecture|
-    add prefecture_path(buy_house), :lastmod => prefecture.updated_at
-  end
+
 end
