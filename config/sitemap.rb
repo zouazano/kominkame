@@ -17,7 +17,6 @@ SitemapGenerator::Sitemap.create do
   #
   # Add '/articles'
   #
-  add ebisu.articles_path, :priority => 0.7, :changefreq => 'daily'
   #
   # Add all articles:
   #
