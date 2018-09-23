@@ -17,13 +17,11 @@ SitemapGenerator::Sitemap.create do
   #
   # Add '/articles'
   #
+  #add articles_path, :priority => 0.7, :changefreq => 'daily'
   #
   # Add all articles:
   #
-  Article.find_each do |article|
-    add article_path(article), :lastmod => article.updated_at
-  end
- 
+  
   add buy_house_path, :priority => 0.7, :changefreq => 'daily'
   BuyHouse.find_each do |buy_house|
     add buy_house_path(buy_house), :lastmod => buy_house.updated_at
