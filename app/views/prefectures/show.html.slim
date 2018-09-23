@@ -24,8 +24,8 @@
 	          	h3.card-text.mb-0 = house.name
 	          - else
 	          	h3.card-text.mb-0 物件の名前
-	          - if house.age.present?
-	          	p.mb-0 築#{house.age}年
+	          - if buy_house.built_date.present?
+	          	p.mb-0 #{house.built_date.year}年築
 	          - else
 	          	p.mb-0 築年数
 	          - if house.price.present?

@@ -78,13 +78,13 @@
           - else
             th scope="row"  完成時期
             td 不詳          
-          - if @buy_house.age.present?
+          - if @buy_house.built_date.present?
             tr
-              th scope="row"  築年数
-              td #{@buy_house.age}年        
+              th scope="row"  築年
+              td #{@buy_house.built_date.year}年        
           -else
             tr
-              th scope="row"  築年数
+              th scope="row"  築年
               td 不詳
       
       .row
@@ -104,10 +104,10 @@
                     h2.card-text.mb-0 = buy_house.name+"の古民家"
                   - else
                     h2.card-text.mb-0 物件の名前
-                  - if buy_house.age.present?
-                    p.text-dark.mb-0 築#{buy_house.age}年
+                  - if buy_house.built_date.present?
+                    p.text-dark.mb-0 #{buy_house.built_date.year}年築
                   - else
-                    p.text-dark.mb-0 築年数不詳
+                    p.text-dark.mb-0 築年不詳
                   - if buy_house.price.present?
                     p.text-dark #{buy_house.price}万円
                   - else
