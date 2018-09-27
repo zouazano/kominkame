@@ -28,4 +28,12 @@ class BuyHouseLoader
       Rails.logger.debug buy_house.errors.inspect
     end  
   end
+
+  def self.update
+    CSV.foreach("db/seeds/buy_house_update.csv", headers: true) do |row|
+      attributes = row.to_h.slice("name", "price", "built_time", "built_date")
+      buy_house = BuyHouse.where(name: row["name"]).where(price: row["price"])
+      buy_house.update(built_date: row["built_date"])
+    end  
+  end
 end
