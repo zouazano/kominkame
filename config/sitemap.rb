@@ -22,7 +22,7 @@ SitemapGenerator::Sitemap.create do
   # Add all articles:
   #
   
-  add root_path, :priority => 0.7, :changefreq => 'daily'
+
   add buy_index_path
   add buy_prefectures_path
   Prefecture.find_each do |buy_prefecture|
