@@ -3,7 +3,6 @@
 .container
   .row
     h1.m-3 = @buy_house.name + "の古民家物件"
-= render_breadcrumbs :separator => ">"
 
 .container
   .row
@@ -121,3 +120,6 @@
         a href=buy_prefecture_path(@buy_house.prefecture.id)
 
           button.btn.btn-primary.mt-3.text-right type="button" 周辺の古民家物件をもっと見る  
+
+
+= render_breadcrumbs :separator => ">"

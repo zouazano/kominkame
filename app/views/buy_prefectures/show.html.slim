@@ -1,6 +1,5 @@
 - set_meta_tags title: @prefecture.name + "の古民家", og: { title: @prefecture.name, type: 'prefecture'}
 
-= render_breadcrumbs :separator => ">"
 
 .container
   .row
@@ -20,3 +19,5 @@
      .col-3
        .row
          h2.m-3
+
+= render_breadcrumbs :separator => ">"

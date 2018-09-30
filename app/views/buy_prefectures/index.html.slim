@@ -1,7 +1,6 @@
 .container
   .row
-    a href=buy_index_path
-      h1.m-3.text-body.text-left.mt-2 古民家を買う 
+    h1.m-3.text-body.text-left.mt-2 地域から古民家を探す
 
 .container
   .row
@@ -78,4 +77,8 @@
             .card-body
             -Prefecture.where(id: [40..47]).each do |buy_prefecture|
               a href=buy_prefecture_path(buy_prefecture.id)
-                h2.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.count}件)                             
+                h2.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.count}件)      
+
+
+= render_breadcrumbs :separator => ">"
+

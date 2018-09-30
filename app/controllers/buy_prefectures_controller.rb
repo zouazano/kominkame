@@ -5,6 +5,7 @@ class BuyPrefecturesController < ApplicationController
 	add_breadcrumb "古民家を買う", :buy_index_path
 
   def index
+  	add_breadcrumb "地域から古民家を探す"
   end
 
   def show
