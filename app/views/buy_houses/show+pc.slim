@@ -1,10 +1,11 @@
-- set_meta_tags title: @buy_house.name + "の古民家", og: { title: @buy_house.name, type: 'buy_house', image: @buy_house.buy_house_images.first }
+- set_meta_tags title: @buy_house.name + "の古民家物件", og: { title: @buy_house.name, type: 'buy_house', image: @buy_house.buy_house_images.first }
 
+= render_breadcrumbs :separator => ">"
 
 .container
   .row
     .col-12
-      h1.mt-3.p-3.border = @buy_house.name + "の古民家"
+      h1.mt-3.p-3.border = @buy_house.name + "の古民家物件"
   .row
     .col-9
       .row
@@ -123,7 +124,7 @@
             td = @buy_house.address
       .row
         .col-12
-          h2 周辺の古民家
+          h2 周辺の古民家物件
         - BuyHouse.where(prefecture: @buy_house.prefecture).order("RANDOM()").limit(2).each do |buy_house|  
           .col-6.m-0
             .card.mb-0.box-shadow
@@ -135,7 +136,7 @@
                   - else
                     p.text-info.mb-0 住所
                   - if buy_house.name.present?
-                    h2.card-text.mb-0 = buy_house.name+"の古民家"
+                    h2.card-text.mb-0 = buy_house.name+"の古民家物件"
                   - else
                     h2.card-text.mb-0 物件の名前
                   - if buy_house.built_date.present?
@@ -152,5 +153,5 @@
       .row.justify-content-end
         a href=buy_prefecture_path(@buy_house.prefecture.id)
 
-          button.btn.btn-primary.mt-3.text-right type="button" 周辺の古民家をもっと見る  
+          button.btn.btn-primary.mt-3.text-right type="button" 周辺の古民家物件をもっと見る  
              

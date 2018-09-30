@@ -26,6 +26,7 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 
 gem 'meta-tags'
 gem 'sitemap_generator'
+gem "breadcrumbs_on_rails"
 
 gem 'listen', '>= 3.0.5', '< 3.2'
 

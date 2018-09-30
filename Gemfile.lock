@@ -422,6 +422,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.1.1)
+  breadcrumbs_on_rails
   browser
   byebug
   capistrano
