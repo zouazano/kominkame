@@ -1,0 +1,29 @@
+.c-breadCrumb {
+  // height: 34px;
+  padding: 8px 10px 8px;
+  &__list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    &__item {
+      position: relative;
+      margin: 0 20px 0 0;
+      &:before {
+        content: ">";
+        position: absolute;
+        top: 1px;
+        right: -13px;
+      }
+
+    }
+  }
+}
+
+.c-breadCrumb__list__item.active {
+  &:before {
+    display: none;
+  }
+}

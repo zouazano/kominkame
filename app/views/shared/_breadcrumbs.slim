@@ -1,0 +1,12 @@
+- if elements.present?
+  .c-breadCrumb
+    ol.c-breadCrumb__list.o-contents itemtype="http://schema.org/BreadcrumbList"
+      - elements[0..-2].each_with_index do |element, index|
+        li.c-breadCrumb__list__item(itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem")
+          a href=element&.path itemprop="item"
+            span itemprop="name" =element.name
+          meta itemprop="position" content=index+1
+      li.c-breadCrumb__list__item.active(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+        a href=elements.last&.path itemprop="item"
+          span itemprop="name" =elements.last.name
+        meta itemprop="position" content=elements.count

@@ -1,6 +1,6 @@
 - set_meta_tags title: @buy_house.prefecture.name + @buy_house.name + "の古民家物件", og: { title: @buy_house.name, type: 'buy_house', image: @buy_house.buy_house_images.first }
 
-= render_breadcrumbs :separator => ">"
+= render_breadcrumbs builder: BreadcrumbsBuilder
 
 .container
   .row
