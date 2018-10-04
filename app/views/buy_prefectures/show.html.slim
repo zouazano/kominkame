@@ -1,4 +1,4 @@
-- set_meta_tags title: @prefecture.name + "の古民家", og: { title: @prefecture.name, type: 'prefecture'}
+- set_meta_tags title: @prefecture.name + "の古民家物件", og: { title: @prefecture.name, type: 'prefecture'}
 
 = render_breadcrumbs :separator => ">"
 
@@ -8,7 +8,7 @@
     .col-12.col-md-9
       .row
         .col-12
-          h1.m-3.text-body #{@prefecture.name}の古民家
+          h1.m-3.text-body #{@prefecture.name}の古民家物件
 
         - @buy_houses.each do |buy_house|  
           = render 'shared/buy_house-list', buy_house: buy_house 

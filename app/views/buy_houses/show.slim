@@ -1,11 +1,11 @@
-- set_meta_tags title: @buy_house.name + "の古民家物件", og: { title: @buy_house.name, type: 'buy_house', image: @buy_house.buy_house_images.first }
+- set_meta_tags title: @buy_house.prefecture.name + @buy_house.name + "の古民家物件", og: { title: @buy_house.name, type: 'buy_house', image: @buy_house.buy_house_images.first }
 
 = render_breadcrumbs :separator => ">"
 
 
 .container
   .row
-    h1.m-3 = @buy_house.name + "の古民家物件"
+    h1.m-3 = @buy_house.prefecture.name + @buy_house.name + "の古民家物件"
 
 .container
   .row
@@ -20,10 +20,10 @@
           - @buy_house.buy_house_images.each.with_index(1) do |buy_house_image, counter|
             - if counter == 1
               .carousel-item.active
-                img.d-block.w-100 alt=("slide #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
+                img.d-block.w-100 alt=("#{@buy_house.prefecture.name}#{@buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
             - else
               .carousel-item
-                img.d-block.w-100 alt=("slide #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
+                img.d-block.w-100 alt=("#{@buy_house.prefecture.name}#{@buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
        
         a.carousel-control-prev data-slide="prev" href="#carouselExampleControls" role="button" 
           span.carousel-control-prev-icon aria-hidden="true" 
@@ -116,9 +116,6 @@
                     p.text-dark #{buy_house.price}万円
                   - else
                     p.text-dark 価格
-                  .d-flex.justify-content-between.align-items-center
-                    .btn-group
-                      a.btn.btn-sm.btn-outline-secondary href=buy_house_path(buy_house.id) target="_blank" role="button"  詳細
       .row.justify-content-end
         a href=buy_prefecture_path(@buy_house.prefecture.id)
 
