@@ -1,7 +1,7 @@
 .col-sm-6.col-lg-4
   .card.mb-0.box-shadow
     a href=buy_house_path(buy_house.id) target="_blank"
-      img.card-img-top alt=("#{buy_house.name}の古民家物件") src=buy_house.buy_house_images.first&.buy_house_image&.thumb('400x200#')&.url /
+      img.card-img-top alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件") src=buy_house.buy_house_images.first&.buy_house_image&.thumb('400x200#')&.url /
       .card-body.pb-2.p-1.mb-5.bg-light
       
         - if buy_house.address.present?
@@ -10,7 +10,7 @@
           p.text-info.mb-0 住所
 
         - if buy_house.name.present?
-          h2.card-text.mb-0 #{buy_house.name}の古民家物件
+          h2.card-text.mb-0 #{buy_house.prefecture.name}#{buy_house.name}の古民家物件
         - else
           h2.card-text.mb-0 物件の名前
 

@@ -1,5 +1,8 @@
 - set_meta_tags title: @buy_house.name + "の古民家物件", og: { title: @buy_house.name, type: 'buy_house', image: @buy_house.buy_house_images.first }
 
+= render_breadcrumbs :separator => ">"
+
+
 .container
   .row
     h1.m-3 = @buy_house.name + "の古民家物件"
@@ -122,4 +125,3 @@
           button.btn.btn-primary.mt-3.text-right type="button" 周辺の古民家物件をもっと見る  
 
 
-= render_breadcrumbs :separator => ">"
