@@ -10,7 +10,7 @@
                 li.dot data-slide-to="2" data-target="#carouselExampleIndicators" 
                 li.dot data-slide-to="3" data-target="#carouselExampleIndicators"         
               .carousel-inner
-                - buy_house.buy_house_images.each.with_index(1) do |buy_house_image, counter|
+                - buy_house.buy_house_images.where.not(buy_house_image_uid: nil).each.with_index(1) do |buy_house_image, counter|
                   - if counter == 1
                     .carousel-item.active
                       img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
