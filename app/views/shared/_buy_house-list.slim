@@ -12,7 +12,8 @@
               p.text-info.mb-0 住所
 
             - if buy_house.name.present?
-              h2.card-text.mb-0 #{buy_house.prefecture.name}#{buy_house.name}の古民家物件
+              h2.card-text.mb-0 
+                | #{buy_house.prefecture.name}#{buy_house.name}<br>の古民家物件
             - else
               h2.card-text.mb-0 物件の名前
 
