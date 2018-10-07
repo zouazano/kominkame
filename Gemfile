@@ -28,6 +28,12 @@ gem 'meta-tags'
 gem 'sitemap_generator'
 gem "breadcrumbs_on_rails"
 
+
+gem 'newrelic_rpm'
+
+
+
+
 gem 'listen', '>= 3.0.5', '< 3.2'
 
 gem 'roboto'
