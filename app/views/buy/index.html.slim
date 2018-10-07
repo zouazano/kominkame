@@ -1,35 +1,35 @@
 = render_breadcrumbs builder: BreadcrumbsBuilder
 =render 'buy-navbar'
 - if browser.device.mobile?
-	.container
-	  .row
-	    .col-12.col-md-9
-	      .row
-	        .col-12
-	          h2 おすすめ物件
+  .container
+    .row
+      .col-12.col-md-9
+        .row
+          .col-12
+            h2 おすすめ物件
 
-	        - @buy_houses.each do |buy_house|  
-	          = render 'shared/buy_house-list', buy_house: buy_house 
-	      .row
-	        .col-12.d-flex.justify-content-center.mt-3
-	          = paginate @buy_houses
+          - @buy_houses.each.with_index(1) do |buy_house, num|  
+            = render 'shared/buy_house-list', buy_house: buy_house , num: num
+        .row
+          .col-12.d-flex.justify-content-center.mt-3
+            = paginate @buy_houses
 
 
 - else
-	.container
-	  .row
-	    .col-12.col-md-9
-	      .row
-	        .col-12
-	          h2 おすすめ物件
+  .container
+    .row
+      .col-12.col-md-9
+        .row
+          .col-12
+            h2 おすすめ物件
 
-	        - @buy_houses.each do |buy_house|  
-	          = render 'shared/buy_house-list', buy_house: buy_house 
-	      .row
-	        .col-12.d-flex.justify-content-center.mt-3
-	          = paginate @buy_houses
+          - @buy_houses.each.with_index(1) do |buy_house, num|  
+            = render 'shared/buy_house-list', buy_house: buy_house , num: num
+        .row
+          .col-12.d-flex.justify-content-center.mt-3
+            = paginate @buy_houses
 
 
-	    .col-3
-	      .row
-	        h2
+      .col-3
+        .row
+          h2

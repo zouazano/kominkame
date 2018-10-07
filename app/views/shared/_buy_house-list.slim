@@ -3,8 +3,27 @@
     .row
       .col-12
         a href=buy_house_path(buy_house.id) target="_blank"
-          img.card-img-top alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件") src=buy_house.buy_house_images.first&.buy_house_image&.thumb('400x200#')&.url /
-          .card-body.p-1
+            .carousel.slide id="carouselExampleControls#{num}" data-interval="false"
+              ol.carousel-indicators
+                li.active.dot data-slide-to="0" data-target="#carouselExampleIndicators" 
+                li.dot data-slide-to="1" data-target="#carouselExampleIndicators" 
+                li.dot data-slide-to="2" data-target="#carouselExampleIndicators" 
+                li.dot data-slide-to="3" data-target="#carouselExampleIndicators"         
+              .carousel-inner
+                - buy_house.buy_house_images.each.with_index(1) do |buy_house_image, counter|
+                  - if counter == 1
+                    .carousel-item.active
+                      img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
+                  - else
+                    .carousel-item
+                      img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
+           
+              a.carousel-control-prev data-slide="prev" href="#carouselExampleControls#{num}" role="button" 
+                span.carousel-control-prev-icon aria-hidden="true" 
+                span.sr-only Previous
+              a.carousel-control-next data-slide="next" href="#carouselExampleControls#{num}" role="button" 
+                span.carousel-control-next-icon aria-hidden="true" 
+                span.sr-only Next
           
             - if buy_house.address.present?
               p.text-info.mb-0 = buy_house.address
