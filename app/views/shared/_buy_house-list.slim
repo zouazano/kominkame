@@ -25,26 +25,28 @@
                 span.carousel-control-next-icon aria-hidden="true" 
                 span.sr-only Next
           
-            - if buy_house.address.present?
-              p.text-info.mb-0 = buy_house.address
-            - else
-              p.text-info.mb-0 住所
+            .row
+              .col-12.w-100
+                  - if buy_house.address.present?
+                    p.text-info.mb-0 = buy_house.address
+                  - else
+                    p.text-info.mb-0 住所
 
-            - if buy_house.name.present?
-              h2.card-text.mb-0 
-                | #{buy_house.prefecture.name}#{buy_house.name}<br>の古民家物件
-            - else
-              h2.card-text.mb-0 物件の名前
+                  - if buy_house.name.present?
+                    h2.card-text.mb-0 
+                      | #{buy_house.prefecture.name}#{buy_house.name}<br>の古民家物件
+                  - else
+                    h2.card-text.mb-0 物件の名前
 
-            - if buy_house.built_date.present?
-              p.text-dark.mb-0 #{buy_house.built_date.year}年築
-            - else
-              p.text-dark.mb-0 築年数不詳
+                  - if buy_house.built_date.present?
+                    p.text-dark.mb-0 #{buy_house.built_date.year}年築
+                  - else
+                    p.text-dark.mb-0 築年数不詳
 
-            - if buy_house.price.present?
-              p.text-dark #{buy_house.price}万円
-            - else
-              p.text-dark 価格
+                  - if buy_house.price.present?
+                    p.text-dark #{buy_house.price}万円
+                  - else
+                    p.text-dark 価格
   .row
     .col-12
       a href=buy_house_path(buy_house.id) target="_blank"
