@@ -1,52 +1,85 @@
-.col-sm-6.col-lg-4.mb-5
-  .card.mb-0.box-shadow.bg-light.h-100
-    .row
-      .col-12
-        a href=buy_house_path(buy_house.id) target="_blank"
-            .carousel.slide id="carouselExampleControls#{num}" data-interval="false"
-              ol.carousel-indicators
-                li.active.dot data-slide-to="0" data-target="#carouselExampleIndicators" 
-                li.dot data-slide-to="1" data-target="#carouselExampleIndicators" 
-                li.dot data-slide-to="2" data-target="#carouselExampleIndicators" 
-                li.dot data-slide-to="3" data-target="#carouselExampleIndicators"         
-              .carousel-inner
-                - buy_house.buy_house_images.where.not(buy_house_image_uid: nil).each.with_index(1) do |buy_house_image, counter|
-                  - if counter == 1
-                    .carousel-item.active
-                      img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
-                  - else
-                    .carousel-item
-                      img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
-           
-              a.carousel-control-prev data-slide="prev" href="#carouselExampleControls#{num}" role="button" 
-                span.carousel-control-prev-icon aria-hidden="true" 
-                span.sr-only Previous
-              a.carousel-control-next data-slide="next" href="#carouselExampleControls#{num}" role="button" 
-                span.carousel-control-next-icon aria-hidden="true" 
-                span.sr-only Next
-          
-            .row
-              .col-12.w-100
-                  - if buy_house.address.present?
-                    p.text-info.mb-0 = buy_house.address
-                  - else
-                    p.text-info.mb-0 住所
+  .row
+    .col-12
+      a href=buy_house_path(buy_house.id) target="_blank"
+        h2.mt-3.p-1.border = buy_house.prefecture.name + buy_house.name + "の古民家物件"
+  .row
+    .col-12
+      .card.mb-3.box-shadow.bg-light.h-100
+        .row
+          .col-5
+            a href=buy_house_path(buy_house.id) target="_blank"
+                .carousel.slide id="carouselExampleControls#{num}" data-interval="false"
+                  ol.carousel-indicators
+                    li.active.dot data-slide-to="0" data-target="#carouselExampleIndicators" 
+                    li.dot data-slide-to="1" data-target="#carouselExampleIndicators" 
+                    li.dot data-slide-to="2" data-target="#carouselExampleIndicators" 
+                    li.dot data-slide-to="3" data-target="#carouselExampleIndicators"         
+                  .carousel-inner
+                    - buy_house.buy_house_images.where.not(buy_house_image_uid: nil).each.with_index(1) do |buy_house_image, counter|
+                      - if counter == 1
+                        .carousel-item.active
+                          img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
+                      - else
+                        .carousel-item
+                          img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
+               
+                  a.carousel-control-prev data-slide="prev" href="#carouselExampleControls#{num}" role="button" 
+                    span.carousel-control-prev-icon aria-hidden="true" 
+                    span.sr-only Previous
+                  a.carousel-control-next data-slide="next" href="#carouselExampleControls#{num}" role="button" 
+                    span.carousel-control-next-icon aria-hidden="true" 
+                    span.sr-only Next
+              
+          .col-7.mt-1
+            - if buy_house.price.present?
+              h2.font-weight-bold.text-info.mb-0 #{buy_house.price}万円
+            - else
+              p.text-dark 価格
 
-                  - if buy_house.name.present?
-                    h2.card-text.mb-0 
-                      | #{buy_house.prefecture.name}#{buy_house.name}<br>の古民家物件
-                  - else
-                    h2.card-text.mb-0 物件の名前
+            - if buy_house.madori.present?
+              p.font-weight-bold.text-dark.mb-0 #{buy_house.madori}
+            - else
+              p.font-weight-bold.text-dark.mb-0 間取り
 
-                  - if buy_house.built_date.present?
-                    p.text-dark.mb-0 #{buy_house.built_date.year}年築
-                  - else
-                    p.text-dark.mb-0 築年数不詳
+            - if buy_house.built_date.present?
+              p.mb-0 #{buy_house.built_date.year}年#{buy_house.built_date.month}月
+            -else
+              p.mb-0 築年月問い合わせ
 
-                  - if buy_house.price.present?
-                    p.text-dark #{buy_house.price}万円
-                  - else
-                    p.text-dark 価格
+            - if buy_house.address.present?
+              small.d-block.text-dark.mb-0 = buy_house.address
+            - else
+              small.d-block.text-dark.mb-0 住所
+
+            - if buy_house.access.present?
+              small.d-block.text-dark.mb-0 = buy_house.access
+            - else
+              small.d-block.text-dark.mb-0 アクセス問い合わせ
+
+
+            table.table.table-borderless.table-sm
+              tbody
+                tr
+                  th.p-0 scope="row" 
+                    small.text-muted 土地
+                  td.p-0
+                    - if buy_house.land_area.present?
+                      small.text-dark.mb-0.ml-1 #{buy_house.land_area}㎡
+                    - else
+                      small.d-block.text-dark.mb-0 土地面積問い合わせ
+                tr
+                  th.p-0 scope="row" 
+                    small.text-muted 建物
+                  td.p-0
+                    - if buy_house.house_area.present?
+                      small.text-dark.mb-0.ml-1 #{buy_house.house_area}㎡
+                    - else
+                      small.d-block.text-dark.mb-0 建物面積問い合わせ
+
+
+
+
+
   .row
     .col-12
       a href=buy_house_path(buy_house.id) target="_blank"
