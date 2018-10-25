@@ -16,8 +16,15 @@
         .col-12.d-flex.justify-content-center.mt-3
           = paginate @buy_houses
 
-    - if browser.device.mobile?
-    - else
-     .col-3
-       .row
-         h2.m-3
+  - if browser.device.mobile?
+    .row
+      h1.my-3
+        | 都道府県一覧
+    = render 'shared/buy_prefecture-list'
+
+    
+  - else
+   .col-3
+     h1.my-3
+       | 都道府県一覧
+     = render 'shared/buy_prefecture-list'

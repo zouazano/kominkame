@@ -13,6 +13,10 @@
         .row
           .col-12.d-flex.justify-content-center.mt-3
             = paginate @buy_houses
+        .row
+          h1.my-3
+            | 都道府県一覧
+        = render 'shared/buy_prefecture-list'
 
 
 - else
@@ -31,5 +35,6 @@
 
 
       .col-3
-        .row
-          h2
+        h1.my-3
+          | 都道府県一覧
+        = render 'shared/buy_prefecture-list'

@@ -152,4 +152,8 @@
         a href=buy_prefecture_path(@buy_house.prefecture.id)
 
           h2.text-info #{@buy_house.prefecture.name}の古民家物件をもっと見る >
+
+      h1.my-3
+        | 都道府県一覧
+      = render 'shared/buy_prefecture-list'
              
