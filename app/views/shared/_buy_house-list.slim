@@ -5,7 +5,7 @@
   .row
     .col-12
       .card.mb-3.box-shadow.bg-light.h-100.border-0
-        .row
+        .row.mt-1
           .col-5
             a href=buy_house_path(buy_house.id) target="_blank"
                 .carousel.slide id="carouselExampleControls#{num}" data-interval="false"
@@ -30,7 +30,7 @@
                     span.carousel-control-next-icon aria-hidden="true" 
                     span.sr-only Next
               
-          .col-7.mt-1
+          .col-7
             - if buy_house.price.present?
               h2.font-weight-bold.text-info.mb-0 #{buy_house.price}万円
             - else
