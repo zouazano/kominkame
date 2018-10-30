@@ -1,11 +1,10 @@
-  .row
-    .col-sm-12
+    .col-sm-12.pl-0
       #accordionExample.accordion
         .card
           #headingOne.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left aria-controls="collapseOne" aria-expanded="false" data-target="#collapseOne" data-toggle="collapse" type="button" 
               h2.d-inline.text-body.mt-2 北海道・東北
-              img.d-inline.float-right alt="北海道・東北の古民家" height="30" src=asset_path("down_arrow.png") /
+              img.d-inline.float-right alt="北海道・東北の古民家" height="20" src=asset_path("down_arrow.png") /
           #collapseOne.collapse aria-labelledby="headingOne" data-parent="#accordionExample" 
             .card-body
               -Prefecture.where(id: [1,2,3,4,5,6,7]).each do |buy_prefecture|
@@ -15,7 +14,7 @@
           #headingTwo.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left aria-controls="collapseTwo" aria-expanded="false" data-target="#collapseTwo" data-toggle="collapse" type="button" 
               h2.d-inline.text-body.mt-2 関東
-              img.d-inline.float-right alt="関東の古民家" height="30" src=asset_path("down_arrow.png") /
+              img.d-inline.float-right alt="関東の古民家" height="20" src=asset_path("down_arrow.png") /
           #collapseTwo.collapse aria-labelledby="headingTwo" data-parent="#accordionExample" 
             .card-body
               -Prefecture.where(id: [8,9,10,11,12,13,14]).each do |buy_prefecture|
@@ -25,7 +24,7 @@
           #headingThree.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left aria-controls="collapseThree" aria-expanded="false" data-target="#collapseThree" data-toggle="collapse" type="button" 
               h2.d-inline.text-body.mt-2 甲信越・北陸
-              img.d-inline.float-right alt="甲信越・北陸の古民家" height="30" src=asset_path("down_arrow.png") /
+              img.d-inline.float-right alt="甲信越・北陸の古民家" height="20" src=asset_path("down_arrow.png") /
           #collapseThree.collapse aria-labelledby="headingThree" data-parent="#accordionExample" 
             .card-body
               -Prefecture.where(id: [15,16,17,18,19,20]).each do |buy_prefecture|
@@ -35,7 +34,7 @@
           #headingFour.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left aria-controls="collapseFour" aria-expanded="false" data-target="#collapseFour" data-toggle="collapse" type="button" 
               h2.d-inline.text-body.mt-2 東海
-              img.d-inline.float-right alt="東海の古民家" height="30" src=asset_path("down_arrow.png") /
+              img.d-inline.float-right alt="東海の古民家" height="20" src=asset_path("down_arrow.png") /
           #collapseFour.collapse aria-labelledby="headingFour" data-parent="#accordionExample" 
             .card-body
               -Prefecture.where(id: [21..24]).each do |buy_prefecture|
@@ -45,7 +44,7 @@
           #headingFive.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left aria-controls="collapseFive" aria-expanded="false" data-target="#collapseFive" data-toggle="collapse" type="button" 
               h2.d-inline.text-body.mt-2 関西
-              img.d-inline.float-right alt="関西の古民家" height="30" src=asset_path("down_arrow.png") /
+              img.d-inline.float-right alt="関西の古民家" height="20" src=asset_path("down_arrow.png") /
           #collapseFive.collapse aria-labelledby="headingFive" data-parent="#accordionExample" 
             .card-body
               -Prefecture.where(id: [25..30]).each do |buy_prefecture|
@@ -55,7 +54,7 @@
           #headingSix.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left aria-controls="collapseSix" aria-expanded="false" data-target="#collapseSix" data-toggle="collapse" type="button" 
               h2.d-inline.text-body.mt-2 四国
-              img.d-inline.float-right alt="四国の古民家" height="30" src=asset_path("down_arrow.png") /
+              img.d-inline.float-right alt="四国の古民家" height="20" src=asset_path("down_arrow.png") /
           #collapseSix.collapse aria-labelledby="headingSix" data-parent="#accordionExample" 
             .card-body
               -Prefecture.where(id: [36..39]).each do |buy_prefecture|
@@ -65,7 +64,7 @@
           #headingSeven.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left aria-controls="collapseSeven" aria-expanded="false" data-target="#collapseSeven" data-toggle="collapse" type="button" 
               h2.d-inline.text-body.mt-2 中国
-              img.d-inline.float-right alt="中国の古民家" height="30" src=asset_path("down_arrow.png") /
+              img.d-inline.float-right alt="中国の古民家" height="20" src=asset_path("down_arrow.png") /
           #collapseSeven.collapse aria-labelledby="headingSeven" data-parent="#accordionExample" 
             .card-body
               -Prefecture.where(id: [31..35]).each do |buy_prefecture|
@@ -75,7 +74,7 @@
           #headingEight.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left aria-controls="collapseEight" aria-expanded="false" data-target="#collapseEight" data-toggle="collapse" type="button" 
               h2.d-inline.text-body.mt-2 九州・沖縄
-              img.d-inline.float-right alt="九州・沖縄の古民家" height="30" src=asset_path("down_arrow.png") /
+              img.d-inline.float-right alt="九州・沖縄の古民家" height="20" src=asset_path("down_arrow.png") /
           #collapseEight.collapse aria-labelledby="headingEight" data-parent="#accordionExample" 
             .card-body
               -Prefecture.where(id: [40..47]).each do |buy_prefecture|
