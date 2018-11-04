@@ -23,7 +23,7 @@ html
     - elsif alert
       p.alert= alert
 
-
-    = render 'shared/header'
-    = yield
-    = render 'shared/footer'
+    .content-wrapper.bg-light
+      = render 'shared/header'
+      = yield
+      = render 'shared/footer'

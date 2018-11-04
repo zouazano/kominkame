@@ -2,14 +2,10 @@
 
 = render_breadcrumbs builder: BreadcrumbsBuilder
 
-
 .container
   .row
-    h1.m-3 = @buy_house.prefecture.name + @buy_house.name + "の古民家物件"
-
-.container
-  .row
-    .col-md-8
+    .col-12.bg-white.shadow-sm
+      h1.m-3 = @buy_house.prefecture.name + @buy_house.name + "の古民家物件"
       #carouselExampleControls.carousel.slide
         ol.carousel-indicators
           li.active data-slide-to="0" data-target="#carouselExampleIndicators" 
@@ -32,17 +28,13 @@
           span.carousel-control-next-icon aria-hidden="true" 
           span.sr-only Next
 
-  .row.m-0
-    .col-8
       p.text-secondary.w-100.mt-2.source 出典：#{@buy_house.source}  
 
-    .col-sm-12.col-md-4
+    
       p = @buy_house.strong_point
 
-  .row
-    .col-sm-8.mb-5
       h2.mt-5.mb-2 基本情報
-      table.table.table-bordered
+      table.table
         tbody
           tr
             th scope="row"  物件名
@@ -90,38 +82,38 @@
             tr
               th scope="row"  築年
               td 不詳
-      
-      .row
-        .col-12
-          h2 周辺の古民家物件
-        - BuyHouse.where(prefecture: @buy_house.prefecture).order("RANDOM()").limit(2).each do |buy_house|  
-          .col-6.m-0
-            .card.mb-0.box-shadow.h-100.bg-light
-              a href=buy_house_path(buy_house.id) target="_blank"
-                img.card-img-top alt=("Card image cap") src=buy_house.buy_house_images.first&.buy_house_image&.thumb('100x50#')&.url /
-                .card-body.pb-2.p-1
-                  - if buy_house.address.present?
-                    p.text-info.mb-0 = buy_house.address
-                  - else
-                    p.text-info.mb-0 住所
-                  - if buy_house.name.present?
-                    h2.card-text.mb-0 = buy_house.name+"の古民家物件"
-                  - else
-                    h2.card-text.mb-0 物件の名前
-                  - if buy_house.built_date.present?
-                    p.text-dark.mb-0 #{buy_house.built_date.year}年築
-                  - else
-                    p.text-dark.mb-0 築年不詳
-                  - if buy_house.price.present?
-                    p.text-dark #{buy_house.price}万円
-                  - else
-                    p.text-dark 価格
-      
-      .row.justify-content-end.mt-2
-        a href=buy_prefecture_path(@buy_house.prefecture.id)
 
-          h2.text-info.mr-2 #{@buy_house.prefecture.name}の古民家物件をもっと見る >
 
-      .row
-      = render 'shared/buy_prefecture-list'
+  .row.mt-4
+    .col-12
+      h2 周辺の古民家物件
+    - BuyHouse.where(prefecture: @buy_house.prefecture).order("RANDOM()").limit(2).each do |buy_house|  
+      .col-6.m-0
+        .card.mb-0.bg-white.shadow-sm.h-100.bg-light
+          a href=buy_house_path(buy_house.id) target="_blank"
+            img.card-img-top alt=("Card image cap") src=buy_house.buy_house_images.first&.buy_house_image&.thumb('100x50#')&.url /
+            .card-body.pb-2.p-1
+              - if buy_house.address.present?
+                p.text-info.mb-0 = buy_house.address
+              - else
+                p.text-info.mb-0 住所
+              - if buy_house.name.present?
+                h2.card-text.mb-0 = buy_house.name+"の古民家物件"
+              - else
+                h2.card-text.mb-0 物件の名前
+              - if buy_house.built_date.present?
+                p.text-dark.mb-0 #{buy_house.built_date.year}年築
+              - else
+                p.text-dark.mb-0 築年不詳
+              - if buy_house.price.present?
+                p.text-dark #{buy_house.price}万円
+              - else
+                p.text-dark 価格
+  
+  .row.justify-content-end.mt-2
+    a href=buy_prefecture_path(@buy_house.prefecture.id)
+      h2.text-info.mr-2 #{@buy_house.prefecture.name}の古民家物件をもっと見る >
+
+  .row
+  = render 'shared/buy_prefecture-list'
                  
