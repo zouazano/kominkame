@@ -1,7 +1,9 @@
   .row.mb-5
     .col-12.shadow-sm.bg-white.h-100
         .row
-          .col-5.p-0
+          .col-12.p-0
+            a href=buy_house_path(buy_house.id) target="_blank"
+              p.font-weight-bold.m-0.p-1 = buy_house.prefecture.name + buy_house.name + "の古民家物件"
             a href=buy_house_path(buy_house.id) target="_blank"
                 .carousel.slide id="carouselExampleControls#{num}" data-interval="false"
                   ol.carousel-indicators
@@ -13,10 +15,10 @@
                     - buy_house.buy_house_images.where.not(buy_house_image_uid: nil).each.with_index(1) do |buy_house_image, counter|
                       - if counter == 1
                         .carousel-item.active
-                          img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x350#').url /
+                          img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
                       - else
                         .carousel-item
-                          img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x350#').url /
+                          img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x300#').url /
                
                   a.carousel-control-prev data-slide="prev" href="#carouselExampleControls#{num}" role="button" 
                     span.carousel-control-prev-icon aria-hidden="true" 
@@ -25,9 +27,7 @@
                     span.carousel-control-next-icon aria-hidden="true" 
                     span.sr-only Next
               
-          .col-7.buy_house-info
-            a href=buy_house_path(buy_house.id) target="_blank"
-              p.font-weight-bold.m-0.border-bottom = buy_house.prefecture.name + buy_house.name + "の古民家物件"
+          .col-12
             - if buy_house.price.present?
               p.font-weight-bold.text-info.mb-0 #{buy_house.price}万円
             - else
@@ -52,7 +52,7 @@
               p.text-dark.mb-0 = buy_house.access
             - else
               p.text-dark.mb-0 アクセス問い合わせ
-            table.table.table-borderless.table-sm.mb-2
+            table.table.table-borderless.table-sm
               tbody
                 tr
                   th.p-0 scope="row" 
@@ -73,4 +73,4 @@
 
  
             a.d-flex.justify-content-end href=buy_house_path(buy_house.id) target="_blank"
-              button.btn.btn-outline-info.detail-button type="button" 詳細
+              button.btn.btn-outline-info.mb-2 type="button" 詳細
