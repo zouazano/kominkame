@@ -6,6 +6,7 @@
   .row
     .col-12.bg-white.shadow-sm
       h1.m-3 = @buy_house.prefecture.name + @buy_house.name + "の古民家物件"
+    .col-12.p-0
       #carouselExampleControls.carousel.slide
         ol.carousel-indicators
           li.active data-slide-to="0" data-target="#carouselExampleIndicators" 
@@ -27,7 +28,7 @@
         a.carousel-control-next data-slide="next" href="#carouselExampleControls" role="button" 
           span.carousel-control-next-icon aria-hidden="true" 
           span.sr-only Next
-
+    .col-12
       p.text-secondary.w-100.mt-2.source 出典：#{@buy_house.source}  
 
     
