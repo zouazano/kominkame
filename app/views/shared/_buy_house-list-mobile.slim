@@ -1,9 +1,11 @@
-  .row.mb-5
+  .row.mb-1
     .col-12.shadow-sm.bg-white.h-100
         .row
-          .col-12.p-0
+          .col-12.border-bottom
             a href=buy_house_path(buy_house.id) target="_blank"
-              p.font-weight-bold.m-0.p-1 = buy_house.prefecture.name + buy_house.name + "の古民家物件"
+              p.d-inline.font-weight-bold.my-2 = buy_house.prefecture.name + buy_house.name + "の古民家"
+             
+          .col-6.mt-1
             a href=buy_house_path(buy_house.id) target="_blank"
                 .carousel.slide id="carouselExampleControls#{num}" data-interval="false"
                   ol.carousel-indicators
@@ -27,11 +29,14 @@
                     span.carousel-control-next-icon aria-hidden="true" 
                     span.sr-only Next
               
-          .col-12
+          .col-6
             - if buy_house.price.present?
-              p.font-weight-bold.text-info.mb-0 #{buy_house.price}万円
+              p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{buy_house.price}万円
             - else
               p.text-dark 価格
+            
+            a.float-right.d-inline.justify-content-end href=buy_house_path(buy_house.id) target="_blank"
+              button.btn.btn-outline-info.mb-2.mt-1 type="button" 詳細
 
             - if buy_house.madori.present?
               p.font-weight-bold.text-dark.mb-0 #{buy_house.madori}
@@ -71,6 +76,4 @@
                     - else
                       p.text-dark.mb-0 建物面積問い合わせ
 
- 
-            a.d-flex.justify-content-end href=buy_house_path(buy_house.id) target="_blank"
-              button.btn.btn-outline-info.mb-2 type="button" 詳細
+

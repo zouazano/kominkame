@@ -5,8 +5,7 @@ class BuyPrefecturesController < ApplicationController
   def index
     add_breadcrumb "ホーム", root_path
     add_breadcrumb "古民家を買う", buy_index_path
-  	add_breadcrumb "地域から古民家を探す"
-  end
+   end
 
   def show
     @prefecture = Prefecture.find(params[:id])

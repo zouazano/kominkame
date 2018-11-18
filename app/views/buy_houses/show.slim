@@ -5,7 +5,8 @@
 .container
   .row
     .col-12.bg-white.shadow-sm
-      h1.m-3 = @buy_house.prefecture.name + @buy_house.name + "の古民家物件"
+      h1.my-2 = @buy_house.prefecture.name + @buy_house.name + "の古民家物件"
+      p.font-weight-bold.text-danger.lead.mb-0.float-right #{@buy_house.price}万円
     .col-12.p-0
       #carouselExampleControls.carousel.slide
         ol.carousel-indicators
