@@ -32,8 +32,10 @@
 
 
   .row  
-    h2.col-sm-6.m-3
-      | おすすめ物件
+    .col-12
+      h2.my-3
+        | おすすめ物件
+      p.lead.text-danger #{BuyHouse.all.count}件
 
 .container
   - @buy_houses.order("RANDOM()").each.with_index(1) do |buy_house, num|  
