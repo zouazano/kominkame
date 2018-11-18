@@ -26,14 +26,15 @@
                     span.sr-only Next
               
           .col-7.buy_house-info
-            a href=buy_house_path(buy_house.id) target="_blank"
-              p.d-inline.font-weight-bold.m-0.border-bottom = buy_house.prefecture.name + buy_house.name + "の古民家物件"
-              a.float-right.d-inline.justify-content-end href=buy_house_path(buy_house.id) target="_blank"
-                button.btn.btn-outline-info.mb-2 type="button" 詳細
+            .row
+              .col-12.border-bottom.mt-2
+                a href=buy_house_path(buy_house.id) target="_blank"
+                  p.d-inline.font-weight-bold.float-left.lead = buy_house.prefecture.name + buy_house.name + "の古民家物件"
+                  a.d-inline href=buy_house_path(buy_house.id) target="_blank"
+                    button.btn.btn-outline-info.float-right type="button" 詳細
 
 
-           
-
+          
             - if buy_house.price.present?
               p.font-weight-bold.text-danger.lead.mb-0 #{buy_house.price}万円
             - else
