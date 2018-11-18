@@ -7,8 +7,11 @@
   .row
     .col-12.col-md-9
       .row
+        .col-12.mb-3
+          h1 #{@prefecture.name}の古民家物件一覧
+          p.lead.d-inline.text-danger #{@prefecture.buy_houses.count}件
+
         .col-12
-          h1.my-3 #{@prefecture.name}の古民家物件
           - if browser.device.mobile?
             - @buy_houses.each.with_index(1) do |buy_house, num|  
               = render 'shared/buy_house-list-mobile', buy_house: buy_house , num: num
