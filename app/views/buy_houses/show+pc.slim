@@ -7,8 +7,8 @@
     .col-9.bg-white.shadow-sm
       .row
         .col-12.p-2
-          h1.d-inline.p-3 = @buy_house.prefecture.name + @buy_house.name + "の古民家物件"
-          p.font-weight-bold.text-danger.lead.mb-0.float-right #{@buy_house.price}万円
+          h1.p-3.d-inline = @buy_house.prefecture.name + @buy_house.name + "の古民家物件"
+          p.d-inline.font-weight-bold.text-danger.lead.mb-0 #{@buy_house.price}万円
         .col-12.p-0
           #carouselExampleControls.carousel.slide data-interval="false"
             ol.carousel-indicators
@@ -117,7 +117,7 @@
                   - else
                     p.text-dark.mb-0 築年不詳
                   - if buy_house.price.present?
-                    p.text-dark #{buy_house.price}万円
+                    p.lead.text-danger.font-weight-bold #{buy_house.price}万円
                   - else
                     p.text-dark 価格
         .col-12.mt-2
