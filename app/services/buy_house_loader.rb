@@ -4,7 +4,7 @@ require "yaml"
 class BuyHouseLoader
   def self.load
     CSV.foreach("db/seeds/buy_house.csv", headers: true) do |row|
-      attributes = row.to_h.slice("name", "strong_point", "price", "zip_code", "address", "access", "hours", "age", "madori", "land_area", "house_area", "built_time", "notes", "recommendation", "shop_id", "source", "image_url1", "image_url2", "image_url3", "image_url4", "built_date")
+      attributes = row.to_h.slice("name", "address", "access", "madori", "land_area", "house_area", "built_date", "strong_point", "prefecture_name", "price", "zip_code", "hours", "age", "built_time", "recommendation", "notes", "shop_id", "source", "image_url1", "image_url2", "image_url3", "image_url4")
       attributes[:prefecture_id] = Prefecture.find_by(name: row["prefecture_name"]).id
       buy_house = BuyHouse.where(name: row["name"]).where(price: row["price"]).where(strong_point: row["strong_point"]).first
       if buy_house.present?
