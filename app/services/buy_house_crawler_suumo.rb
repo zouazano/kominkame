@@ -37,7 +37,7 @@ class BuyHouseCrawlerSuumo
 
   def self.detail_crawl
 
-    kominka = crawl
+    kominka = ["https://suumo.jp/chukoikkodate/__JJ_JJ010FJ100_arz1040z2bsz1021z2ncz188893403.html?suit=nsuusbsp20121129001", "https://suumo.jp/chukoikkodate/__JJ_JJ010FJ100_arz1060z2bsz1021z2ncz190703347.html?suit=nsuusbsp20121129001"]
 
     CSV.open("buy_house_suumo.csv", "w") do |csv|
       header = ['name', 'address', 'access', 'madori', 'land_area', 'house_area', 'built_date', 'strong_point', 'prefecture_name', 'price', 'zip_code', 'hours', 'age', 'built_time', 'recommendation', 'notes', 'shop_id', 'source', 'image_url1', 'image_url2', 'image_url3', 'image_url4']
@@ -58,7 +58,7 @@ class BuyHouseCrawlerSuumo
         doc = Nokogiri::HTML.parse(html, nil, charset)
 
         
-        (4..5).each do |n|
+        (4..6).each do |n|
           if doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[5]/th[1]").inner_text == '住所'
             name = doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[5]/td[1]/p[1]").inner_text
             if name.slice(0, 3) == '鹿児島' or name.slice(0, 3) == '和歌山'
@@ -99,8 +99,7 @@ class BuyHouseCrawlerSuumo
           end
 
           if doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[4]/th[2]/div[1]").inner_text == '完成時期（築年月）'
-            built_date = doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[4]/td[2]").inner_text.gsub(/年/m, "-").gsub(/月.*/m, "")
-            built_date.slice!(0, 9)
+            built_date = doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[4]/td[2]").inner_text.gsub(/年/m, "-").gsub(/月/m, "").gsub(/\s/m, "")
             buy_house_info.push(built_date)
           else
           end
