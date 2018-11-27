@@ -37,10 +37,10 @@ class BuyHouseCrawlerSuumo
 
   def self.detail_crawl
 
-    kominka = ["https://suumo.jp/chukoikkodate/__JJ_JJ010FJ100_arz1040z2bsz1021z2ncz190423197.html?suit=nsuusbsp20121129001", "https://suumo.jp/chukoikkodate/__JJ_JJ010FJ100_arz1060z2bsz1021z2ncz189283371.html?suit=nsuusbsp20121129001", "https://suumo.jp/chukoikkodate/__JJ_JJ010FJ100_arz1090z2bsz1021z2ncz189937175.html?suit=nsuusbsp20121129001"]
+    kominka = crawl
 
     CSV.open("buy_house_suumo.csv", "w") do |csv|
-      header = ['name', 'address', 'access', 'madori', 'land_area', 'house_area', 'built_date', 'strong_point', 'prefecture_name', 'price', 'zip_code', 'hours', 'age', 'built_time', 'recommendation', 'notes', 'shop_id', 'source', 'image_url1', 'image_url2', 'image_url3', 'image_url4']
+      header = ['name', 'address', 'access', 'madori', 'land_area', 'house_area', 'built_date', 'strong_point', 'prefecture_name', 'price', 'zip_code', 'hours', 'age', 'notes', 'built_time', 'recommendation', 'shop_id', 'source', 'image_url1', 'image_url2', 'image_url3', 'image_url4']
       csv << header
       kominka.each do |i| 
         url = "#{i}"
@@ -150,37 +150,38 @@ class BuyHouseCrawlerSuumo
         
         strong_point = doc.xpath('//*[@id="mainContents"]/div[2]/h2').inner_text
         prefecture_name = doc.xpath('//*[@id="help_link"]/ul/li[4]/a').inner_text
-        price = doc.xpath('//*[@id="topContents"]/div[2]/div[1]/div[2]/p[1]').inner_text.sub(/億/m, "").sub(/万.*/m, "")
+        price = doc.xpath('//*[@id="jsiNyroModalId_#G02_001"]/img').inner_text.sub(/億/m, "").sub(/万.*/m, "")
         zip_code = ''
         hours = ''
         age = ''
         notes = ''
+        built_time = ''
         recommendation = 'great'
         shop_id = ''
         source = url
-        if doc.xpath('//*[@id="imgG02_001"]').present?
-          image_url1 = doc.xpath('//*[@id="imgG02_001"]').attribute("src").value
+        if doc.xpath('//*[@id="jsiNyroModalId_#G02_001"]/img').present?
+          image_url1 = doc.xpath('//*[@id="jsiNyroModalId_#G02_001"]/img').attribute("rel").value.sub(/w=.*/m, "w=500")
         else 
           image_url1 = ""
         end
-        if doc.xpath('//*[@id="imgG02_002"]').present?
-          image_url2 = doc.xpath('//*[@id="imgG02_001"]').attribute("src").value
+        if doc.xpath('//*[@id="jsiNyroModalId_#G02_002"]/img').present?
+          image_url2 = doc.xpath('//*[@id="jsiNyroModalId_#G02_002"]/img').attribute("rel").value.sub(/w=.*/m, "w=500")
         else 
           image_url2 = ""
         end
-        if doc.xpath('//*[@id="imgG02_003"]').present?
-          image_url3 = doc.xpath('//*[@id="imgG02_001"]').attribute("src").value
+        if doc.xpath('//*[@id="jsiNyroModalId_#G02_003"]/img').present?
+          image_url3 = doc.xpath('//*[@id="jsiNyroModalId_#G02_003"]/img').attribute("rel").value.sub(/w=.*/m, "w=500")
         else 
           image_url3 = ""
         end
-        if doc.xpath('//*[@id="imgG02_004"]').present?
-          image_url4 = doc.xpath('//*[@id="imgG02_001"]').attribute("src").value
+        if doc.xpath('//*[@id="jsiNyroModalId_#G02_003"]/img').present?
+          image_url4 = doc.xpath('//*[@id="jsiNyroModalId_#G02_003"]/img').attribute("rel").value.sub(/w=.*/m, "w=500")
         else 
           image_url4 = ""
         end
        
         
-        buy_house_info.push(strong_point, prefecture_name, price, zip_code, hours, age, notes, recommendation, shop_id, source, image_url1, image_url2, image_url3, image_url4)
+        buy_house_info.push(strong_point, prefecture_name, price, zip_code, hours, age, notes, built_time, recommendation, shop_id, source, image_url1, image_url2, image_url3, image_url4)
 
         csv << buy_house_info
         sleep 2
