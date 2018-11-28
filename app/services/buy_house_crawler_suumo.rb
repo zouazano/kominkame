@@ -33,8 +33,7 @@ class BuyHouseCrawlerSuumo
     end
     kominka
   end
-
-
+  
   def self.detail_crawl
 
     kominka = crawl
@@ -129,18 +128,18 @@ class BuyHouseCrawlerSuumo
 
           if doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[4]/th[2]/div[1]").inner_text == '完成時期（築年月）'
             if doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[4]/td[2]").inner_text.include?("月")
-              built_date = doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[4]/td[2]").inner_text.gsub(/年/m, "-").gsub(/月/m, "").gsub(/\s/m, "")
+              built_date = doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[4]/td[2]").inner_text.gsub(/年/m, "-").gsub(/月/m, "-01").gsub(/\s/m, "")
               buy_house_info.push(built_date)
             else
-              built_date = doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[4]/td[2]").inner_text.gsub(/年/m, "-1").gsub(/\s/m, "")
+              built_date = doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[4]/td[2]").inner_text.gsub(/年/m, "-01-01").gsub(/\s/m, "")
               buy_house_info.push(built_date)
             end
           elsif doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[5]/th[2]/div[1]").inner_text == '完成時期（築年月）'
             if doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[5]/td[2]").inner_text.include?("月")
-              built_date = doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[5]/td[2]").inner_text.gsub(/年/m, "-").gsub(/月/m, "").gsub(/\s/m, "")
+              built_date = doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[5]/td[2]").inner_text.gsub(/年/m, "-").gsub(/月/m, "-01").gsub(/\s/m, "")
               buy_house_info.push(built_date)
             else
-              built_date = doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[5]/td[2]").inner_text.gsub(/年/m, "-1").gsub(/\s/m, "")
+              built_date = doc.xpath("//*[@id='mainContents']/div[#{n}]/div[1]/table[2]/tbody/tr[5]/td[2]").inner_text.gsub(/年/m, "-01-01").gsub(/\s/m, "")
               buy_house_info.push(built_date)
             end
           else
@@ -150,7 +149,7 @@ class BuyHouseCrawlerSuumo
         
         strong_point = doc.xpath('//*[@id="mainContents"]/div[2]/h2').inner_text
         prefecture_name = doc.xpath('//*[@id="help_link"]/ul/li[4]/a').inner_text
-        price = doc.xpath('//*[@id="jsiNyroModalId_#G02_001"]/img').inner_text.sub(/億/m, "").sub(/万.*/m, "")
+        price = doc.xpath('//*[@id="topContents"]/div[2]/div[1]/div[2]/p[1]').inner_text.sub(/億/m, "").sub(/万.*/m, "")
         zip_code = ''
         hours = ''
         age = ''
@@ -174,8 +173,8 @@ class BuyHouseCrawlerSuumo
         else 
           image_url3 = ""
         end
-        if doc.xpath('//*[@id="jsiNyroModalId_#G02_003"]/img').present?
-          image_url4 = doc.xpath('//*[@id="jsiNyroModalId_#G02_003"]/img').attribute("rel").value.sub(/w=.*/m, "w=500")
+        if doc.xpath('//*[@id="jsiNyroModalId_#G02_004"]/img').present?
+          image_url4 = doc.xpath('//*[@id="jsiNyroModalId_#G02_004"]/img').attribute("rel").value.sub(/w=.*/m, "w=500")
         else 
           image_url4 = ""
         end

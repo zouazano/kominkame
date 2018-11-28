@@ -39,7 +39,7 @@ class BuyHouseLoader
   end
 
   def self.nokogiri_load
-    CSV.foreach("buy_house_suumo.csv", headers: true) do |row|
+    CSV.foreach("suumo_test.csv", headers: true) do |row|
       attributes = row.to_h.slice("name", "address", "access", "madori", "land_area", "house_area", "built_date", "strong_point", "prefecture_name", "price", "zip_code", "hours", "age", "built_time", "recommendation", "notes", "shop_id", "source", "image_url1", "image_url2", "image_url3", "image_url4")
       attributes[:prefecture_id] = Prefecture.find_by(name: row["prefecture_name"]).id
       attributes.delete("prefecture_name")
