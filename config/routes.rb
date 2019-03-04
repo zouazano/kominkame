@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   resources :buy_houses, only: [:show]
   resources :stay_houses, only: [:show]
 
+  get 'company_profile/index'
+
 
   get 'prefectures/:id', to: 'prefectures#show', as: :prefecture
   resources :buy_prefectures, only: [:index, :show]
