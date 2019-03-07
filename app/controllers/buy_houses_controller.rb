@@ -1,5 +1,6 @@
 class BuyHousesController < ApplicationController
   def show
+  	set_meta_tags noindex: true, nofollow: true
     @buy_house = BuyHouse.find(params[:id])
     buy_house_id = @buy_house.id
 	  add_breadcrumb "ホーム", root_path
