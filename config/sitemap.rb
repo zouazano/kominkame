@@ -31,9 +31,4 @@ SitemapGenerator::Sitemap.create do
 
 
 
-  BuyHouse.find_each do |buy_house|
-    add buy_house_path(buy_house), :lastmod => buy_house.updated_at
-  end
-
-
 end
