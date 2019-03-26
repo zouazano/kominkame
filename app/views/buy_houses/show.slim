@@ -45,10 +45,10 @@
           span.font-weight-bold かなり格安！
         - elsif @buy_house.price < (@price_average.compact.sum/@price_average.compact.length).round(2) - 200
           span.font-weight-bold やや格安！
-        - elsif @buy_house.price > (@price_average.compact.sum/@price_average.compact.length).round(2) + 200
-          span.font-weight-bold やや高め
         - elsif @buy_house.price > (@price_average.compact.sum/@price_average.compact.length).round(2) + 500
           span.font-weight-bold 高め
+        - elsif @buy_house.price > (@price_average.compact.sum/@price_average.compact.length).round(2) + 200
+          span.font-weight-bold やや高め
         - else
           span.font-weight-bold 平均的
         span といえるでしょう。
@@ -80,10 +80,10 @@
           span.font-weight-bold 狭め
         - elsif @buy_house.house_area < (@house_area_average.compact.sum/@house_area_average.compact.length).round(2) - 40
           span.font-weight-bold やや狭め
+        - elsif @buy_house.house_area > (@house_area_average.compact.sum/@house_area_average.compact.length).round(2) + 80
+          span.font-weight-bold かなり広め!
         - elsif @buy_house.house_area > (@house_area_average.compact.sum/@house_area_average.compact.length).round(2) + 40
           span.font-weight-bold やや広め
-        - elsif @buy_house.house_area > (@house_area_average.compact.sum/@house_area_average.compact.length).round(2) + 80
-          span.font-weight-bold かなり広め
         - else
           span.font-weight-bold 平均的
         span といえるでしょう。
@@ -97,16 +97,15 @@
         span.font-weight-bold #{(@built_date_average.compact.sum/@built_date_average.compact.length).round(2)}年
         span なので、
         br
-        span 築年は
 
-        - if @buy_house.built_date < (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) - 30
-          span.font-weight-bold 築古
-        - elsif @buy_house.built_date < (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) - 10
+        - if @buy_house.built_date.year < (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) - 30
+          span.font-weight-bold かなり築古
+        - elsif @buy_house.built_date.year < (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) - 10
           span.font-weight-bold やや築古
-        - elsif @buy_house.built_date > (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) + 10
+        - elsif @buy_house.built_date.year > (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) + 30
+          span.font-weight-bold かなり築浅!
+        - elsif @buy_house.built_date.year > (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) + 10
           span.font-weight-bold やや築浅
-        - elsif @buy_house.built_date > (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) + 30
-          span.font-weight-bold かなり築浅
         - else
           span.font-weight-bold 平均的
         span といえます。
