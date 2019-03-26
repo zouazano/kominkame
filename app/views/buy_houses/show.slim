@@ -32,7 +32,87 @@
     .col-12
       p.text-secondary.w-100.mt-2.source 出典：#{@buy_house.source}  
 
-    
+      - if @buy_house.price.present?
+        span.mb-0 こちらの古民家の価格は
+        span.font-weight-bold #{@buy_house.price}万円
+        span。コミンカに掲載された古民家の平均価格は
+        span.font-weight-bold #{(@price_average.compact.sum/@price_average.compact.length).round(2)}万円
+        span なので、
+        br 
+        span 価格は
+
+        - if @buy_house.price < (@price_average.compact.sum/@price_average.compact.length).round(2) - 500
+          span.font-weight-bold かなり格安！
+        - elsif @buy_house.price < (@price_average.compact.sum/@price_average.compact.length).round(2) - 200
+          span.font-weight-bold やや格安！
+        - elsif @buy_house.price > (@price_average.compact.sum/@price_average.compact.length).round(2) + 200
+          span.font-weight-bold やや高め
+        - elsif @buy_house.price > (@price_average.compact.sum/@price_average.compact.length).round(2) + 500
+          span.font-weight-bold 高め
+        - else
+          span.font-weight-bold 平均的
+        span といえるでしょう。
+
+      br
+      br
+
+      - if @buy_house.land_area.present?
+        span.mb-0 土地面積は
+        span.font-weight-bold #{@buy_house.land_area}㎡
+        span 。コミンカに掲載された古民家の平均土地面積は
+        span.font-weight-bold #{(@land_area_average.compact.sum/@land_area_average.compact.length).round(2)}㎡
+        span です。
+        br
+        span 平均土地面積には田畑面積も含まれるものもありますので、かなり広めの数字になってしまいます。あくまで参考程度にお考えください。
+      br
+      br
+
+      - if @buy_house.house_area.present?
+        span.mb-0 建物面積は
+        span.font-weight-bold #{@buy_house.house_area}㎡
+        span。コミンカに掲載された古民家の平均建物面積は
+        span.font-weight-bold #{(@house_area_average.compact.sum/@house_area_average.compact.length).round(2)}㎡
+        span なので、
+        br
+        span 建物面積は
+
+        - if @buy_house.house_area < (@house_area_average.compact.sum/@house_area_average.compact.length).round(2) - 80
+          span.font-weight-bold 狭め
+        - elsif @buy_house.house_area < (@house_area_average.compact.sum/@house_area_average.compact.length).round(2) - 40
+          span.font-weight-bold やや狭め
+        - elsif @buy_house.house_area > (@house_area_average.compact.sum/@house_area_average.compact.length).round(2) + 40
+          span.font-weight-bold やや広め
+        - elsif @buy_house.house_area > (@house_area_average.compact.sum/@house_area_average.compact.length).round(2) + 80
+          span.font-weight-bold かなり広め
+        - else
+          span.font-weight-bold 平均的
+        span といえるでしょう。
+      br
+      br
+
+      - if @buy_house.built_date.present?
+        span.mb-0 築年は
+        span.font-weight-bold #{@buy_house.built_date.year}年
+        span。コミンカに掲載された古民家の平均築年は
+        span.font-weight-bold #{(@built_date_average.compact.sum/@built_date_average.compact.length).round(2)}年
+        span なので、
+        br
+        span 築年は
+
+        - if @buy_house.built_date < (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) - 30
+          span.font-weight-bold 築古
+        - elsif @buy_house.built_date < (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) - 10
+          span.font-weight-bold やや築古
+        - elsif @buy_house.built_date > (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) + 10
+          span.font-weight-bold やや築浅
+        - elsif @buy_house.built_date > (@built_date_average.compact.sum/@built_date_average.compact.length).round(2) + 30
+          span.font-weight-bold かなり築浅
+        - else
+          span.font-weight-bold 平均的
+        span といえます。
+      br
+      br
+
       h2.mt-5.mb-2 基本情報
       table.table
         tbody
