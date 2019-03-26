@@ -29,6 +29,13 @@ SitemapGenerator::Sitemap.create do
     add buy_prefecture_path(buy_prefecture.id)
   end
 
+  Ebisu::Article.published.all.each do |article|
+    add Ebisu::Engine.routes.url_helpers.article_path(article)
+  end
+  Ebisu::Category.all.each do |category|
+    add Ebisu::Engine.routes.url_helpers.category_path(category)
+  end
+
 
 
 end
