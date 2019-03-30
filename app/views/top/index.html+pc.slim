@@ -79,6 +79,48 @@
           h2.my-3
             | おすすめ物件
           p.lead.text-danger #{BuyHouse.all.count}件
+      .row  
+        .col-12
+          h2.my-3
+            | 全国の古民家に関わる基本情報
+        .col-4.px-2
+          .card
+            .row
+              .col-4
+                img.img-fluid.p-1 alt=("古民家を買う") src=asset_path("円マークアイコン.png") /
+              .col-8
+                p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@price_average.compact.sum/@price_average.compact.length).round(2)}万円
+              .card-body
+                h2.text-body 全国の古民家の平均価格
+        .col-4.px-2
+          .card
+            .row
+              .col-4
+                img.img-fluid.p-1 alt=("古民家を買う") src=asset_path("柵のフリーアイコン素材.png") /
+              .col-8
+                p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@land_area_average.compact.sum/@land_area_average.compact.length).round(2)}㎡
+              .card-body
+                h2.text-body 全国の古民家の平均土地面積
+      .row.mt-1.mb-5
+        .col-4.px-2
+          .card
+            .row
+              .col-4
+                img.img-fluid.p-1 alt=("古民家を買う") src=asset_path("家アイコン.png") /
+              .col-8
+                p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@house_area_average.compact.sum/@house_area_average.compact.length).round(2)}㎡
+              .card-body
+                h2.text-body 全国の古民家の平均建物面積
+        .col-4.px-2
+          .card
+            .row
+              .col-4
+                img.img-fluid.p-1 alt=("古民家を買う") src=asset_path("カレンダーのフリーアイコン2.png") /
+              .col-8
+                p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@built_date_average.compact.sum/@built_date_average.compact.length).round(2)}年
+              .card-body
+                h2.text-body 全国の古民家の平均築年    
+
 
       
       - @buy_houses.order("id DESC").each.with_index(1) do |buy_house, num|  

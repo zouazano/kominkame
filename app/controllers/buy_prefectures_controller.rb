@@ -11,11 +11,21 @@ class BuyPrefecturesController < ApplicationController
     @prefecture = Prefecture.find(params[:id])
     @buy_houses = BuyHouse.where(prefecture_id: @prefecture.id).page(params[:page])
 
+    @land_area_p_average = []
+    @house_area_p_average = []
+    @built_date_p_average = []
+    @price_p_average = []
+    BuyHouse.where(prefecture_id: @prefecture.id).all.each do |hoge|
+      @land_area_p_average << hoge.land_area
+      @house_area_p_average << hoge.house_area
+      @built_date_p_average << hoge.built_date&.year
+      @price_p_average << hoge.price
+    end
     @land_area_average = []
     @house_area_average = []
     @built_date_average = []
     @price_average = []
-    BuyHouse.where(prefecture_id: @prefecture.id).all.each do |hoge|
+    BuyHouse.all.each do |hoge|
       @land_area_average << hoge.land_area
       @house_area_average << hoge.house_area
       @built_date_average << hoge.built_date&.year
