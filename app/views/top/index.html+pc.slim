@@ -25,14 +25,15 @@
     .col-9
       .row
         h1.my-3
-          | 古民家を知る
+          | 古民家を知る(最新記事一覧)
       .row.mb-2
-        - Ebisu::Article.last(3).each do |hoge| 
+        - Ebisu::Article.where(published: true).last(3).each do |hoge| 
           .col-3.px-2
             .card
-              img.img-fluid alt=(hoge.title) src=hoge.image.thumb('400x300#').url
+              a href='http://kominka.me/articles/#{hoge.id}'
+                img.img-fluid alt=(hoge.title) src=hoge.image.thumb('400x300#').url
               .card-body
-                a href='http://kominka.me/articles/1'
+                a href='http://kominka.me/articles/#{hoge.id}'
                   h2.text-body = hoge.title.slice(0..16) + "..."
       .row     
         .col-3.px-2
