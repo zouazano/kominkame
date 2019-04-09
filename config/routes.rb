@@ -18,8 +18,10 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :houses do
-    resources :inquiries, only: %i[new create show update]
+    
   end
+
+  resources :inquiries, only: %i[new create show update]
 
   resources :headers
 
