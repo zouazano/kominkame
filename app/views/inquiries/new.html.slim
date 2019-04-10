@@ -1,6 +1,6 @@
 .container
   .row
-    h1 お問い合わせ
+    h1.mt-3 お問い合わせ
     .col-sm-12.mt-5
      - if @inquiry.errors.any?
         ul
@@ -16,9 +16,6 @@
         = f.text_field :email, class:"form-control mb-3", placeholder:'（例：kominka@xxxx.com ）'				
         = f.label :phonenumber, '電話番号'
         = f.text_field :phonenumber, class:"form-control mb-3", placeholder:'（例：09012345678）'
-
-        = f.label :address, 'お住まいの都道府県'
-        = f.text_field :address, class:"form-control mb-3", placeholder:'（例： 東京都）'
 
        
         = f.label :message, 'ご要望'
