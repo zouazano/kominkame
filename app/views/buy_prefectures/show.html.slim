@@ -98,7 +98,8 @@
                   .col-4
                     img.img-fluid.p-1 alt=("古民家を買う") src=asset_path("柵のフリーアイコン素材.png") /
                   .col-8
-                    p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@land_area_p_average.compact.sum/@land_area_p_average.compact.length).round(2)}㎡
+                    - unless @land_area_p_average.compact.length == 0
+                      p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@land_area_p_average.compact.sum/@land_area_p_average.compact.length).round(2)}㎡
                     p.text-danger 全国平均:#{(@land_area_average.compact.sum/@land_area_average.compact.length).round(2)}㎡
                   .card-body
                     h2.text-body #{@prefecture.name}の古民家の平均土地面積
@@ -119,7 +120,8 @@
                   .col-4
                     img.img-fluid.p-1 alt=("古民家を買う") src=asset_path("carender.png") /
                   .col-8
-                    p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@built_date_p_average.compact.sum/@built_date_p_average.compact.length).round(2)}年
+                    - unless @built_date_p_average.compact.length == 0
+                      p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@built_date_p_average.compact.sum/@built_date_p_average.compact.length).round(2)}年
                     p.text-danger 全国平均:#{(@built_date_average.compact.sum/@built_date_average.compact.length).round(2)}年
                   .card-body
                     h2.text-body #{@prefecture.name}の古民家の平均築年
