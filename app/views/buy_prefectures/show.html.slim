@@ -10,7 +10,7 @@
         .col-12.mb-3
           h1 #{@prefecture.name}の古民家物件一覧
           p.lead.d-inline.text-danger #{@prefecture.buy_houses.count}件
-      - if @prefecture.buy_houses.first.price.present?
+      - if @prefecture.buy_houses.first&.price.present?
         - if browser.device.mobile?
           .row
             .col-12
