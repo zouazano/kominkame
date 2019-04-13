@@ -110,7 +110,8 @@
                   .col-4
                     img.img-fluid.p-1 alt=("古民家を買う") src=asset_path("家アイコン.png") /
                   .col-8
-                    p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@house_area_p_average.compact.sum/@house_area_p_average.compact.length).round(2)}㎡
+                    - unless @house_area_p_average.compact.length == 0
+                      p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@house_area_p_average.compact.sum/@house_area_p_average.compact.length).round(2)}㎡
                     p.text-danger 全国平均:#{(@house_area_average.compact.sum/@house_area_average.compact.length).round(2)}㎡
                   .card-body
                     h2.text-body #{@prefecture.name}の古民家の平均建物面積
@@ -132,7 +133,8 @@
                   .col-4
                     img.img-fluid.p-1 alt=("古民家を買う") src=asset_path("tsubo.png") /
                   .col-8
-                    p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{((@price_p_average.compact.sum/@price_p_average.compact.length)/(@house_area_p_average.compact.sum/@house_area_p_average.compact.length)/3.30578).round(2)}万円
+                    - unless @price_p_average.compact.length == 0 or @house_area_p_average.compact.length == 0
+                      p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{((@price_p_average.compact.sum/@price_p_average.compact.length)/(@house_area_p_average.compact.sum/@house_area_p_average.compact.length)/3.30578).round(2)}万円
                     p.text-danger 全国平均:#{((@price_average.compact.sum/@price_average.compact.length)/(@house_area_average.compact.sum/@house_area_average.compact.length)/3.30578).round(2)}万円
                   .card-body
                     h2.text-body #{@prefecture.name}の古民家の平均坪単価 
