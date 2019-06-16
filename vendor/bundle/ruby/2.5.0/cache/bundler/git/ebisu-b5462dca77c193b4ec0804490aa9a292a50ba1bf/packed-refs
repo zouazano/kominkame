@@ -1,0 +1,12 @@
+# pack-refs with: peeled fully-peeled sorted 
+b0dd8121fbefa51337df49519e76d027d8ed3fbc refs/heads/feature/add_category_to_article
+385b7f94c339365c50f95f58bef6119e23a71d3b refs/heads/feature/admin_show
+d26e7ad95df4a4f61e6f7a3650f5b2a0fc23b192 refs/heads/feature/articles_index
+e7909fd903724df05cf8652f27aadc032f17f1e3 refs/heads/feature/cat_art
+14222266e4977c7e6617e52a837b614e5bb7e34f refs/heads/feature/issue18
+cc6c97f8b10e3f39405a0b35b6ed14b157f6368d refs/heads/master
+b0014d594b32420877d294d671dbbf56fefdebe4 refs/heads/release_43
+9bd7e27604b6669490ed24f4b49636357eff9371 refs/heads/test
+b711aa32c5a1a3f7897db4664535ed1026bbfef8 refs/tags/0.8.43
+a133a509f5a3505836e9615d980a2a2f61d77970 refs/tags/0.8.44
+b0014d594b32420877d294d671dbbf56fefdebe4 refs/tags/0.8.45

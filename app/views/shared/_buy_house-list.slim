@@ -35,10 +35,10 @@
 
 
           
-            - if buy_house.price.present?
+            - if buy_house.price.present? and buy_house.price > 0
               p.font-weight-bold.text-danger.lead.mb-0 #{buy_house.price}万円
             - else
-              p.text-dark 価格
+              p.font-weight-bold.text-danger.lead.mb-0 価格問い合わせ
 
             - if buy_house.madori.present?
               p.font-weight-bold.text-dark.mb-0 #{buy_house.madori}
@@ -65,7 +65,7 @@
                   th.p-0 scope="row" 
                     small.text-muted 土地
                   td.p-0
-                    - if buy_house.land_area.present?
+                    - if buy_house.land_area.present? and buy_house.land_area > 0
                       small.text-dark.mb-0.ml-1 #{buy_house.land_area}㎡
                     - else
                       p.text-dark.mb-0 土地面積問い合わせ
@@ -73,7 +73,7 @@
                   th.p-0 scope="row" 
                     small.text-muted 建物
                   td.p-0
-                    - if buy_house.house_area.present?
+                    - if buy_house.house_area.present? and buy_house.house_area > 0
                       small.text-dark.mb-0.ml-1 #{buy_house.house_area}㎡
                     - else
                       p.text-dark.mb-0 建物面積問い合わせ

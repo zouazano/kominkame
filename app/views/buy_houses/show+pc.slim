@@ -169,6 +169,12 @@
                 tr
                   th scope="row"  築年
                   td 不詳
+              - if @buy_house.notes.present?
+                th scope="row"  備考
+                td = simple_format(@buy_house.notes)
+              - else
+                th scope="row"  備考
+                td --
               tr
                 th
                   a.d-inline href = new_inquiry_path target="_blank"

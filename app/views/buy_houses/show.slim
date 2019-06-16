@@ -127,7 +127,7 @@
             tr
               th scope="row" 間取り
               td = @buy_house.madori       
-          -else
+          - else
             tr
               th scope="row" 間取り
               td  不詳                                   
@@ -144,7 +144,7 @@
             tr
               th scope="row" 交通
               td = @buy_house.access      
-          -else
+          - else
             tr
               th scope="row" 交通
               td  不詳                                               
@@ -159,10 +159,16 @@
             tr
               th scope="row"  築年
               td #{@buy_house.built_date.year}年        
-          -else
+          - else
             tr
               th scope="row"  築年
               td 不詳
+          - if @buy_house.notes.present?
+            th scope="row"  備考
+            td = simple_format(@buy_house.notes)
+          - else
+            th scope="row"  備考
+            td --
           tr
             th
               a.d-inline href = new_inquiry_path target="_blank"
