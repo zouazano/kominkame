@@ -12,7 +12,6 @@ gem 'rubocop', require: false
 gem 'devise'
 
 gem 'fog-aws'
-gem 'dotenv-rails'
 
 gem 'dragonfly', '~> 1.1.5'
 gem 'dragonfly-s3_data_store'
