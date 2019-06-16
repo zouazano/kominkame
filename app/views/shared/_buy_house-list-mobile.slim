@@ -37,6 +37,8 @@
             
             a.float-right.d-inline.justify-content-end href=buy_house_path(buy_house.id) target="_blank"
               button.btn.btn-info.mb-2.mt-1 type="button" 詳細
+            - if buy_house.house_area > 0 and buy_house.price > 0
+              p.font-weight-bold.text-dark.mb-0 #{(buy_house.price/buy_house.house_area/3.30578).round(2)}万円/坪
 
             - if buy_house.madori.present?
               p.font-weight-bold.text-dark.mb-0 #{buy_house.madori}
