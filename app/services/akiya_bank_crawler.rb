@@ -29,38 +29,38 @@ class AkiyaBankCrawler
           house_area = link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[6]/td').inner_text&.slice(0..-2)
           notes = link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[9]').inner_text.gsub(" ", "") + link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[position() > 10]').inner_text.gsub(" ", "")
           recommendation = "great"
-          source = url
+          source = link
           image_url1 = link_doc.xpath('//*[@id="akiya_single_gallery"]/li[1]/a/img')&.attribute('src')&.value
           image_url2 = link_doc.xpath('//*[@id="akiya_single_gallery"]/li[2]/a/img')&.attribute('src')&.value
           image_url3 = link_doc.xpath('//*[@id="akiya_single_gallery"]/li[3]/a/img')&.attribute('src')&.value
           image_url4 = link_doc.xpath('//*[@id="akiya_single_gallery"]/li[last()]/a/img')&.attribute('src')&.value
           built_date = link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[8]/td').inner_text
-          if built_date.include?("昭和")
-            if built_date.slice(/年.*/).include?("月")
+          if built_date&.include?("昭和")
+            if built_date.slice(/年.*/)&.include?("月")
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1925).to_s + "-" + built_date.slice(/年.*/)[/\d+/] + "-01"
             else
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1925).to_s + "-01-01"
             end
-          elsif built_date.include?("平成")
-            if built_date.slice(/年.*/).include?("月")
+          elsif built_date&.include?("平成")
+            if built_date.slice(/年.*/)&.include?("月")
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1988).to_s + "-" + built_date.slice(/年.*/)[/\d+/] + "-01"
             else
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1988).to_s + "-01-01"
             end
-          elsif built_date.include?("大正")
-            if built_date.slice(/年.*/).include?("月")
+          elsif built_date&.include?("大正")
+            if built_date.slice(/年.*/)&.include?("月")
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1911).to_s + "-" + built_date.slice(/年.*/)[/\d+/] + "-01"
             else
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1911).to_s + "-01-01"
             end
-          elsif built_date.include?("明治")
-            if built_date.slice(/年.*/).include?("月")
+          elsif built_date&.include?("明治")
+            if built_date.slice(/年.*/)&.include?("月")
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1867).to_s + "-" + built_date.slice(/年.*/)[/\d+/] + "-01"
             else
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1867).to_s + "-01-01"
             end
           elsif built_date[/\d+/].present?
-            if built_date.slice(/年.*/).include?("月")
+            if built_date.slice(/年.*/)&.include?("月")
               built_date = built_date.gsub(/年.*/, "")[/\d+/] + "-" + built_date.slice(/年.*/)[/\d+/] + "-01"
             else
               built_date = built_date.gsub(/年.*/, "")[/\d+/] + "-01-01"
@@ -69,6 +69,7 @@ class AkiyaBankCrawler
 
           buy_house = BuyHouse.where(name: name).where(price: price).where(access: access).first
           if buy_house.present?
+            buy_house.update(source: source)
             next
           else
             buy_house = BuyHouse.new(name: name, prefecture_id: prefecture_id, price: price, address: address, access: access, madori: madori, land_area: land_area, house_area: house_area, notes: notes, recommendation: recommendation, source: source, built_date: built_date)
@@ -87,7 +88,7 @@ class AkiyaBankCrawler
           end
           sleep 2
 
-        elsif link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[2]/td').inner_text.include?("売")
+        elsif link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[2]/td').inner_text&.include?("売")
           name = link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[1]/td').inner_text
           prefecture_id = 34
           price = link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[3]/td').inner_text.gsub(/万円.*/, "")[/\d+/]
@@ -98,38 +99,38 @@ class AkiyaBankCrawler
           house_area = link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[6]/td').inner_text&.slice(0..-2)
           notes = link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[9]').inner_text.gsub(" ", "") + link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[position() > 10]').inner_text.gsub(" ", "")
           recommendation = "great"
-          source = url
+          source = link
           image_url1 = link_doc.xpath('//*[@id="akiya_single_gallery"]/li[1]/a/img')&.attribute('src')&.value
           image_url2 = link_doc.xpath('//*[@id="akiya_single_gallery"]/li[2]/a/img')&.attribute('src')&.value
           image_url3 = link_doc.xpath('//*[@id="akiya_single_gallery"]/li[3]/a/img')&.attribute('src')&.value
           image_url4 = link_doc.xpath('//*[@id="akiya_single_gallery"]/li[last()]/a/img')&.attribute('src')&.value
           built_date = link_doc.xpath('/html/body/div[2]/div/div/div[2]/table/tbody/tr[8]/td').inner_text
-          if built_date.include?("昭和")
-            if built_date.slice(/年.*/).include?("月")
+          if built_date&.include?("昭和")
+            if built_date.slice(/年.*/)&.include?("月")
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1925).to_s + "-" + built_date.slice(/年.*/)[/\d+/] + "-01"
             else
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1925).to_s + "-01-01"
             end
-          elsif built_date.include?("平成")
-            if built_date.slice(/年.*/).include?("月")
+          elsif built_date&.include?("平成")
+            if built_date.slice(/年.*/)&.include?("月")
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1988).to_s + "-" + built_date.slice(/年.*/)[/\d+/] + "-01"
             else
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1988).to_s + "-01-01"
             end
-          elsif built_date.include?("大正")
-            if built_date.slice(/年.*/).include?("月")
+          elsif built_date&.include?("大正")
+            if built_date.slice(/年.*/)&.include?("月")
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1911).to_s + "-" + built_date.slice(/年.*/)[/\d+/] + "-01"
             else
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1911).to_s + "-01-01"
             end
-          elsif built_date.include?("明治")
-            if built_date.slice(/年.*/).include?("月")
+          elsif built_date&.include?("明治")
+            if built_date.slice(/年.*/)&.include?("月")
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1867).to_s + "-" + built_date.slice(/年.*/)[/\d+/] + "-01"
             else
               built_date = (built_date.gsub(/年.*/, "")[/\d+/].to_i + 1867).to_s + "-01-01"
             end
           elsif built_date[/\d+/].present?
-            if built_date.slice(/年.*/).include?("月")
+            if built_date.slice(/年.*/)&.include?("月")
               built_date = built_date.gsub(/年.*/, "")[/\d+/] + "-" + built_date.slice(/年.*/)[/\d+/] + "-01"
             else
               built_date = built_date.gsub(/年.*/, "")[/\d+/] + "-01-01"
@@ -138,6 +139,7 @@ class AkiyaBankCrawler
 
           buy_house = BuyHouse.where(name: name).where(price: price).where(access: access).first
           if buy_house.present?
+            buy_house.update(source: source)
             next
           else
             buy_house = BuyHouse.new(name: name, prefecture_id: prefecture_id, price: price, address: address, access: access, madori: madori, land_area: land_area, house_area: house_area, notes: notes, recommendation: recommendation, source: source, built_date: built_date)
