@@ -4,6 +4,21 @@ require 'csv'
 
 
 class AkiyaBankCrawler
+  def self.mie
+    user_agent = "User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:28.0) Gecko/20100101 Firefox/28.0"
+    charset = nil
+    
+    url = "http://www.ijyu.pref.mie.lg.jp/html/akiya_list.php"
+    doc = Nokogiri::HTML(open(url))
+    doc.xpath('//*[@id="akiya_list"]/tr[position() > 2]').each do |tr|
+      p tr.xpath('td[1]/div').inner_text
+      p tr.xpath('td[2]/img')&.attribute('src')&.value
+      p tr.xpath('td[3]').inner_text
+      p tr.xpath('td[4]').inner_text
+    end
+  end
+
+
   def self.hiroshima
     user_agent = "User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:28.0) Gecko/20100101 Firefox/28.0"
     charset = nil
