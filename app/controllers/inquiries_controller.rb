@@ -29,7 +29,7 @@ class InquiriesController < ApplicationController
   private
 
     def inquiry_params
-      params.require(:inquiry).permit(:house_id, :address, :name, :email, :phonenumber, :demand, :message)
+      params.require(:inquiry).permit(:buy_house_id, :address, :name, :email, :phonenumber, :demand, :message)
     end
 
 

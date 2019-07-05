@@ -8,6 +8,8 @@
     .col-9.bg-white.shadow-sm
       .row
         .col-12.p-2
+          span.p-2.m-2.badge.badge-pill.badge-info 物件番号#{@buy_house.id}
+          br
           h1.p-3.d-inline = @buy_house.prefecture.name + @buy_house.name + "の古民家物件"
           p.d-inline.font-weight-bold.text-danger.lead.mb-0 #{@buy_house.price}万円
         .col-12.p-0
