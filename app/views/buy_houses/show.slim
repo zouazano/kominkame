@@ -123,7 +123,7 @@
           tr
             th scope="row"  価格
             td #{@buy_house.price}万円
-          - if @buy_house.house_area > 0 and @buy_house.price > 0
+          - if @buy_house.house_area.present? and @buy_house.house_area > 0 and @buy_house.price.present? and @buy_house.price > 0
             tr
               th scope="row" 坪単価
               td #{(@buy_house.price/@buy_house.house_area/3.30578).round(2)}万円/坪
