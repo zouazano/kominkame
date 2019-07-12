@@ -8,7 +8,9 @@ class LinkChecker
     BuyHouse.all.each do |buy_house|
       unless buy_house.source.nil?
         url = buy_house.source
-        unless Net::HTTP.get_response(URI.parse(url)).code == "404" or Net::HTTP.get_response(URI.parse(url)).code == "403"
+        encoded_url = URI.encode(url)
+        
+        unless Net::HTTP.get_response(URI.parse(encoded_url)).code == "404" or Net::HTTP.get_response(URI.parse(encoded_url)).code == "403"
           buy_house.update(sold: false)
         else
           buy_house.update(sold: true)
