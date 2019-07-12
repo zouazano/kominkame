@@ -3,6 +3,9 @@
 class BuyController < ApplicationController
 	
   def index
+    if params[:page].present?
+      set_meta_tags noindex: true, nofollow: true
+    end
   	@buy_houses = BuyHouse.where(recommendation: 3).page(params[:page])
   	add_breadcrumb "ホーム", root_path
   	add_breadcrumb "古民家を買う"
