@@ -32,7 +32,7 @@ class AkiyaBankCrawler
         source = tr.xpath('td[8]/a').attribute('href').value
         notes = tr.xpath('td[6]').inner_text.gsub("交渉中", "")
 
-        buy_house = BuyHouse.where(name: name).where(price: price).first
+        buy_house = BuyHouse.where(name: name).where(price: price).where(land_area: land_area).first
         if buy_house.present?
           buy_house.update(source: source)
           next
