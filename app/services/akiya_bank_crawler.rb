@@ -11,10 +11,43 @@ class AkiyaBankCrawler
     url = "http://www.ijyu.pref.mie.lg.jp/html/akiya_list.php"
     doc = Nokogiri::HTML(open(url))
     doc.xpath('//*[@id="akiya_list"]/tr[position() > 2]').each do |tr|
-      p tr.xpath('td[1]/div').inner_text
-      p tr.xpath('td[2]/img')&.attribute('src')&.value
-      p tr.xpath('td[3]').inner_text
-      p tr.xpath('td[4]').inner_text
+      if tr.xpath('td[3]').inner_text == "売却"
+        prefecture_id = 24
+        name = tr.xpath('td[1]/div').inner_text
+        image_url1 = tr.xpath('td[2]//img')&.attribute('src')&.value
+        price = tr.xpath('td[4]').inner_text.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+/]
+        address = name
+        land_area = nil
+        house_area = nil
+        recommendation = "great"
+        tr.xpath('td[5]/text()').each do |text|
+          if text&.inner_text&.include?("敷")
+            land_area = text.inner_text.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+\.?\d*/]
+          elsif text&.inner_text&.include?("延")
+            house_area = text.inner_text.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+\.?\d*/]
+          elsif text&.inner_text&.include?("建")
+            house_area = text.inner_text.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+\.?\d*/]
+          end
+        end
+        source = tr.xpath('td[8]/a').attribute('href').value
+        notes = tr.xpath('td[6]').inner_text.gsub("交渉中", "")
+
+        buy_house = BuyHouse.where(name: name).where(price: price).first
+        if buy_house.present?
+          buy_house.update(source: source)
+          next
+        else
+          buy_house = BuyHouse.new(name: name, prefecture_id: prefecture_id, price: price, address: address, land_area: land_area, house_area: house_area, notes: notes, recommendation: recommendation, source: source)
+          buy_house.save
+        end
+
+        if buy_house.save
+          buy_house.buy_house_images.create(buy_house_image_url: image_url1)
+          sleep 2
+        end
+        sleep 2
+
+      end
     end
   end
 
