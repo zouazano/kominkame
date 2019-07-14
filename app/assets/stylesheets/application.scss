@@ -53,5 +53,19 @@ body {
     background-color: #f8f9fa;
     
 }
+.carousel-date {
+    text-align: center;
+    top: 0;
+    bottom: auto;
+}
+.carousel-list {
+}
+.carousel-list span{
+  font-size: 25px;
+  font-weight: 800;
+	text-shadow: 1px 1px 40px rgba(22, 23, 31, 0.4);
+	color: white;
+
+}
 
 @import "top.scss";

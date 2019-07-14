@@ -1,7 +1,7 @@
 // Place all the styles related to the Top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.carousel-caption {
+.carousel-caption.top {
 	padding: 0;
   text-align: start;
   top: 40%;
@@ -9,7 +9,7 @@
   bottom: auto;
 }
 
-.carousel-caption h1{
+.carousel-caption.top h1{
   font-size: 44px;
   font-weight: 800;
 	text-shadow: 1px 1px 40px rgba(22, 23, 31, 0.6);
@@ -17,7 +17,7 @@
 
 }
 
-.carousel-caption h3{
+.carousel-caption.top h3{
   font-size: 25px;
   font-weight: 800;
 	text-shadow: 1px 1px 40px rgba(22, 23, 31, 0.4);
