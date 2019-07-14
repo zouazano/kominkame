@@ -1,0 +1,11 @@
+.py-2
+  = search_form_for(@q, url:buy_index_path) do |f|
+    .bg-white.rounded.shadow-sm.p-2
+      span 並び替え
+      .float-right
+        .font-weight-bold.d-inline.border-right.px-2
+          = sort_link(@q, :price, "価格")
+        .font-weight-bold.d-inline.border-right.px-2
+          = sort_link(@q, :built_date, "築年月")
+        .font-weight-bold.d-inline.border-right.px-2
+          = sort_link(@q, :created_at, "新着順")

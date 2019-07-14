@@ -3,10 +3,11 @@
 class BuyController < ApplicationController
 	
   def index
-    if params[:page].present?
+    if params[:page].present? or params[:q].present?
       set_meta_tags noindex: true, nofollow: true
     end
-  	@buy_houses = BuyHouse.where(recommendation: 3).page(params[:page])
+    @q = BuyHouse.all.ransack(params[:q])
+    @buy_houses = @q.result(distinct: true).page(params[:page])
   	add_breadcrumb "ホーム", root_path
   	add_breadcrumb "古民家を買う"
   	@land_area_average = []
@@ -23,5 +24,9 @@ class BuyController < ApplicationController
 
   def show
     @house = House.find(params[:id])
+  end
+  private
+  def search_params
+    params.require(:q).permit(:name_cont)
   end
 end
