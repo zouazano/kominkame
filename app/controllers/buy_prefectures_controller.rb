@@ -12,8 +12,8 @@ class BuyPrefecturesController < ApplicationController
 
   def show
     @prefecture = Prefecture.find(params[:id])
-    @q = BuyHouse.where(prefecture_id: @prefecture.id).page(params[:page]).ransack(params[:q])
-    @buy_houses = @q.result(distinct: true)
+    @q = BuyHouse.where(prefecture_id: @prefecture.id).ransack(params[:q])
+    @buy_houses = @q.result(distinct: true).page(params[:page])
 
     if params[:page].present? or params[:q].present?
       set_meta_tags noindex: true, nofollow: true

@@ -9,7 +9,7 @@
       .row
         .col-12.mb-3
           h1 #{@prefecture.name}の古民家物件一覧
-          p.lead.d-inline.text-danger #{@prefecture.buy_houses.count}件
+          p.lead.d-inline.text-danger 全#{@prefecture.buy_houses.count}件
         .col-12.border-top.mb-3
           span.text-muted #{@prefecture.name}で古民家を買うなら、コミンカが便利です。#{@prefecture.name}の中古戸建て販売情報を#{@prefecture.buy_houses.count}件掲載しています。注目物件や人気の物件も探すことができます。#{@prefecture.name}内の古民家物件の、写真や間取り、最寄り駅なども一覧で確認できます。古民家探しは、古民家専門サイト「コミンカ」にお任せあれ。
 
@@ -145,6 +145,24 @@
           
       .row
         .col-12.mb-4.pb-3.border-bottom
+          - if params[:q].present?
+            span 現在
+            p.lead.d-inline.text-danger #{@q.result(distinct: true).count}件
+            span がヒットしています。
+          - if browser.device.mobile?
+            /! Button trigger modal
+            .py-2 data-target="#exampleModal" data-toggle="modal"
+              .bg-white.rounded.shadow-sm.p-2
+                span 絞り込み
+                img.d-inline.float-right alt="変更" height="20" src=asset_path("right_arrow2.png") /
+                span.font-weight-bold.text-info.float-right 変更する
+            /! Modal
+            #exampleModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" role="dialog" tabindex="-1" 
+              .modal-dialog role="document" 
+                .modal-content
+                  = render 'shared/search_form_side'
+                  .modal-footer
+                    button.btn.btn-secondary data-dismiss="modal" type="button" 閉じる
           = render 'shared/search_form'
         .col-12
           - if browser.device.mobile?
@@ -164,7 +182,7 @@
     
     - else
       .col-3
+        = render 'shared/search_form_side'
         = render 'shared/buy_prefecture-list'
 
 = render 'shared/buy_prefecture-picks'
-

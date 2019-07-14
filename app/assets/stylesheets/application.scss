@@ -60,12 +60,16 @@ body {
 }
 .carousel-list {
 }
+
 .carousel-list span{
   font-size: 25px;
   font-weight: 800;
 	text-shadow: 1px 1px 40px rgba(22, 23, 31, 0.4);
 	color: white;
+}
 
+.text-small{
+  font-size: 12px;
 }
 
 @import "top.scss";
