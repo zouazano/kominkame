@@ -9,7 +9,7 @@ class LinkChecker
       unless buy_house.source.nil?
         url = buy_house.source.gsub(/(.*)(?=http)/,"")
         
-        unless Net::HTTP.get_response(URI.parse(url)).code == "404" or Net::HTTP.get_response(URI.parse(encoded_url)).code == "403"
+        unless Net::HTTP.get_response(URI.parse(url)).code == "404" or Net::HTTP.get_response(URI.parse(url)).code == "403"
           buy_house.update(sold: false)
         else
           buy_house.update(sold: true)
@@ -26,7 +26,7 @@ class LinkChecker
       unless buy_house.source.nil?
         url = buy_house.source.gsub(/(.*)(?=http)/,"")
         
-        unless Net::HTTP.get_response(URI.parse(url)).code == "404" or Net::HTTP.get_response(URI.parse(encoded_url)).code == "403"
+        unless Net::HTTP.get_response(URI.parse(url)).code == "404" or Net::HTTP.get_response(URI.parse(url)).code == "403"
           buy_house.update(sold: false)
         else
           buy_house.update(sold: true)
