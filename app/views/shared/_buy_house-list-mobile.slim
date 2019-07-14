@@ -36,7 +36,7 @@
             - if buy_house.price.present? and buy_house.price > 0
               p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{buy_house.price}万円
             - else
-              p.text-dark 価格
+              p.font-weight-bold.text-danger.lead.mb-0 価格未定
             - if buy_house.house_area.present? and buy_house.house_area > 0 and buy_house.price.present? and buy_house.price > 0
               p.font-weight-bold.text-dark.mb-0 #{(buy_house.price/buy_house.house_area/3.30578).round(2)}万円/坪
 
