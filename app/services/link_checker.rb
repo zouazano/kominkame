@@ -7,7 +7,7 @@ class LinkChecker
   def self.check
     BuyHouse.all.each do |buy_house|
       unless buy_house.source.nil?
-        url = buy_house.source
+        url = buy_house.source.gsub(" ", "%20")
         encoded_url = URI.encode(url)
         
         unless Net::HTTP.get_response(URI.parse(encoded_url)).code == "404" or Net::HTTP.get_response(URI.parse(encoded_url)).code == "403"
