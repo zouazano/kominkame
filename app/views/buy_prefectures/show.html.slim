@@ -13,7 +13,7 @@
         .col-12.border-top.mb-3
           span.text-muted #{@prefecture.name}で古民家を買うなら、コミンカが便利です。#{@prefecture.name}の中古戸建て販売情報を#{@prefecture.buy_houses.count}件掲載しています。注目物件や人気の物件も探すことができます。#{@prefecture.name}内の古民家物件の、写真や間取り、最寄り駅なども一覧で確認できます。古民家探しは、古民家専門サイト「コミンカ」にお任せあれ。
 
-      - if @prefecture.buy_houses.first&.price.present?
+      - if @prefecture.buy_houses.first&.price.present? and params[:q].nil?
         - if browser.device.mobile?
           .row
             .col-12
@@ -62,7 +62,8 @@
                   .col-4
                     img.img-fluid.p-1 alt=("古民家を買う") src=asset_path("carender.png") /
                   .col-8
-                    p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@built_date_p_average.compact.sum/@built_date_p_average.compact.length).round(2)}年
+                    - unless @built_date_p_average.compact.length == 0
+                      p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{(@built_date_p_average.compact.sum/@built_date_p_average.compact.length).round(2)}年
                     p.text-danger 
                       | 全国平均:
                       br #{(@built_date_average.compact.sum/@built_date_average.compact.length).round(2)}年
@@ -143,6 +144,8 @@
                     h2.text-body #{@prefecture.name}の古民家の平均坪単価 
           
       .row
+        .col-12.mb-4.pb-3.border-bottom
+          = render 'shared/search_form'
         .col-12
           - if browser.device.mobile?
             - @buy_houses.order("id DESC").each.with_index(1) do |buy_house, num|  

@@ -11,11 +11,15 @@ class BuyPrefecturesController < ApplicationController
    end
 
   def show
-    if params[:page].present?
+    @prefecture = Prefecture.find(params[:id])
+    @q = BuyHouse.where(prefecture_id: @prefecture.id).page(params[:page]).ransack(params[:q])
+    @buy_houses = @q.result(distinct: true)
+
+    if params[:page].present? or params[:q].present?
       set_meta_tags noindex: true, nofollow: true
     end
-    @prefecture = Prefecture.find(params[:id])
-    @buy_houses = BuyHouse.where(prefecture_id: @prefecture.id).page(params[:page])
+    
+
 
     @land_area_p_average = []
     @house_area_p_average = []
@@ -41,5 +45,10 @@ class BuyPrefecturesController < ApplicationController
     add_breadcrumb "ホーム", root_path
     add_breadcrumb "古民家を買う", buy_index_path
     add_breadcrumb "#{@prefecture.name}の古民家物件", buy_prefecture_path(@prefecture.id)
+  end
+
+  private
+  def search_params
+    params.require(:q).permit(:name_cont)
   end
 end

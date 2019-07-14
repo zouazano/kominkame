@@ -1,0 +1,17 @@
+.py-2
+  = search_form_for(@q, url:buy_prefecture_path(@prefecture.id)) do |f|
+    /.md-form.mt-0
+      input.form-control aria-label="Search" placeholder="Search" type="text" /
+    /= f.search_field :name_cont, class:'form-control col-10 d-inline text-muted', :placeholder => "(例) シーフード, ペヤング"
+    /= f.submit :class=>"form-control col-2 d-inline text-white bg-danger font-weight-bold float-right", :value=>"絞り込み"
+    /br
+    /= f.collection_select :maker_id_eq, @makers, :id, :name, {include_blank: 'メーカーで絞り込み'}, {class: 'form-control form-control-sm col-8 mt-1 text-muted'}
+    .bg-white.rounded.shadow-sm.p-2
+      span 並び替え
+      .float-right
+        .font-weight-bold.d-inline.border-right.px-2
+          = sort_link(@q, :price, "値段")
+        .font-weight-bold.d-inline.border-right.px-2
+          = sort_link(@q, :built_date, "築年月")
+        .font-weight-bold.d-inline.border-right.px-2
+          = sort_link(@q, :created_at, "新着順    ")

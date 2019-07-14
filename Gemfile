@@ -31,7 +31,7 @@ gem "breadcrumbs_on_rails"
 
 gem 'newrelic_rpm'
 
-
+gem 'ransack'
 
 
 gem 'listen', '>= 3.0.5', '< 3.2'
