@@ -28,7 +28,7 @@
                   a.carousel-control-next data-slide="next" href="#carouselExampleControls#{num}" role="button" 
                     span.carousel-control-next-icon aria-hidden="true" 
                     span.sr-only Next
-            span.p-2.mt-1.badge.badge-secondary.badge-info #{buy_house.updated_at.year}年#{buy_house.updated_at.month}月#{buy_house.updated_at.day}日更新
+            span.p-2.mt-1.badge.badge-secondary.badge-info #{buy_house.created_at.year}年#{buy_house.created_at.month}月#{buy_house.created_at.day}日掲載
             - if buy_house.sold == true
               span.p-2.mt-1.badge.badge-secondary.badge-info 成約済み
               

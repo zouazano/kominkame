@@ -14,14 +14,15 @@
                       - if counter == 1
                         .carousel-item.active
                           img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x350#').url /
-                        .carousel-caption.carousel-date.d-none.d-md-block
-                          span.p-2.m-2.badge.badge-secondary.badge-info #{buy_house.updated_at.year}年#{buy_house.updated_at.month}月#{buy_house.updated_at.day}日更新
-                        - if buy_house.sold == true
-                          .carousel-caption.carousel-list.d-none.d-md-block
-                            span.font-weight-bold.bg-info.rounded 成約済み
                       - else
                         .carousel-item
                           img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x350#').url /
+            .carousel-caption.carousel-date.d-none.d-md-block.float-left
+              span.p-2.m-1.badge.badge-secondary.badge-info #{buy_house.created_at.year}年#{buy_house.created_at.month}月#{buy_house.created_at.day}日掲載
+            - if buy_house.sold == true
+              .carousel-caption.carousel-list.d-none.d-md-block
+                span.font-weight-bold.bg-info.rounded 成約済み
+            end
                
                   a.carousel-control-prev data-slide="prev" href="#carouselExampleControls#{num}" role="button" 
                     span.carousel-control-prev-icon aria-hidden="true" 
