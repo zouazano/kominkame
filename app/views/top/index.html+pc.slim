@@ -120,7 +120,7 @@
 
 
       
-      - @buy_houses.order("id DESC").each.with_index(1) do |buy_house, num|  
+      - @buy_houses.where(sold:false).order("id DESC").each.with_index(1) do |buy_house, num|  
         = render 'shared/buy_house-list', buy_house: buy_house , num: num
       .row
         .col-12.d-flex.justify-content-center.mt-3

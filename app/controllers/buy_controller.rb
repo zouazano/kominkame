@@ -6,7 +6,7 @@ class BuyController < ApplicationController
     if params[:page].present? || params[:q].present?
       set_meta_tags noindex: true, nofollow: true
     end
-    @q = BuyHouse.all.ransack(params[:q])
+    @q = BuyHouse.where(sold:false).all.ransack(params[:q])
     @buy_houses = @q.result(distinct: true).page(params[:page])
   	add_breadcrumb "ホーム", root_path
   	add_breadcrumb "古民家を買う"

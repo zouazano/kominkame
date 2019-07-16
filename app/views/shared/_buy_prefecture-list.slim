@@ -13,7 +13,7 @@
             .card-body
               -Prefecture.where(id: [1,2,3,4,5,6,7]).each do |buy_prefecture|
                 a href=buy_prefecture_path(buy_prefecture.id)
-                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.count}件)
+                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.where(sold:false).count}件)
         .card.border-0
           #headingTwo.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left.border-bottom aria-controls="collapseTwo" aria-expanded="false" data-target="#collapseTwo" data-toggle="collapse" type="button" 
@@ -23,7 +23,7 @@
             .card-body
               -Prefecture.where(id: [8,9,10,11,12,13,14]).each do |buy_prefecture|
                 a href=buy_prefecture_path(buy_prefecture.id)
-                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.count}件)     
+                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.where(sold:false).count}件)     
         .card.border-0
           #headingThree.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left.border-bottom aria-controls="collapseThree" aria-expanded="false" data-target="#collapseThree" data-toggle="collapse" type="button" 
@@ -33,7 +33,7 @@
             .card-body
               -Prefecture.where(id: [15,16,17,18,19,20]).each do |buy_prefecture|
                 a href=buy_prefecture_path(buy_prefecture.id)
-                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.count}件)             
+                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.where(sold:false).count}件)             
         .card.border-0
           #headingFour.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left.border-bottom aria-controls="collapseFour" aria-expanded="false" data-target="#collapseFour" data-toggle="collapse" type="button" 
@@ -43,7 +43,7 @@
             .card-body
               -Prefecture.where(id: [21..24]).each do |buy_prefecture|
                 a href=buy_prefecture_path(buy_prefecture.id)
-                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.count}件)                             
+                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.where(sold:false).count}件)                             
         .card.border-0
           #headingFive.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left.border-bottom aria-controls="collapseFive" aria-expanded="false" data-target="#collapseFive" data-toggle="collapse" type="button" 
@@ -53,7 +53,7 @@
             .card-body
               -Prefecture.where(id: [25..30]).each do |buy_prefecture|
                 a href=buy_prefecture_path(buy_prefecture.id)
-                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.count}件)                             
+                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.where(sold:false).count}件)                             
         .card.border-0
           #headingSix.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left.border-bottom aria-controls="collapseSix" aria-expanded="false" data-target="#collapseSix" data-toggle="collapse" type="button" 
@@ -63,7 +63,7 @@
             .card-body
               -Prefecture.where(id: [36..39]).each do |buy_prefecture|
                 a href=buy_prefecture_path(buy_prefecture.id)
-                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.count}件)                             
+                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.where(sold:false).count}件)                             
         .card.border-0
           #headingSeven.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left.border-bottom aria-controls="collapseSeven" aria-expanded="false" data-target="#collapseSeven" data-toggle="collapse" type="button" 
@@ -73,7 +73,7 @@
             .card-body
               -Prefecture.where(id: [31..35]).each do |buy_prefecture|
                 a href=buy_prefecture_path(buy_prefecture.id)
-                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.count}件)                             
+                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.where(sold:false).count}件)                             
         .card.border-0
           #headingEight.card-header.p-0.border-0 style=("height: 55px;")
             button.btn.btn-link.collapsed.d-block.w-100.bg-white.h-100.text-left.border-bottom aria-controls="collapseEight" aria-expanded="false" data-target="#collapseEight" data-toggle="collapse" type="button" 
@@ -83,4 +83,4 @@
             .card-body
               -Prefecture.where(id: [40..47]).each do |buy_prefecture|
                 a href=buy_prefecture_path(buy_prefecture.id)
-                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.count}件)      
+                  p.text-body.text-left.ml-3.border-top style=("height: 40px;") #{buy_prefecture.name}(#{buy_prefecture.buy_houses.where(sold:false).count}件)      
