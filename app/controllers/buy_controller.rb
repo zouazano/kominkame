@@ -3,7 +3,7 @@
 class BuyController < ApplicationController
 	
   def index
-    if params[:page].present? or params[:q].present?
+    if params[:page].present? || params[:q].present?
       set_meta_tags noindex: true, nofollow: true
     end
     @q = BuyHouse.all.ransack(params[:q])

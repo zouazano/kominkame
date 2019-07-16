@@ -5,7 +5,7 @@ class BuyPrefecturesController < ApplicationController
   def index
     @q = BuyHouse.all.ransack(params[:q])
     @buy_houses = @q.result(distinct: true).page(params[:page])
-    if params[:page].present? or params[:q].present?
+    if params[:page].present? || params[:q].present?
       set_meta_tags noindex: true, nofollow: true
     end
     add_breadcrumb "ホーム", root_path
@@ -17,7 +17,7 @@ class BuyPrefecturesController < ApplicationController
     @q = BuyHouse.where(prefecture_id: @prefecture.id).ransack(params[:q])
     @buy_houses = @q.result(distinct: true).page(params[:page])
 
-    if params[:page].present? or params[:q].present?
+    if params[:page].present? || params[:q].present?
       set_meta_tags noindex: true, nofollow: true
     end
     
