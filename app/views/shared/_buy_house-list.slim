@@ -19,7 +19,7 @@
                           .carousel-item
                             img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x350#').url /
                     - else
-                      img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件") width="400" height="350" src=asset_path('bg-image')
+                      img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件") width="400" height="350" src=asset_path('bg-image.png')
             .carousel-caption.carousel-date.d-none.d-md-block.float-left
               span.p-2.m-1.badge.badge-secondary.badge-info #{buy_house.created_at.year}年#{buy_house.created_at.month}月#{buy_house.created_at.day}日掲載
             - if buy_house.sold == true
