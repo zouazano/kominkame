@@ -44,7 +44,7 @@
     .col-12
       h2.my-3
         | おすすめ物件
-      p.lead.text-danger #{BuyHouse.where(recommendation:3).count}件
+      p.lead.text-danger #{BuyHouse.where(recommendation:3).where(sold:false).count}件
       .row  
         .col-12
           h2.my-3
