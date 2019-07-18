@@ -14,7 +14,7 @@
           .col-12.border-top.mb-3
             span.text-muted #{@prefecture.name}で古民家を買うなら、コミンカが便利です。#{@prefecture.name}の古民家販売情報を#{@prefecture.buy_houses.where(recommendation:3).where(sold:false).count}件掲載しています。注目物件や人気の物件も探すことができます。#{@prefecture.name}内の古民家物件の、写真や間取り、最寄り駅なども一覧で確認できます。古民家探しは、古民家専門サイト「コミンカ」にお任せあれ。
 
-      - if @prefecture.buy_houses.first&.price.present? and params[:q].nil?
+      - if @prefecture.buy_houses.first&.price.present? and params[:q].nil? and params[:page].nil?
         - if browser.device.mobile?
           .row
             .col-12

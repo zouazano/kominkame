@@ -11,7 +11,7 @@
           .col-12.mb-3
             h1 全国の古民家物件一覧
             p.lead.d-inline.text-danger 全#{BuyHouse.where(recommendation:3).where(sold:false).count}件
-          - unless params[:q].present?
+          - unless params[:page].present? || params[:q].present?
             .col-12.border-top.mb-3
               span.text-muted 古民家を買うなら、コミンカが便利です。全国の古民家販売情報を#{BuyHouse.where(recommendation:3).where(sold:false).count}件掲載しています。注目物件や人気の物件も探すことができます。全国の古民家物件の、写真や間取り、最寄り駅なども一覧で確認できます。古民家探しは、古民家専門サイト「コミンカ」にお任せあれ。
               .row  
@@ -104,7 +104,7 @@
           .col-12.mb-3
             h1 全国の古民家物件一覧
             p.lead.d-inline.text-danger 全#{BuyHouse.where(recommendation:3).where(sold:false).count}件
-          - unless params[:q].present?
+          - unless params[:page].present? || params[:q].present?
             .col-12.border-top.mb-3
               span.text-muted 古民家を買うなら、コミンカが便利です。全国の古民家販売情報を#{BuyHouse.where(recommendation:3).where(sold:false).count}件掲載しています。注目物件や人気の物件も探すことができます。全国の古民家物件の、写真や間取り、最寄り駅なども一覧で確認できます。古民家探しは、古民家専門サイト「コミンカ」にお任せあれ。
             .row
