@@ -1,0 +1,5 @@
+---
+name: photo_3.jpeg
+mime_type: image/jpeg
+model_class: BuyHouseImage
+model_attachment: buy_house_image
