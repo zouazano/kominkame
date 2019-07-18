@@ -12,7 +12,7 @@
           p.lead.d-inline.text-danger 全#{@prefecture.buy_houses.where(sold:false).count}件
         - unless params[:q].present?
           .col-12.border-top.mb-3
-            span.text-muted #{@prefecture.name}で古民家を買うなら、コミンカが便利です。#{@prefecture.name}の古民家販売情報を#{@prefecture.buy_houses.where(sold:false).count}件掲載しています。注目物件や人気の物件も探すことができます。#{@prefecture.name}内の古民家物件の、写真や間取り、最寄り駅なども一覧で確認できます。古民家探しは、古民家専門サイト「コミンカ」にお任せあれ。
+            span.text-muted #{@prefecture.name}で古民家を買うなら、コミンカが便利です。#{@prefecture.name}の古民家販売情報を#{@prefecture.buy_houses.where(recommendation:3).where(sold:false).count}件掲載しています。注目物件や人気の物件も探すことができます。#{@prefecture.name}内の古民家物件の、写真や間取り、最寄り駅なども一覧で確認できます。古民家探しは、古民家専門サイト「コミンカ」にお任せあれ。
 
       - if @prefecture.buy_houses.first&.price.present? and params[:q].nil?
         - if browser.device.mobile?
@@ -138,7 +138,7 @@
                   .col-4
                     img.img-fluid.p-1 alt=("古民家を買う") src=asset_path("tsubo.png") /
                   .col-8
-                    - unless @price_p_average.compact.length == 0 or @house_area_p_average.compact.length == 0
+                    - unless @price_p_average.compact.length == 0 || @house_area_p_average.compact.length == 0
                       p.d-inline.lead.font-weight-bold.text-danger.mb-0 #{((@price_p_average.compact.sum/@price_p_average.compact.length)/(@house_area_p_average.compact.sum/@house_area_p_average.compact.length)/3.30578).round(2)}万円/坪
                     p.text-danger 全国平均:#{((@price_average.compact.sum/@price_average.compact.length)/(@house_area_average.compact.sum/@house_area_average.compact.length)/3.30578).round(2)}万円/坪
                   .card-body
@@ -165,10 +165,10 @@
           = render 'shared/search_form'
         .col-12
           - if browser.device.mobile?
-            - @buy_houses.where(sold:false).order("id DESC").each.with_index(1) do |buy_house, num|  
+            - @buy_houses.order("id DESC").each.with_index(1) do |buy_house, num|  
               = render 'shared/buy_house-list-mobile', buy_house: buy_house , num: num
           - else
-            - @buy_houses.where(sold:false).order("id DESC").each.with_index(1) do |buy_house, num|  
+            - @buy_houses.order("id DESC").each.with_index(1) do |buy_house, num|  
               = render 'shared/buy_house-list', buy_house: buy_house , num: num
       .row
         .col-12.d-flex.justify-content-center.mt-3

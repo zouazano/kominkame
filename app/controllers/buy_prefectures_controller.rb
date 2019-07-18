@@ -14,7 +14,7 @@ class BuyPrefecturesController < ApplicationController
 
   def show
     @prefecture = Prefecture.find(params[:id])
-    @q = BuyHouse.where(sold:false).where(prefecture_id: @prefecture.id).ransack(params[:q])
+    @q = BuyHouse.where(recommendation:3).where(sold:false).where(prefecture_id: @prefecture.id).ransack(params[:q])
     @buy_houses = @q.result(distinct: true).page(params[:page])
 
     if params[:page].present? || params[:q].present?
@@ -27,7 +27,7 @@ class BuyPrefecturesController < ApplicationController
     @house_area_p_average = []
     @built_date_p_average = []
     @price_p_average = []
-    BuyHouse.where(prefecture_id: @prefecture.id).all.each do |hoge|
+    BuyHouse.where(recommendation:3).where(sold:false).where(prefecture_id: @prefecture.id).each do |hoge|
       @land_area_p_average << hoge.land_area
       @house_area_p_average << hoge.house_area
       @built_date_p_average << hoge.built_date&.year
@@ -37,7 +37,7 @@ class BuyPrefecturesController < ApplicationController
     @house_area_average = []
     @built_date_average = []
     @price_average = []
-    BuyHouse.all.each do |hoge|
+    BuyHouse.where(recommendation:3).where(sold:false).each do |hoge|
       @land_area_average << hoge.land_area
       @house_area_average << hoge.house_area
       @built_date_average << hoge.built_date&.year
