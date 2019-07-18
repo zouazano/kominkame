@@ -10,13 +10,16 @@
                     li.dot data-slide-to="2" data-target="#carouselExampleIndicators" 
                     li.dot data-slide-to="3" data-target="#carouselExampleIndicators"         
                   .carousel-inner
-                    - buy_house.buy_house_images.where.not(buy_house_image_uid: nil).each.with_index(1) do |buy_house_image, counter|
-                      - if counter == 1
-                        .carousel-item.active
-                          img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x350#').url /
-                      - else
-                        .carousel-item
-                          img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x350#').url /
+                    - unless buy_house.buy_house_images.where.not(buy_house_image_uid: nil).empty?
+                      - buy_house.buy_house_images.where.not(buy_house_image_uid: nil).each.with_index(1) do |buy_house_image, counter|
+                        - if counter == 1
+                          .carousel-item.active
+                            img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x350#').url /
+                        - else
+                          .carousel-item
+                            img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件 #{counter}") src=buy_house_image.buy_house_image.thumb('400x350#').url /
+                    - else
+                      img.d-block.w-100 alt=("#{buy_house.prefecture.name}#{buy_house.name}の古民家物件") width="400" height="350" src=asset_path('bg-image')
             .carousel-caption.carousel-date.d-none.d-md-block.float-left
               span.p-2.m-1.badge.badge-secondary.badge-info #{buy_house.created_at.year}年#{buy_house.created_at.month}月#{buy_house.created_at.day}日掲載
             - if buy_house.sold == true
