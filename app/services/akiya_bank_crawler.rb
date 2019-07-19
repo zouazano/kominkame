@@ -57,14 +57,22 @@ class AkiyaBankCrawler
         end
 
         if buy_house.save
-          buy_house.buy_house_images.create(buy_house_image_url: image_url1)
-          sleep 2
-          buy_house.buy_house_images.create(buy_house_image_url: image_url2)
-          sleep 2
-          buy_house.buy_house_images.create(buy_house_image_url: image_url3)
-          sleep 2
-          buy_house.buy_house_images.create(buy_house_image_url: image_url4)
-          sleep 2
+          if image_url1.include?("https")
+            buy_house.buy_house_images.create(buy_house_image_url: image_url1)
+            sleep 2
+          end
+          if image_url2.include?("https")
+            buy_house.buy_house_images.create(buy_house_image_url: image_url2)
+            sleep 2
+          end
+          if image_url3.include?("https")
+            buy_house.buy_house_images.create(buy_house_image_url: image_url3)
+            sleep 2
+          end
+          if image_url4.include?("https")
+            buy_house.buy_house_images.create(buy_house_image_url: image_url4)
+            sleep 2
+          end
         end
         sleep 2
       end
