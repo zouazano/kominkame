@@ -52,7 +52,7 @@ class AkiyaBankCrawler
         if buy_house.present?
           next
         else
-          buy_house = BuyHouse.new(name: name, prefecture_id: prefecture_id, price: price, address: address, access: access, madori: madori, land_area: land_area, house_area: house_area, notes: notes, recommendation: recommendation, source: source)
+          buy_house = BuyHouse.new(name: name, prefecture_id: prefecture_id, price: price, address: address, access: access, madori: madori, land_area: land_area, house_area: house_area, built_date: built_date, notes: notes, recommendation: recommendation, source: source)
           buy_house.save
         end
 
