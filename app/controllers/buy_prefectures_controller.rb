@@ -3,7 +3,7 @@
 class BuyPrefecturesController < ApplicationController
 
   def index
-    @q = BuyHouse.all.ransack(params[:q])
+    @q = BuyHouse.where(recommendation:3).where(sold:false).ransack(params[:q])
     @buy_houses = @q.result(distinct: true).page(params[:page])
     if params[:page].present? || params[:q].present?
       set_meta_tags noindex: true, nofollow: true
