@@ -5,6 +5,88 @@ require 'csv'
 
 class AkiyaBankCrawler
 
+  def self.shizuoka
+    user_agent = "User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:28.0) Gecko/20100101 Firefox/28.0"
+    charset = nil
+    
+    (1..5).each do |num|
+      url = "https://iju.pref.shizuoka.jp/estatelist.html?status%255B0%255D=1&house_area=0&house_city=0&limit=10&page=#{num}&offset=0"
+      doc = Nokogiri::HTML(open(url))
+      doc.xpath('//div[contains(@class, "estateResultListInner")]').each do |div|
+        unless div.xpath('div[2]/*[@id="saleTab"]/tbody/tr/th[2]/em').inner_text == ""
+          link = "https://iju.pref.shizuoka.jp/" + div.xpath('div[1]/a')&.attribute('href')&.value
+          link_doc = Nokogiri::HTML(open(link))
+          name = link_doc.xpath('//*[@id="specification"]/tr[1]/td').inner_text&.gsub("静岡県", "").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')&.gsub(/[\d+].+/, "")
+          prefecture_id = 22
+          price = link_doc.xpath('//*[@id="saleTab"]/tr/td[2]/em').inner_text&.gsub(",", "") { |match|  }.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+/]
+          address = link_doc.xpath('//*[@id="specification"]/tr[1]/td').inner_text&.gsub("静岡県", "")
+          land_area = link_doc.xpath('//*[@id="specification"]/tr[2]/td').inner_text.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+\.?\d*/]
+          house_area = link_doc.xpath('//*[@id="specification"]/tr[3]/td').inner_text.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+\.?\d*/]
+          date = link_doc.xpath('//*[@id="specification"]/tr[4]/td[2]').inner_text.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+/]
+          unless date == nil
+            built_date = date + "-01-01"
+          else
+            built_date = date
+          end
+          notes_array = []
+          link_doc.xpath('//*[@id="specification"]/tr[position() > 4]').each do |tr|
+            notes_array << tr.inner_text&.gsub(/\t/, "")&.gsub(/\n/, ":")
+          end
+          notes = notes_array.join(", ")
+          recommendation = "great"
+          source = link
+          image_url_1 = link_doc.xpath('//*[@id="menu"]/ul/li[1]/a/img')&.attribute('src')&.value&.gsub("type=3", "type=2")
+          unless image_url_1 == nil
+            image_url1 = "https://iju.pref.shizuoka.jp" + image_url_1
+          else
+            image_url1 = image_url_1
+          end
+          image_url_2 = link_doc.xpath('//*[@id="menu"]/ul/li[2]/a/img')&.attribute('src')&.value&.gsub("type=3", "type=2")
+          unless image_url_2 == nil
+            image_url2 = "https://iju.pref.shizuoka.jp" + image_url_2
+          else
+            image_url2 = image_url_2
+          end
+          image_url_3 = link_doc.xpath('//*[@id="menu"]/ul/li[3]/a/img')&.attribute('src')&.value&.gsub("type=3", "type=2")
+          unless image_url_3 == nil
+            image_url3 = "https://iju.pref.shizuoka.jp" + image_url_3
+          else
+            image_url3 = image_url_3
+          end
+          image_url_4 = link_doc.xpath('//*[@id="menu"]/ul/li[4]/a/img')&.attribute('src')&.value&.gsub("type=3", "type=2")
+          unless image_url_4 == nil
+            image_url4 = "https://iju.pref.shizuoka.jp" + image_url_4
+          else
+            image_url4 = image_url_4
+          end
+
+          buy_house = BuyHouse.where(name: name).where(price: price).where(source: source).first
+          if buy_house.present?
+            next
+          else
+            buy_house = BuyHouse.new(name: name, prefecture_id: prefecture_id, price: price, address: address, land_area: land_area, house_area: house_area, built_date: built_date, notes: notes, recommendation: recommendation, source: source)
+            buy_house.save
+          end
+
+          if buy_house.save
+            buy_house.buy_house_images.create(buy_house_image_url: image_url1)
+            sleep 2
+            buy_house.buy_house_images.create(buy_house_image_url: image_url2)
+            sleep 2
+            buy_house.buy_house_images.create(buy_house_image_url: image_url3)
+            sleep 2
+            buy_house.buy_house_images.create(buy_house_image_url: image_url4)
+            sleep 2
+          end
+          sleep 2
+          
+        end
+        
+      end
+    end
+  end
+
+
   def self.kanagawa
     user_agent = "User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:28.0) Gecko/20100101 Firefox/28.0"
     charset = nil
