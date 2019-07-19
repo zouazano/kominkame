@@ -5,6 +5,72 @@ require 'csv'
 
 class AkiyaBankCrawler
 
+  def self.iwate
+    user_agent = "User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:28.0) Gecko/20100101 Firefox/28.0"
+    charset = nil
+    
+    (1..3).each do |num|
+      url = "https://www.homes.co.jp/akiyabank/tohoku/iwate?category%5B0%5D=101&page=#{num}"
+      doc = Nokogiri::HTML(open(url))
+      doc.xpath('//*[@id="searchResultList"]/div[1]/div').each do |div|
+        link = div.xpath('a')&.attribute('href')&.value
+        link_doc = Nokogiri::HTML(open(link))
+        name = link_doc.xpath('//div[contains(@class, "mod-bukkenJyouhou")]/div/table/tbody/tr[1]/td[1]').inner_text.gsub(" ", "")&.gsub("岩手県", "")&.gsub(/\n/, "")
+        prefecture_id = 3
+        price_tag = link_doc.xpath('//div[contains(@class, "mod-bukkenJyouhou")]/div/table/tbody/tr[1]/td[2]').inner_text&.gsub(",", "").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+/]
+        unless price_tag == nil
+          price = price_tag.to_i/10000
+        else
+          price = price_tag
+        end
+        address = name
+        access = link_doc.xpath("//tr[contains(.,'交通')]")&.inner_text&.gsub(" ", "")&.gsub(/\n/, "")
+        madori = link_doc.xpath("//th[contains(.,'間取り')]/following-sibling::td[1]")&.inner_text&.gsub(" ", "")&.gsub(/\n/, "")
+        land_area = link_doc.xpath("//tr[contains(.,'土地面積')]/td[contains(., '㎡')]").inner_text&.gsub(",", "")&.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+\.?\d*/]
+        house_area = link_doc.xpath("//tr[contains(.,'建物面積')]/td[contains(., '㎡')]").inner_text&.gsub(",", "")&.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+\.?\d*/]
+        unless link_doc.xpath("//tr[contains(.,'築年')]/td[contains(., '年')]").inner_text&.gsub(" ", "")&.gsub(/\n/, "")&.gsub(/月.*/, "").slice(/(.*)(?=年)/) == nil
+          built_date = link_doc.xpath("//tr[contains(.,'築年')]/td[contains(., '年')]").inner_text&.gsub(" ", "")&.gsub(/\n/, "")&.gsub(/月.*/, "").slice(/(.*)(?=年)/)&.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z') + "-" + link_doc.xpath("//tr[contains(.,'築年')]/td[contains(., '年')]").inner_text&.gsub(" ", "")&.gsub(/\n/, "")&.gsub(/月.*/, "").slice(/年.*/)&.gsub("年", "")&.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z') + "-01"
+        else
+          built_date = nil
+        end
+        notes_array = []
+        notes_array << link_doc.xpath('//div[contains(@class, "mod-bukkenAround")]/div/table/tbody')&.inner_text&.gsub(" ", "")&.gsub(/\n+/, ",")
+        notes_array << link_doc.xpath('//div[contains(@class, "mod-bukkenSetsubi")]')&.inner_text&.gsub(" ", "")&.gsub(/\n+/, ",")
+        notes_array << link_doc.xpath('//div[contains(@class, "mod-bukkenGaiyou")]/div/table/tbody')&.inner_text&.gsub(" ", "")&.gsub(/\n+/, ",")
+
+        notes = notes_array.join(", ")
+
+        recommendation = "great"
+        source = link
+
+        image_url1 = link_doc.xpath('//div[contains(@class, "thumb_bukken_images")]/ul/li[1]/div')&.attribute('style')&.value&.gsub(/(.*)(?=https)/, "")&.gsub(");", "")&.gsub("90x90", "562x418")
+        image_url2 = link_doc.xpath('//div[contains(@class, "thumb_bukken_images")]/ul/li[2]/div')&.attribute('style')&.value&.gsub(/(.*)(?=https)/, "")&.gsub(");", "")&.gsub("90x90", "562x418")
+        image_url3 = link_doc.xpath('//div[contains(@class, "thumb_bukken_images")]/ul/li[3]/div')&.attribute('style')&.value&.gsub(/(.*)(?=https)/, "")&.gsub(");", "")&.gsub("90x90", "562x418")
+        image_url4 = link_doc.xpath('//div[contains(@class, "thumb_bukken_images")]/ul/li[4]/div')&.attribute('style')&.value&.gsub(/(.*)(?=https)/, "")&.gsub(");", "")&.gsub("90x90", "562x418")
+
+        buy_house = BuyHouse.where(name: name).where(price: price).where(source: source).first
+        if buy_house.present?
+          next
+        else
+          buy_house = BuyHouse.new(name: name, prefecture_id: prefecture_id, price: price, address: address, access: access, madori: madori, land_area: land_area, house_area: house_area, notes: notes, recommendation: recommendation, source: source)
+          buy_house.save
+        end
+
+        if buy_house.save
+          buy_house.buy_house_images.create(buy_house_image_url: image_url1)
+          sleep 2
+          buy_house.buy_house_images.create(buy_house_image_url: image_url2)
+          sleep 2
+          buy_house.buy_house_images.create(buy_house_image_url: image_url3)
+          sleep 2
+          buy_house.buy_house_images.create(buy_house_image_url: image_url4)
+          sleep 2
+        end
+        sleep 2
+      end
+    end
+  end
+
   def self.shizuoka
     user_agent = "User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:28.0) Gecko/20100101 Firefox/28.0"
     charset = nil
