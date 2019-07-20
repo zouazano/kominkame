@@ -10,7 +10,7 @@ module ApplicationHelper
       canonical: request.original_url,
       separator: '|',
       og: {
-        site_name: 'コミンカ',
+        site_name: '古民家物件専門サイト『コミンカ』',
         title: '古民家探しはコミンカ',
         type: 'website',
         url: request.original_url,
