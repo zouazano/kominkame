@@ -3,7 +3,7 @@
 module ApplicationHelper
   def default_meta_tags
     {
-      site: 'コミンカ',
+      site: '古民家物件専門サイト『コミンカ』',
       title: '古民家探しはコミンカ',
       reverse: true,
       charset: 'utf-8',
