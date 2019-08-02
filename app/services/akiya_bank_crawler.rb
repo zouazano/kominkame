@@ -5,19 +5,6 @@ require 'csv'
 
 class AkiyaBankCrawler
 
-  def self.hokkaido
-    user_agent = "User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:28.0) Gecko/20100101 Firefox/28.0"
-    charset = nil
-    
-    (1..8).each do |num|
-      url = "https://www.hokkaido-akiya.com/table/page:#{num}"
-      doc = Nokogiri::HTML(open(url))
-      doc.xpath('//div[contains(@class, "3u")]').each do |div|
-        p div.xpath('a').attribute('href')&.value
-      end
-    end
-  end
-
   def self.iwate
     user_agent = "User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:28.0) Gecko/20100101 Firefox/28.0"
     charset = nil
