@@ -62,4 +62,3 @@ server '54.238.238.50', user: 'deploy', roles: %w[app web]
 #   }
 
 after :deploy, "sitemap:refresh"
-config.logger = Logger.new("log/production.log", 'weekly')
