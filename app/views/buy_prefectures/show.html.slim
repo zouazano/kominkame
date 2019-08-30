@@ -206,5 +206,35 @@
       .col-3
         = render 'shared/search_form_side'
         = render 'shared/buy_prefecture-list'
+.container.my-5
+  .row
+    .col-12
+      h2  近隣の古民家
+    .col-12.col-md-9.shadow-sm.bg-white.h-100
+      - case @prefecture.id
+      - when 1,2,3,4,5,6,7  then
+        - (1..7).each do |num|
+          = render 'shared/buy_prefecture_around', num:num
+      - when 8,9,10,11,12,13,14  then
+        - (8..14).each do |num|
+          = render 'shared/buy_prefecture_around', num:num
+      - when 15,16,17,18,19,20  then
+        - (15..20).each do |num|
+          = render 'shared/buy_prefecture_around', num:num
+      - when 21,22,23,24  then
+        - (21..24).each do |num|
+          = render 'shared/buy_prefecture_around', num:num
+      - when 25,26,27,28,29,30  then
+        - (25..30).each do |num|
+          = render 'shared/buy_prefecture_around', num:num
+      - when 31,32,33,34,35  then
+        - (31..35).each do |num|
+          = render 'shared/buy_prefecture_around', num:num
+      - when 36,37,38,39  then
+        - (36..39).each do |num|
+          = render 'shared/buy_prefecture_around', num:num
+      - when 40,41,42,43,44,45,46,47  then
+        - (40..47).each do |num|
+          = render 'shared/buy_prefecture_around', num:num
 
 = render 'shared/buy_prefecture-picks'

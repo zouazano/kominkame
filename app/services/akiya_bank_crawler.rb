@@ -5,6 +5,97 @@ require 'csv'
 
 class AkiyaBankCrawler
 
+  def self.hokkaido
+    user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
+    charset = nil
+    
+    [1208, 1193, 1180, 1147, 1182, 1185, 1179, 1178, 1173, 1135, 1108, 1068, 1069, 1070, 1054, 1066, 1058, 1055, 980, 726, 866, 1005, 972, 944, 459, 902, 454, 456, 842, 79, 77, 556, 480, 584, 599, 13, 209].each do |num|
+      
+      link = "https://www.hokkaido-akiya.com" + "/detail?id=#{num}"
+      link_doc = Nokogiri::HTML(open(link, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
+      name = link_doc.xpath('//*[@id="main"]/div[3]/div[2]/section/table[1]/tbody/tr[10]/td').inner_text&.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')&.gsub(/\d.+/, "")
+      prefecture_id = 1
+      price_tag = link_doc.xpath('//*[@id="main"]/div[3]/div[2]/section/table[1]/tbody/tr[5]/td').inner_text&.gsub(",", "").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+/]
+      unless price_tag == nil
+        price = price_tag.to_i/10000
+      else
+        price = price_tag
+      end
+      address = link_doc.xpath('//*[@id="main"]/div[3]/div[2]/section/table[1]/tbody/tr[10]/td').inner_text
+      access = link_doc.xpath('//*[@id="main"]/div[3]/div[2]/section/table[2]/tbody/tr[1]/td').inner_text
+      madori = link_doc.xpath('//*[@id="main"]/div[3]/div[2]/section/table[1]/tbody/tr[11]/td/text()').inner_text&.gsub(/\r\n|\r|\n|\s|\t/, "")
+      land_area = link_doc.xpath('//*[@id="main"]/div[3]/div[2]/section/table[1]/tbody/tr[12]/td').inner_text&.gsub(",", "")&.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')&.gsub(/[㎡].+/, "")
+      built_date = link_doc.xpath('//*[@id="main"]/div[3]/div[2]/section/table[1]/tbody/tr[15]/td').inner_text
+      if built_date&.include?("平成")
+        built_date = (built_date.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+/].to_i + 1988).to_s + "-01-01"
+      elsif built_date&.include?("昭和")
+        built_date = (built_date.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')[/\d+/].to_i + 1925).to_s + "-01-01"            
+      end
+      notes_array = []
+      notes_array << link_doc.xpath('//*[@id="main"]/div[3]/div[2]/section/table[1]/tbody/tr[24]/td')&.inner_text&.gsub(" ", "")&.gsub(/\n+/, ",")&.gsub(/\r\n|\r|\n|\s|\t/, "")
+      notes_array << link_doc.xpath('//*[@id="main"]/div[3]/div[2]/section/table[3]/tbody')&.inner_text&.gsub(" ", "")&.gsub(/\n+/, ",")&.gsub(/\r\n|\r|\n|\s|\t/, "")
+      notes_array << link_doc.xpath('//*[@id="main"]/div[3]/div[2]/section/table[4]/tbody')&.inner_text&.gsub(" ", "")&.gsub(/\n+/, ",")&.gsub(/\r\n|\r|\n|\s|\t/, "")
+
+      notes = notes_array.join(", ")
+
+      recommendation = "great"
+      source = link
+
+      image_url_1 = link_doc.xpath('//*[@id="main"]/div[3]/div[1]/section/p[1]/a/img')&.attribute('src')&.value
+      unless image_url_1 == nil
+        image_url1 = "https://www.hokkaido-akiya.com" + image_url_1
+      else
+        image_url1 = image_url_1
+      end
+      image_url_2 = link_doc.xpath('//*[@id="main"]/div[3]/div[1]/section/p[2]/a[1]/img')&.attribute('src')&.value
+      unless image_url_2 == nil
+        image_url2 = "https://www.hokkaido-akiya.com" + image_url_2
+      else
+        image_url2 = image_url_2
+      end
+      image_url_3 = link_doc.xpath('//*[@id="main"]/div[3]/div[1]/section/p[2]/a[2]/img')&.attribute('src')&.value
+      unless image_url_3 == nil
+        image_url3 = "https://www.hokkaido-akiya.com" + image_url_3
+      else
+        image_url3 = image_url_3
+      end
+      image_url_4 = link_doc.xpath('//*[@id="main"]/div[3]/div[1]/section/p[2]/a[3]/img')&.attribute('src')&.value
+      unless image_url_4 == nil
+        image_url4 = "https://www.hokkaido-akiya.com" + image_url_4
+      else
+        image_url4 = image_url_4
+      end
+
+      buy_house = BuyHouse.where(name: name).where(price: price).where(source: source).first
+      if buy_house.present?
+        next
+      else
+        buy_house = BuyHouse.new(name: name, prefecture_id: prefecture_id, price: price, address: address, access: access, madori: madori, land_area: land_area, built_date: built_date, notes: notes, recommendation: recommendation, source: source)
+        buy_house.save
+      end
+
+      if buy_house.save
+        if image_url1&.include?("https")
+          buy_house.buy_house_images.create(buy_house_image_url: image_url1)
+          sleep 2
+        end
+        if image_url2&.include?("https")
+          buy_house.buy_house_images.create(buy_house_image_url: image_url2)
+          sleep 2
+        end
+        if image_url3&.include?("https")
+          buy_house.buy_house_images.create(buy_house_image_url: image_url3)
+          sleep 2
+        end
+        if image_url4&.include?("https")
+          buy_house.buy_house_images.create(buy_house_image_url: image_url4)
+          sleep 2
+        end
+      end
+      sleep 2
+    end
+  end
+
   def self.iwate
     user_agent = "User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:28.0) Gecko/20100101 Firefox/28.0"
     charset = nil
