@@ -22,7 +22,11 @@
 /public/assets
 .byebug_history
 
+/public/system/dragonfly/development/
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
 public/sitemap.xml.gz
+
+.DS_Store
