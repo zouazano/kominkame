@@ -7,7 +7,7 @@ class InquiriesController < ApplicationController
 
   def new
     #@house = House.find(params[:house_id])
-    @inquiry = Inquiry.new
+    @inquiry = BuyHouse.find(params[:buy_house_id]).inquiries.new
   end
 
   def create

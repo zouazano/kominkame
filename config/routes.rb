@@ -21,12 +21,12 @@ Rails.application.routes.draw do
     
   end
 
-  resources :inquiries, only: %i[new create show update]
-
   resources :headers
 
   resources :rent_houses, only: [:show]
-  resources :buy_houses, only: [:show]
+  resources :buy_houses, only: [:show] do
+    resources :inquiries, only: %i[new create]
+  end
   resources :stay_houses, only: [:show]
 
   get 'company_profile/index'
