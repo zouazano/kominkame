@@ -2,7 +2,7 @@
 
 class Inquiry < ApplicationRecord
   #belongs_to :rent_house
-  #belongs_to :buy_house
+  belongs_to :buy_house
   #belongs_to :stay_house
 
 
