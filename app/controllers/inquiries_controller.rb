@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'slack-notifier'
 
 class InquiriesController < ApplicationController
   def show
@@ -16,6 +17,8 @@ class InquiriesController < ApplicationController
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
       InquiryMailer.with(inquiry: @inquiry).completion_mailer.deliver_now
+      notifier = Slack::Notifier.new ENV["NOTICE_URL"]
+      notifier.ping "#{@inquiry.name}からお問い合わせがありました"
       redirect_to inquiries_completion_path
     else
       render 'new'

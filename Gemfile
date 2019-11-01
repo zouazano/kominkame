@@ -29,6 +29,8 @@ gem 'sitemap_generator'
 gem "breadcrumbs_on_rails"
 
 
+gem "slack-notifier"
+
 gem 'newrelic_rpm'
 
 gem 'ransack'
