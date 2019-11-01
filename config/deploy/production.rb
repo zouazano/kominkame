@@ -10,8 +10,7 @@ server '54.238.238.50', user: 'deploy', roles: %w[app web]
 
 
 
-host = 'samplehost'
-Rails.application.routes.default_url_options[:host] = host
+config.action_mailer.default_url_options = { host: 'example.com'}
 # role-based syntax
 # ==================
 
