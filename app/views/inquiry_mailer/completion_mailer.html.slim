@@ -1,0 +1,43 @@
+| #{@inquiry.name}様
+br
+br
+| このたびは、物件のお問合せをいただき誠にありがとうございます。
+| お客様のお問合せを下記内容にて受付けましたので、ご確認をお願いいたします。
+br
+| 後程、担当店舗よりご登録いただいたご連絡先にご連絡いたします。
+br
+br
+| メールサービスのセキュリティレベルが高く設定されている場合は、
+| 店舗からのメールが迷惑メールフォルダに入ってしまうことがございます。
+| 一部のメールが届かないお客様はお手数ではございますが、迷惑メールフォルダもご確認ください。
+br
+br
+br
+| ■お問合せ内容
+br
+= @inquiry.message unless @inquiry.message.nil?
+br
+br
+| ■受付日　
+br
+= @inquiry.created_at.strftime("%Y年%m月%d日")
+br
+br
+| ■ 物件情報
+br
+| [お問合せ番号]　　　　
+br
+= @inquiry.id
+br
+| [物件名]
+br
+= @inquiry.buy_house.name
+br
+| [物件情報URL]         
+br
+=  buy_house_url(@inquiry.buy_house)
+br
+| ※ 掲載が終了した物件はご覧になれない場合がございます。
+| ※ このメールは kominkaシステムより送信されております。
+br
+| https://kominka.me

@@ -15,6 +15,7 @@ class InquiriesController < ApplicationController
     #@house = House.find(params[:house_id])
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
+      InquiryMailer.with(inquiry: @inquiry).completion_mailer.deliver_now
       redirect_to inquiries_completion_path
     else
       render 'new'
