@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :rent_houses, only: [:show]
   resources :buy_houses, only: [:show] do
-    resources :inquiries, only: %i[new create]
+    resources :inquiries, only: %i[new create show]
   end
   resources :stay_houses, only: [:show]
 
@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   get 'buy/show'
   get 'stay/index'
   get 'stay/show'
+  get 'inquiries/completion'
   root 'top#index'
 
   get 'top/index'

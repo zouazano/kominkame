@@ -2,21 +2,21 @@
   .row
     h1.mt-3 お問い合わせ
     .col-sm-12.mt-5
-      - if @inquiry.errors.any?
-        ul
-          - @inquiry.errors.full_messages.each do |message|
-            li= message    
+      ul
+        - @inquiry.errors.full_messages.each do |message|
+          li = message    
      
-      = form_for @inquiry, url: buy_house_inquiries_path do |f|
+      = form_with model: @inquiry, local: true, url: buy_house_inquiries_path do |f| 
 
         = f.label :buy_house_id, '物件番号'
-        = f.text_field :buy_house_id, value: @inquiry.buy_house_id, class:"form-control mb-3"
+        = f.text_field :buy_house_id, value: params[:buy_house_id], readonly: true, class:"form-control mb-3"
         
-        = f.label :name, '名前'
+        = f.label :name, '名前 ※必須'
         = f.text_field :name, class:"form-control mb-3", placeholder:'（例：田中 太郎）'
 
-        = f.label :email, 'メールアドレス'
-        = f.text_field :email, class:"form-control mb-3", placeholder:'（例：kominka@xxxx.com ）'				
+        = f.label :email, 'メールアドレス ※必須'
+        = f.text_field :email, class:"form-control mb-3", placeholder:'（例：kominka@xxxx.com ）'
+
         = f.label :phonenumber, '電話番号'
         = f.text_field :phonenumber, class:"form-control mb-3", placeholder:'（例：09012345678）'
 

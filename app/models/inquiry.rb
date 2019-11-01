@@ -8,9 +8,8 @@ class Inquiry < ApplicationRecord
 
   #enum demand: { document: 0, viewing: 1, other: 2 }
 
-  #validates :name, length: { minimum: 2 }
-  #validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  #validates :phonenumber, presence: true
+  validates :name, presence: true, length: { maximum: 30 }
+  validates :email, presence: true
   #validates :address, presence: true
 
 end

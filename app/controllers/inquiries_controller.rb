@@ -7,21 +7,21 @@ class InquiriesController < ApplicationController
 
   def new
     #@house = House.find(params[:house_id])
-    @inquiry = BuyHouse.find(params[:buy_house_id]).inquiries.new
+    @buy_house = BuyHouse.find(params[:buy_house_id])
+    @inquiry = @buy_house.inquiries.new
   end
 
   def create
     #@house = House.find(params[:house_id])
-    @inquiry = Inquiry.create(inquiry_params)
+    @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
-      redirect_to top_index_path
-      flash = 'お問い合せが完了しました。'
+      redirect_to inquiries_completion_path
     else
       render 'new'
     end
   end
 
-  def confrim
+  def completion
 
   end
 
