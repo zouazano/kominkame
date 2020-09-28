@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :houses do
-    
+
   end
 
   resources :headers
@@ -29,7 +29,9 @@ Rails.application.routes.draw do
   end
   resources :stay_houses, only: [:show]
 
-  get 'company_profile/index'
+  %i[company privacy_policy].each do |path|
+    get path, to: "statics##{path}"
+  end
 
 
   get 'prefectures/:id', to: 'prefectures#show', as: :prefecture
