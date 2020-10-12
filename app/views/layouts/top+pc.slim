@@ -1,42 +1,31 @@
 doctype html
 html
   head
-    /! Google Tag Manager
-    javascript:
-      | (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      | new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      | j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      | 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      | })(window,document,'script','dataLayer','GTM-NDJN89V');
-    /! End Google Tag Manager
     = display_meta_tags(default_meta_tags)
-    
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
     = csrf_meta_tags
-    = csp_meta_tag 
+    = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = favicon_link_tag
+
     - if Rails.env.production?
-      script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-122920118-1" 
+      /! Global site tag (gtag.js) - Google Analytics
+      script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-122920118-1"
       javascript:
          window.dataLayer = window.dataLayer || [];
          function gtag(){dataLayer.push(arguments);}
          gtag('js', new Date());
 
          gtag('config', 'UA-122920118-1');
+      script data-ad-client="ca-pub-4965043864788880" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
 
-    script[async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]
-    javascript:
-       (adsbygoogle = window.adsbygoogle || []).push({
-         google_ad_client: "ca-pub-4965043864788880",
-         enable_page_level_ads: true
-       });
   body
-    /! Google Tag Manager (noscript)
-    noscript
-      iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NDJN89V" style="display:none;visibility:hidden" width="0" 
-    /! End Google Tag Manager (noscript)
+    /
+      /! Google Tag Manager (noscript)
+      noscript
+        iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-NDJN89V" style="display:none;visibility:hidden" width="0"
+      /! End Google Tag Manager (noscript)
 
     - if notice
       p.notice= notice
