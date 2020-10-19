@@ -4,7 +4,7 @@ class TopController < ApplicationController
 
   def index
     if params[:page].present?
-      set_meta_tags noindex: true, nofollow: true
+      set_meta_tags noindex: true
     end
     @buy_houses = BuyHouse.where(recommendation: 3).where(sold:false).page(params[:page])
   	@land_area_average = []

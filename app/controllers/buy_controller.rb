@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class BuyController < ApplicationController
-	
+
   def index
     if params[:page].present? || params[:q].present?
-      set_meta_tags noindex: true, nofollow: true
+      set_meta_tags noindex: true
     end
     @q = BuyHouse.where(recommendation:3).where(sold:false).ransack(params[:q])
     @buy_houses = @q.result(distinct: true).page(params[:page])

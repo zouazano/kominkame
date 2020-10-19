@@ -1,6 +1,6 @@
 class BuyHousesController < ApplicationController
   def show
-  	set_meta_tags noindex: true, nofollow: true
+  	set_meta_tags noindex: true
   	@land_area_average = []
   	@house_area_average = []
   	@built_date_average = []

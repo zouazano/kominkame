@@ -2,23 +2,23 @@
 
 class HousesController < ApplicationController
   def index
-    set_meta_tags noindex: true, nofollow: true
+    set_meta_tags noindex: true
     @houses = House.all
   end
 
   def show
-    set_meta_tags noindex: true, nofollow: true
+    set_meta_tags noindex: true
     @house = House.find(params[:id])
     house_id = @house.id
   end
 
   def new
-    set_meta_tags noindex: true, nofollow: true
+    set_meta_tags noindex: true
     @house = House.new
   end
 
   def create
-    set_meta_tags noindex: true, nofollow: true
+    set_meta_tags noindex: true
     @house = House.new(house_params)
     @house.save
   end

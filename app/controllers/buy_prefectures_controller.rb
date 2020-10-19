@@ -6,7 +6,7 @@ class BuyPrefecturesController < ApplicationController
     @q = BuyHouse.where(recommendation:3).where(sold:false).ransack(params[:q])
     @buy_houses = @q.result(distinct: true).page(params[:page])
     if params[:page].present? || params[:q].present?
-      set_meta_tags noindex: true, nofollow: true
+      set_meta_tags noindex: true
     end
     add_breadcrumb "ホーム", root_path
     add_breadcrumb "古民家を買う", buy_index_path
@@ -18,9 +18,9 @@ class BuyPrefecturesController < ApplicationController
     @buy_houses = @q.result(distinct: true).page(params[:page])
 
     if params[:page].present? || params[:q].present?
-      set_meta_tags noindex: true, nofollow: true
+      set_meta_tags noindex: true
     end
-    
+
 
 
     @land_area_p_average = []
