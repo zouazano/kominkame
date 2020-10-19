@@ -5,10 +5,10 @@
             a href=buy_house_path(buy_house.id) target="_blank"
                 .carousel.slide id="carouselExampleControls#{num}" data-interval="false"
                   ol.carousel-indicators
-                    li.active.dot data-slide-to="0" data-target="#carouselExampleIndicators" 
-                    li.dot data-slide-to="1" data-target="#carouselExampleIndicators" 
-                    li.dot data-slide-to="2" data-target="#carouselExampleIndicators" 
-                    li.dot data-slide-to="3" data-target="#carouselExampleIndicators"         
+                    li.active.dot data-slide-to="0" data-target="#carouselExampleIndicators"
+                    li.dot data-slide-to="1" data-target="#carouselExampleIndicators"
+                    li.dot data-slide-to="2" data-target="#carouselExampleIndicators"
+                    li.dot data-slide-to="3" data-target="#carouselExampleIndicators"
                   .carousel-inner
                     - unless buy_house.buy_house_images.where.not(buy_house_image_uid: nil).empty?
                       - buy_house.buy_house_images.where.not(buy_house_image_uid: nil).each.with_index(1) do |buy_house_image, counter|
@@ -25,15 +25,13 @@
             - if buy_house.sold == true
               .carousel-caption.carousel-list.d-none.d-md-block
                 span.font-weight-bold.bg-info.rounded 成約済み
-            end
-               
-                  a.carousel-control-prev data-slide="prev" href="#carouselExampleControls#{num}" role="button" 
-                    span.carousel-control-prev-icon aria-hidden="true" 
+                  a.carousel-control-prev data-slide="prev" href="#carouselExampleControls#{num}" role="button"
+                    span.carousel-control-prev-icon aria-hidden="true"
                     span.sr-only Previous
-                  a.carousel-control-next data-slide="next" href="#carouselExampleControls#{num}" role="button" 
-                    span.carousel-control-next-icon aria-hidden="true" 
+                  a.carousel-control-next data-slide="next" href="#carouselExampleControls#{num}" role="button"
+                    span.carousel-control-next-icon aria-hidden="true"
                     span.sr-only Next
-              
+
           .col-7.buy_house-info
             .row
               .col-12.border-bottom.mt-2
@@ -43,7 +41,7 @@
                     button.btn.btn-info.float-right type="button" 詳細
 
 
-          
+
             - if buy_house.price.present? and buy_house.price > 0
               p.font-weight-bold.text-danger.lead.mb-0 #{buy_house.price}万円
             - else
@@ -73,7 +71,7 @@
             table.table.table-borderless.table-sm.mb-2
               tbody
                 tr
-                  th.p-0 scope="row" 
+                  th.p-0 scope="row"
                     small.text-muted 土地
                   td.p-0
                     - if buy_house.land_area.present? and buy_house.land_area > 0
@@ -81,7 +79,7 @@
                     - else
                       p.text-dark.mb-0 土地面積問い合わせ
                 tr
-                  th.p-0 scope="row" 
+                  th.p-0 scope="row"
                     small.text-muted 建物
                   td.p-0
                     - if buy_house.house_area.present? and buy_house.house_area > 0
@@ -89,4 +87,4 @@
                     - else
                       p.text-dark.mb-0 建物面積問い合わせ
 
- 
+
